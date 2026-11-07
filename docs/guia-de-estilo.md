@@ -1,6 +1,6 @@
 # Guia de estilo visual
 
-Estado: **0.23**. A direção de arte oficial é `docs/DIRECAO_DE_ARTE.txt` (do criador); este guia resume e
+Estado: **0.24**. A direção de arte oficial é `docs/DIRECAO_DE_ARTE.txt` (do criador); este guia resume e
 registra a situação de cada elemento. Em conflito, vale a direção de arte.
 
 ## Alvo
@@ -20,7 +20,7 @@ e luzes pálidas; o café como o único calor.
 - **Proporções:** sprite de exploração compacto (cabeça grande, quase chibi); retrato com proporções
   completas.
 
-## Situação de cada elemento (0.23)
+## Situação de cada elemento (0.24)
 | Elemento | Como está | Situação |
 |---|---|---|
 | Kamila — sprite e retrato do jogo | arte nova | no estilo |
@@ -33,7 +33,7 @@ e luzes pálidas; o café como o único calor.
 | Outros prédios | estilo novo com personalidade por prédio (0.22–0.23) | no estilo |
 | Placa da rua, parquímetros | por código (0.23) | no estilo |
 | Carros, motos, postes | imagens do criador (0.20) | no estilo |
-| Interior do café | procedural, 1 px de arte por px de mundo | pendente |
+| Interior do café | estilo novo por código, 2 px de arte por px de mundo (0.24) | no estilo |
 | Cidade do menu | pixel art 640 × 400 ampliada | a decidir |
 | Criatura | traço liso, sem grade, movimento em saltos | **diferente de propósito** (decisão do criador) |
 

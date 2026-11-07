@@ -15,7 +15,7 @@
       <button type="button" class="city-menuitem cursor-interaction" data-action="exit"><span class="city-number">03</span><span>SAIR</span><span class="city-arrow">↗</span></button>
     </nav>
   </main>
-  <footer class="city-footer"><span>PRÉVIA CONCEITUAL / 0.23</span><button type="button" class="city-sound-toggle cursor-interaction" aria-pressed="false">ATIVAR SOM</button><span>A CIDADE PERMANECE.</span></footer>
+  <footer class="city-footer"><span>PRÉVIA CONCEITUAL / 0.24</span><button type="button" class="city-sound-toggle cursor-interaction" aria-pressed="false">ATIVAR SOM</button><span>A CIDADE PERMANECE.</span></footer>
   <section class="city-rpg" hidden aria-label="Exploração de Kamila">
     <canvas class="rpg-canvas" tabindex="0" aria-label="Mapa explorável. Use WASD ou as setas para caminhar. E ou Enter para interagir. No celular, use os controles na tela."></canvas>
     <header class="rpg-header"><div><span class="rpg-kicker">THE CITY / KAMILA CZARNY</span><h2 class="rpg-location">A rua sem nome</h2></div><div class="rpg-topbuttons"><button type="button" class="rpg-sound">ATIVAR SOM</button><button type="button" data-rpg="menu">MENU ↗</button></div></header>
@@ -1168,47 +1168,55 @@ const rpg=(()=>{
    soundtrack.ambient({wind:.17,fog:.13*fog,buzz:buzz*.4,buzzPan:pan,hum:0,muffle:0})}
   else soundtrack.ambient({wind:0,fog:0,buzz:0,hum:.028,muffle:.4});
  }
- // Entreluz: brick walls, ochre banquettes and an L-shaped wooden bar.
- const cg=cafeMap.g;
- rect(cg,0,0,24*T,21*T,'#252b29');
- for(let y=1;y<20;y++)for(let x=1;x<23;x++){
-  const shade=Math.floor(rnd()*8);rect(cg,x*T,y*T,T,T,`rgb(${111+shade},${107+shade},${94+shade})`);
-  for(let k=0;k<28;k++)rect(cg,x*T+rnd()*T,y*T+rnd()*T,1+rnd()*2,1,rnd()>.5?'#d5ccac18':'#282f2b12');
- }
+ // ===== Interior do EntreLuz (0.24: estilo novo, densidade dobrada como a rua) =====
+ // Mesma planta, colisões, luminárias e pontos de interação de antes; muda só o desenho.
+ // Piso de concreto em placas, tijolo aparente ao fundo e à esquerda, bancos mostarda, mesas de madeira, balcão em L.
+ const cafeHi=document.createElement('canvas');cafeHi.width=24*T*ST_D;cafeHi.height=21*T*ST_D;cafeHi.id='cafe';
+ const ch=cafeHi.getContext('2d');ch.setTransform(ST_D,0,0,ST_D,0,0);const cg=cafeMap.g;
+ const CF={floor:'#5b5753',floorL:'#625e59',floorD:'#53504c',seam:'#3e3c3a',brick:'#6c4535',brickL:'#80543f',mortar:'#3c2923',wood:'#7a5634',woodL:'#97714a',woodD:'#4a321f',
+  must:'#b08a3e',mustL:'#c9a352',mustD:'#7d5f2a',steel:'#2a2d32',steelL:'#4a4f57',plate:'#d9cfb8',plant:'#4a6a46',plantL:'#638a58'};
+ hrect(ch,0,0,24*T,21*T,'#1c1d21');
+ // Piso: placas de 2 x 2 casas com juntas, leve variação por placa e manchas grandes em planos.
+ for(let y=T;y<20*T;y+=2*T)for(let x=T;x<23*T;x+=2*T){const h=hash2(x,y),b=h<.14?CF.floorD:h>.9?CF.floorL:CF.floor;hrect(ch,x,y,2*T,2*T,CF.seam);hrect(ch,x+.5,y+.5,2*T-1,2*T-1,b);hrect(ch,x+.5,y+.5,2*T-1,.5,shade(b,8))}
+ for(let i=0;i<9;i++){pvBlob(ch,T+rnd()*22*T,2*T+rnd()*17*T,10+rnd()*24,6+rnd()*12,i+40);ch.fillStyle='rgba(40,36,32,.18)';ch.fill()}
  for(const b of [[0,0,24,2],[0,0,1,21],[23,0,1,21],[0,20,24,1]])block(cafeMap,...b);
- // Exposed brick, alternating joints, black steel shelving.
- rect(cg,T,T,22*T,T*1.25,'#927b5d');rect(cg,T,T,T*.8,18*T,'#806e54');
- for(let y=T;y<T*2.25;y+=10){for(let x=T+(Math.floor(y/10)%2)*14;x<23*T;x+=28){rect(cg,x,y,26,8,rnd()>.5?'#aa8b63':'#8d7459');rect(cg,x+2,y+1,22,1,'#c4a77855')}}
- for(let y=2*T;y<19*T;y+=10)rect(cg,T,y,T*.8,1,'#b5a18255');
- function wood(x,y,w,h){rect(cg,x+4,y+5,w,h,'#252a2477');rect(cg,x,y,w,h,'#70533a');rect(cg,x+2,y+2,w-4,h-4,'#b18a51');for(let i=6;i<h-3;i+=7){rect(cg,x+3,y+i,w-6,1,'#d1ab6a55');for(let j=0;j<3;j++)rect(cg,x+4+rnd()*(w-20),y+i+2,8+rnd()*14,1,'#654f3839')}rect(cg,x+2,y+2,w-4,1,'#dfbd7d')}
- function banquette(x,y,w,h,horizontal=false){block(cafeMap,x,y,w,h);const X=x*T,Y=y*T,W=w*T,H=h*T;rect(cg,X+3,Y+5,W,H,'#20251f80');rect(cg,X,Y,W,H,'#342f26');rect(cg,X+3,Y+3,W-6,H-6,'#a27c38');
-  if(horizontal){rect(cg,X+3,Y+3,W-6,13,'#c49b4f');rect(cg,X+4,Y+17,W-8,H-22,'#ad853e');for(let q=X+22;q<X+W-4;q+=24)rect(cg,q,Y+4,2,H-8,'#5a472b88')}
-  else{rect(cg,X+3,Y+3,13,H-6,'#bd9147');rect(cg,X+17,Y+4,W-22,H-8,'#aa803b');for(let q=Y+24;q<Y+H-4;q+=27)rect(cg,X+4,q,W-8,2,'#59482e88')}
- }
- function chair(x,y,dir='down'){block(cafeMap,x,y,.8,.85);const X=x*T,Y=y*T;rect(cg,X+3,Y+5,26,26,'#24282455');rect(cg,X+3,Y+2,20,21,'#252e2d');rect(cg,X+5,Y+4,16,14,'#4b4b3f');rect(cg,X+2,Y+(dir==='up'?0:20),22,5,'#303630');rect(cg,X+2,Y+(dir==='up'?0:20),22,1,'#737363');}
- function table(x,y,w=3,h=2){block(cafeMap,x,y,w,h);wood(x*T,y*T,w*T,h*T);for(const p of [.24,.75]){const px=(x+w*p)*T,py=(y+h*.52)*T;oval(cg,px,py,10,7,'#d7c8a2');oval(cg,px,py,7,5,'#b7aa8b');rect(cg,px-15,py-6,1,13,'#c7c0a1');rect(cg,px+14,py-6,2,13,'#a7a991');oval(cg,px+8,py-11,4,3,'#e4d7b3')}
-  const px=(x+w*.5)*T,py=(y+.45)*T;oval(cg,px,py+3,6,4,'#ad9a79');rect(cg,px-3,py-4,6,8,'#d7c8a3');oval(cg,px,py-6,8,5,'#53613e');oval(cg,px-3,py-9,3,5,'#77834d');
- }
+ // Tijolo aparente na parede do fundo e na da esquerda; rodapé escuro.
+ function cfBricks(X,Y,W,H){hrect(ch,X,Y,W,H,CF.mortar);for(let y=Y,row=0;y<Y+H;y+=5,row++)for(let x=X-((row&1)?6:0);x<X+W;x+=12){const a=Math.max(x,X)+.5,b=Math.min(x+12,X+W)-.5;if(b<=a)continue;const h=hash2(Math.round(x*3),Math.round(y*3)),c=h<.3?shade(CF.brick,-8):h>.82?CF.brickL:CF.brick;hrect(ch,a,y+.5,b-a,4,c);hrect(ch,a,y+.5,b-a,.5,shade(c,12))}}
+ cfBricks(T,T,22*T,T*1.25);cfBricks(T,T,T*.8,18*T);hrect(ch,T,T*2.25,22*T,2,'#2a1c17');hrect(ch,T*1.8,T,2,18*T,'#2a1c17');hrect(ch,T,2.25*T+2,22*T,3,'rgba(10,8,8,.35)');
+ function wood(x,y,w,h){hrect(ch,x+3,y+4,w,h,'rgba(10,8,8,.35)');orect(ch,x,y,w,h,CF.woodD);hrect(ch,x+2,y+2,w-4,h-4,CF.wood);hrect(ch,x+2,y+2,w-4,1.5,CF.woodL);for(let i=8;i<h-4;i+=8)hrect(ch,x+3,y+i,w-6,.5,shade(CF.wood,-12))}
+ function banquette(x,y,w,h,horizontal=false){block(cafeMap,x,y,w,h);const X=x*T,Y=y*T,W=w*T,H=h*T;hrect(ch,X+3,Y+4,W,H,'rgba(10,8,8,.35)');orect(ch,X,Y,W,H,'#3a2a1e');
+  if(horizontal){orect(ch,X+3,Y+3,W-6,12,CF.mustL,CF.mustD);orect(ch,X+3,Y+16,W-6,H-20,CF.must,CF.mustD);for(let q=X+24;q<X+W-4;q+=24)hrect(ch,q,Y+4,1,H-8,CF.mustD)}
+  else{orect(ch,X+3,Y+3,12,H-6,CF.mustL,CF.mustD);orect(ch,X+16,Y+3,W-20,H-6,CF.must,CF.mustD);for(let q=Y+26;q<Y+H-4;q+=27)hrect(ch,X+4,q,W-8,1,CF.mustD)}}
+ function chair(x,y,dir='down'){block(cafeMap,x,y,.8,.85);const X=x*T,Y=y*T;hrect(ch,X+3,Y+5,22,22,'rgba(10,8,8,.3)');orect(ch,X+2,Y+3,20,19,CF.steel);orect(ch,X+4,Y+5,16,13,'#4d4b46');hrect(ch,X+4,Y+5,16,1,'#615e58');orect(ch,X+2,Y+(dir==='up'?0:19),20,4,'#34373d');hrect(ch,X+2,Y+(dir==='up'?0:19),20,.5,CF.steelL)}
+ function table(x,y,w=3,h=2){block(cafeMap,x,y,w,h);wood(x*T,y*T,w*T,h*T);
+  for(const p of [.24,.75]){const px=(x+w*p)*T,py=(y+h*.52)*T;oval(ch,px,py,10.5,7.5,'#6b6052');oval(ch,px,py,10,7,CF.plate);oval(ch,px,py,6.5,4.5,'#c4b89e');hrect(ch,px-15,py-6,1,13,'#b9b4a4');hrect(ch,px+14,py-6,1.5,13,'#9a9686');oval(ch,px+8,py-11,4.5,3.5,'#6b6052');oval(ch,px+8,py-11,4,3,'#e6dcc6')}
+  const px=(x+w*.5)*T,py=(y+.45)*T;orect(ch,px-3,py-4,6,8,'#8e8270');oval(ch,px,py-6,8.5,5.5,PVC.line);oval(ch,px,py-6,8,5,CF.plant);oval(ch,px-3,py-8,3.5,3,CF.plantL)}
  banquette(1.8,3.1,1.25,15.2);banquette(3.05,2.6,9.1,1.1,true);
  for(const y of [5,10.1,15.2]){table(3.5,y,3.4,2.1);chair(7.3,y+.5);}
  table(8.6,4.5,3.5,2.1);chair(9.7,7);table(9.5,11.3,3.6,2.2);chair(10.1,10.2,'up');chair(10.3,14);
  table(17.2,16.6,4,2.2);chair(17.8,15.4,'up');chair(19.4,19);
- // L bar on the right; the back bar contains the espresso machine and shelves.
+ // Balcão em L: tampo claro com borda, frente mais escura e uma faixa de luz quente embaixo do tampo.
  block(cafeMap,15.5,3.8,1.6,9.8);block(cafeMap,17.1,12,5.3,1.6);
  wood(15.5*T,3.8*T,1.6*T,9.8*T);wood(17.1*T,12*T,5.3*T,1.6*T);
- rect(cg,15.5*T+2,3.8*T+3,3,9.8*T-6,'#e6bd714f');rect(cg,17.1*T,13.6*T-4,5.3*T,2,'#e9bb6e');
- function stool(x,y){const X=x*T,Y=y*T;block(cafeMap,x-.35,y-.35,.7,.7);oval(cg,X+3,Y+6,13,9,'#222b2666');rect(cg,X-6,Y,3,14,'#30372e');rect(cg,X+5,Y,3,14,'#30372e');oval(cg,X,Y,13,10,'#58432c');oval(cg,X,Y-2,11,8,'#a47c42');rect(cg,X-5,Y-6,11,1,'#d2a46366')}
+ hrect(ch,15.5*T+2,3.8*T+3,2.5,9.8*T-6,'rgba(240,196,120,.35)');hrect(ch,17.1*T,13.6*T-4,5.3*T,2,'#d9a95e');
+ for(const [cx,cy] of [[16.3,5.2],[16.3,8.4],[16.3,11.2],[19.4,12.8]]){oval(ch,cx*T,cy*T,4.5,3.5,'#6b6052');oval(ch,cx*T,cy*T,4,3,'#e6dcc6');oval(ch,cx*T,cy*T,2,1.3,'#4a3324')}
+ function stool(x,y){const X=x*T,Y=y*T;block(cafeMap,x-.35,y-.35,.7,.7);oval(ch,X+3,Y+6,12,8,'rgba(10,8,8,.3)');hrect(ch,X-6,Y,2.5,13,CF.steel);hrect(ch,X+4,Y,2.5,13,CF.steel);oval(ch,X,Y,12.5,9.5,PVC.line);oval(ch,X,Y,12,9,'#5e4430');oval(ch,X,Y-1.5,10,7,'#9a7440');hrect(ch,X-5,Y-6,10,1,'#c79a5e')}
  for(const y of [5.4,7.7,10])stool(14.5,y);for(const x of [18,20.4])stool(x,14.4);
+ // Fundo do balcão: máquina de café, prateleiras de aço com xícaras e garrafas.
  block(cafeMap,21.3,3,1.5,8.7);wood(21.3*T,3*T,1.5*T,8.7*T);
- rect(cg,21.35*T,5*T,42,67,'#313c36');rect(cg,21.35*T+4,5*T+4,34,47,'#87958b');rect(cg,21.35*T+8,5*T+9,26,23,'#354640');rect(cg,21.35*T+10,5*T+36,22,3,'#d0c7aa');
- for(let y=8;y<11;y+=.7)for(let x=21.6;x<22.6;x+=.43){oval(cg,x*T,y*T,4,3,'#d9cfb3');oval(cg,x*T,y*T,2,1,'#70654f')}
- for(const y of [3.2,7.8,10.8]){rect(cg,21*T,y*T,2*T,5,'#282f27');for(let i=0;i<6;i++){rect(cg,21*T+i*10+3,y*T-14,6,13,i%2?'#778264':'#b6a581');rect(cg,21*T+i*10+4,y*T-17,4,4,'#c9bd91')}}
- // Suspended steel plant rails and warm pendant fixtures.
- rect(cg,3*T,1.35*T,10*T,4,'#293029');rect(cg,3*T,1.35*T,3,20,'#293029');rect(cg,13*T-3,1.35*T,3,20,'#293029');
- for(const x of [3.7,6.3,9.4,12.3]){rect(cg,x*T,1.7*T,10,8,'#7a6b44');oval(cg,x*T+5,1.7*T-2,9,5,'#52623d');oval(cg,x*T+2,1.7*T-6,4,6,'#7e8b50')}
- for(const [x,y] of [[5,3.7],[10,3.5],[16.3,5],[16.3,10.4],[6,13]]){cafeMap.lamps.push({x:x*T,y:y*T+18,r:138,amber:true});line(cg,[[x*T,y*T-19],[x*T,y*T-5]],'#242d27',2);oval(cg,x*T,y*T,12,7,'#282f28');oval(cg,x*T,y*T+3,8,3,'#d5ad5d')}
- // Glass entrance and mat, with a clear central route through the room.
- rect(cg,10.5*T,19*T,3*T,T,'#323d37');rect(cg,10.5*T+3,19*T+3,3*T-6,T-6,'#707c6c');rect(cg,12*T,19*T,2,T,'#b8b49a');rect(cg,10.7*T,18.35*T,2.6*T,.5*T,'#4a5146');
+ {const mx=21.35*T,my=5*T;orect(ch,mx,my,42,66,'#3a3e46');orect(ch,mx+4,my+4,34,46,'#8a8f98');hrect(ch,mx+4,my+4,34,2,'#a8adb5');orect(ch,mx+8,my+9,26,22,'#2c3036');hrect(ch,mx+10,my+11,6,3,'#c03a2e');
+  for(const gx of [mx+12,mx+26])orect(ch,gx,my+33,5,9,'#2a2d32');orect(ch,mx+8,my+52,26,4,'#5a5f67');hrect(ch,mx+10,my+36,22,2,'#d0c7aa')}
+ for(let y=8;y<11;y+=.7)for(let x=21.6;x<22.6;x+=.43){oval(ch,x*T,y*T,4.5,3.5,'#6b6052');oval(ch,x*T,y*T,4,3,'#e6dcc6');oval(ch,x*T,y*T,1.8,1,'#6a5a46')}
+ for(const y of [3.2,7.8,10.8]){orect(ch,21*T,y*T,2*T,4,CF.steel);hrect(ch,21*T,y*T,2*T,.5,CF.steelL);for(let i=0;i<6;i++){const c=['#5d6f56','#a89670','#6a4a3a','#4a5a6a'][i%4];orect(ch,21*T+i*10+3,y*T-13,6,12,c);hrect(ch,21*T+i*10+4,y*T-16,4,3,shade(c,14))}}
+ // Trilho de aço com plantas penduradas.
+ orect(ch,3*T,1.35*T,10*T,3,CF.steel);orect(ch,3*T,1.35*T,2,20,CF.steel);orect(ch,13*T-2,1.35*T,2,20,CF.steel);
+ for(const x of [3.7,6.3,9.4,12.3]){orect(ch,x*T,1.7*T,10,8,'#6a5a3e');oval(ch,x*T+5,1.7*T-2,9.5,5.5,PVC.line);oval(ch,x*T+5,1.7*T-2,9,5,CF.plant);oval(ch,x*T+2,1.7*T-5,4,4,CF.plantL);for(let k=0;k<3;k++)hrect(ch,x*T+2+k*3,1.7*T+8,1,6+k*3,CF.plant)}
+ // Luminárias pendentes: cúpula escura contornada e lâmpada quente (a luz vem de cafeMap.lamps).
+ for(const [x,y] of [[5,3.7],[10,3.5],[16.3,5],[16.3,10.4],[6,13]]){cafeMap.lamps.push({x:x*T,y:y*T+18,r:138,amber:true});line(ch,[[x*T,y*T-19],[x*T,y*T-6]],'#1d1e22',1.5);oval(ch,x*T,y*T,12.5,7.5,PVC.line);oval(ch,x*T,y*T,12,7,'#2c2f33');oval(ch,x*T,y*T-2,9,3,'#3f4349');oval(ch,x*T,y*T+3,8,3,'#ffd890')}
+ // Porta de vidro da frente e capacho.
+ orect(ch,10.5*T,19*T,3*T,T,'#2a2d32');orect(ch,10.5*T+3,19*T+3,3*T-6,T-6,'#3d4a52');ch.fillStyle='rgba(150,170,190,.18)';ch.beginPath();ch.moveTo(10.7*T,20*T-3);ch.lineTo(11.3*T,19*T+3);ch.lineTo(11.7*T,19*T+3);ch.lineTo(11.1*T,20*T-3);ch.fill();
+ hrect(ch,12*T-1,19*T,2,T,'#b39a62');orect(ch,10.7*T,18.35*T,2.6*T,.5*T,'#3b302b');for(let k=10.7*T+2;k<13.3*T-2;k+=3)hrect(ch,k,18.35*T+1,1,.5*T-2,'#2c2420');
+ cafeMap.hi=cafeHi;cg.drawImage(cafeHi,0,0,24*T,21*T);
  event(cafeMap,'counter',14.2,11.7,'Balcão de madeira',['Um balcão comprido, banquetas vazias e xícaras alinhadas. “Tem alguém aí?”','A máquina de café permanece em silêncio. Não vem resposta.']);
  event(cafeMap,'cup',12,14.5,'Mesa posta',['As mesas estão postas. Pratos, talheres, uma xícara vazia. Tudo parece esperar por pessoas que não chegam.']);
  event(cafeMap,'exit',12,18.6,'Sair para a rua',['Pela porta, reconheço o trecho onde acordei. Posso voltar à rua.'],'exit');
