@@ -7,6 +7,7 @@ registradas nos comentários do código.
 
 | Versão | Data | Resumo |
 |---|---|---|
+| [0.25](0.25.md) | 2026-11-07 | Cidade do menu repintada no estilo novo (prédios contornados, céu em faixas, floresta em tufos, paleta fria sem pontilhado). |
 | [0.24](0.24.md) | 2026-11-07 | Interior do EntreLuz no estilo novo, com a densidade da rua. |
 | [0.23](0.23.md) | 2026-11-07 | Personalidade por prédio (livraria, loja de aço, loja caiada, apartamentos, casas), placa da rua nova e parquímetros. |
 | [0.22](0.22.md) | 2026-11-07 | Fachadas e telhados de todos os prédios no estilo novo (primeira passada, pelas peças compartilhadas). |
