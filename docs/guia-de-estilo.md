@@ -26,7 +26,7 @@ e luzes pálidas; o café como o único calor.
 | Kamila — sprite e retrato do jogo | arte nova | no estilo |
 | Kamila — card do menu | imagem atual | mantida por decisão |
 | Homem Ferido — sprite e retrato | arte do criador, folha 6 × 2 (0.19) | no estilo |
-| Pedaços do homem e pistola caída | por código (0.18) | provisório; falta arte |
+| Homem devorado, pedaços, pistola e sangue | folha do criador (0.21) | no estilo |
 | Chão da rua (asfalto, calçada, meio-fio, poças) | estilo novo por código (0.20) | no estilo |
 | Café EntreLuz (fachada) | estilo novo por código (0.20) | no estilo |
 | Árvores e lixeiras | estilo novo por código, a partir da imagem da rua (0.20) | no estilo |

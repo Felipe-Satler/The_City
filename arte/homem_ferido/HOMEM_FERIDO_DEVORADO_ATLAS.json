@@ -1,0 +1,322 @@
+{
+  "frames": {
+    "agarrado_a": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "sourceSize": {
+        "w": 209,
+        "h": 209
+      },
+      "contentBounds": {
+        "x": 11,
+        "y": 35,
+        "w": 186,
+        "h": 138
+      }
+    },
+    "agarrado_b": {
+      "frame": {
+        "x": 209,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "sourceSize": {
+        "w": 209,
+        "h": 209
+      },
+      "contentBounds": {
+        "x": 14,
+        "y": 40,
+        "w": 181,
+        "h": 128
+      }
+    },
+    "estracalhado": {
+      "frame": {
+        "x": 418,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "sourceSize": {
+        "w": 209,
+        "h": 209
+      },
+      "contentBounds": {
+        "x": 9,
+        "y": 44,
+        "w": 190,
+        "h": 121
+      }
+    },
+    "metade_final": {
+      "frame": {
+        "x": 627,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "sourceSize": {
+        "w": 209,
+        "h": 209
+      },
+      "contentBounds": {
+        "x": 27,
+        "y": 69,
+        "w": 154,
+        "h": 71
+      }
+    },
+    "braco_esquerdo": {
+      "frame": {
+        "x": 836,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "sourceSize": {
+        "w": 209,
+        "h": 209
+      },
+      "contentBounds": {
+        "x": 70,
+        "y": 93,
+        "w": 68,
+        "h": 22
+      }
+    },
+    "perna_direita": {
+      "frame": {
+        "x": 1045,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "sourceSize": {
+        "w": 209,
+        "h": 209
+      },
+      "contentBounds": {
+        "x": 60,
+        "y": 86,
+        "w": 88,
+        "h": 37
+      }
+    },
+    "pistola_caida": {
+      "frame": {
+        "x": 0,
+        "y": 209,
+        "w": 209,
+        "h": 209
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "sourceSize": {
+        "w": 209,
+        "h": 209
+      },
+      "contentBounds": {
+        "x": 84,
+        "y": 91,
+        "w": 40,
+        "h": 27
+      }
+    },
+    "poca_sangue": {
+      "frame": {
+        "x": 209,
+        "y": 209,
+        "w": 209,
+        "h": 209
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "sourceSize": {
+        "w": 209,
+        "h": 209
+      },
+      "contentBounds": {
+        "x": 29,
+        "y": 74,
+        "w": 150,
+        "h": 60
+      }
+    },
+    "respingo_medio": {
+      "frame": {
+        "x": 418,
+        "y": 209,
+        "w": 209,
+        "h": 209
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "sourceSize": {
+        "w": 209,
+        "h": 209
+      },
+      "contentBounds": {
+        "x": 72,
+        "y": 82,
+        "w": 65,
+        "h": 44
+      }
+    },
+    "gotas_rastro": {
+      "frame": {
+        "x": 627,
+        "y": 209,
+        "w": 209,
+        "h": 209
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "sourceSize": {
+        "w": 209,
+        "h": 209
+      },
+      "contentBounds": {
+        "x": 64,
+        "y": 95,
+        "w": 80,
+        "h": 18
+      }
+    },
+    "retalho_casaco": {
+      "frame": {
+        "x": 836,
+        "y": 209,
+        "w": 209,
+        "h": 209
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "sourceSize": {
+        "w": 209,
+        "h": 209
+      },
+      "contentBounds": {
+        "x": 74,
+        "y": 79,
+        "w": 60,
+        "h": 50
+      }
+    }
+  },
+  "animations": {
+    "sacudir": {
+      "frames": [
+        "agarrado_a",
+        "agarrado_b"
+      ],
+      "loop": true
+    }
+  },
+  "meta": {
+    "image": "HOMEM_FERIDO_DEVORADO.png",
+    "size": {
+      "w": 1254,
+      "h": 418
+    },
+    "grid": {
+      "columns": 6,
+      "rows": 2,
+      "cellWidth": 209,
+      "cellHeight": 209,
+      "margin": 0,
+      "spacing": 0
+    },
+    "emptyCells": [
+      {
+        "row": 1,
+        "column": 5
+      }
+    ],
+    "indexing": "zero-based",
+    "notes": "contentBounds é relativo à célula; animations é um campo auxiliar. Rotação, ponto de apoio na cintura, temporização e escala de cena devem ser ajustados no motor. Sem teste de integração no jogo."
+  }
+}

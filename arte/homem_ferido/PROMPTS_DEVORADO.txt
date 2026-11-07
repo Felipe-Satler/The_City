@@ -1,0 +1,27 @@
+PROMPTS USADOS — HOMEM FERIDO DEVORADO
+Modo: ferramenta integrada de geração/edição de imagem, fundo transparente.
+
+GERAÇÃO
+Create a fictional adult NPC aftermath/animation sprite sheet for the stylized horror videogame THE CITY. Use high-resolution ANIME PIXEL ART, matching the attached established male sprite sheet and Kamila's game sprites exactly in drawing style, clothing and physical SCALE. This is staged fictional game animation art; no creature is visible.
+INPUT ROLES: image1 the wounded man sprite sheet is identity, pose, wardrobe and SCALE reference; image2 is his face reference; image3 Kamila's small sprite sheet is style reference. Do not reproduce reference panels.
+STYLE: clean dark purple-charcoal colored outlines, cel-shaded grouped pixel planes, limited selective detail, subdued values and clear silhouettes. Messy dark brown hair, male aged30-40 with stubble, long raised-collar gray-green coat, offwhite shirt, charcoal trousers and dark shoes. His anatomical LEFT arm is the previously wounded arm. Blood dark wine/crimson, with restrained red accents. Injured/detached ends are flat dark stylized shapes under torn clothing, WITHOUT exposed organs, muscle, bone or detailed internal anatomy. No realistic wound texture or photoreal gore. No glows or oversaturated red. Do not change wardrobe or age.
+TECHNICAL: exact SIX columns by TWO rows, equal square cells, aspect3:1. Intended final size1254x418 with cells209x209, zero outer margin or spacing. Transparent background, no visible grid, no labels. Each complete drawing contained fully inside its own cell with a small internal transparent gap, no overlap between cells. At final scale a full horizontal body should be190px long, detached arm65-70px, leg85-90px, pistol40px, blood pool150x60px. DO NOT ENLARGE SMALL OBJECTS to fill their cells; preserve these proportions. If generating at higher resolution scale all lengths together.
+ROW1, six populated cells:
+1 SUSPENDED A: the complete clothed man horizontally suspended by his waist as if held by an unseen monster, head on LEFT, feet on RIGHT; limp body in a downward arch, head/arms and legs droop on either side of the raised waist, coat hangs open; eyes closed/unfocused. Empty hands, pistol is already dropped. Exactly two arms, two legs.
+2 SUSPENDED B: same complete horizontal man, headLEFT, same size and anchor at waist; a genuinely different shake phase, arms/legs and coat swing the other way. Empty hands. Do not draw the creature or any gripping hand/mouth.
+3 DAMAGED BODY: same clothed man horizontal headLEFT, now with anatomical LEFT arm and anatomical RIGHT leg detached/missing; retain one right arm and one left leg. Indicate missing limb areas only with small flat dark maroon shapes and torn fabric, no exposed internal anatomy, no blood spray. Keep recognizable head, torso, clothing.
+4 LAST VISIBLE PORTION: just pelvis and the remaining anatomical LEFT leg with dark trousers/shoe and ragged gray-green coat hem; horizontal pelvisLEFT, footRIGHT. Upper torso is out of view because it is already inside an unseen mouth. Crop of the absent torso is indicated by an occluded garment boundary; no detailed cross section. No creature drawn.
+5 LEFT ARM PIECE: one detached sleeve and hand, left coat sleeve gray-green with dark blood, horizontal, HAND at LEFT and torn sleeve end at RIGHT; 65-70px total length at final scale. Torn end flat dark cloth/maroon with no internal anatomy.
+6 RIGHT LEG PIECE: one detached dark trouser leg and shoe, horizontal SHOE at LEFT and torn upper trouser end at RIGHT,85-90px total length at final scale; dark graphic end only.
+ROW2, slight elevated orthographic3/4 map view:
+1 DROPPED PISTOL alone, same dark Beretta M9-inspired pistol as male reference, barrel toward LEFT, length40px at final scale, no hand, no muzzle flash, no shadow.
+2 large irregular flat DARK MAROON BLOOD POOL,150x60px final, graphic lobed silhouette with a few restrained interior color planes, no shiny wet photographic texture.
+3 medium separate blood splatter, dark wine-red graphic shape, approx65x50px final.
+4 small drops and short blood trail, overall about80x30px final, intentional opaque shapes only.
+5 torn piece of the man's gray-green coat with a little dark maroon staining, approx60x45px final.
+6 COMPLETELY EMPTY alpha0.
+All assets centered within their cells with appropriate true relative scales. No ground shadows, halos, fog, background, light beams, grids, words, sprite numbers or reference thumbnails. Background must be genuine alpha transparency with clean hard pixel edges. Deliver the single sprite sheet only.
+
+ACABAMENTO
+Remover o fundo branco/cinza translúcido, as linhas de grade e os halos da folha; preservar os onze desenhos e suas posições. Manter recortes de pixel art definidos, sem acrescentar conteúdo. Última célula vazia e fundo alpha zero.
+
