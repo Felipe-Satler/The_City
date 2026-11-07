@@ -15,7 +15,7 @@
       <button type="button" class="city-menuitem cursor-interaction" data-action="exit"><span class="city-number">03</span><span>SAIR</span><span class="city-arrow">↗</span></button>
     </nav>
   </main>
-  <footer class="city-footer"><span>PRÉVIA CONCEITUAL / 0.27</span><button type="button" class="city-sound-toggle cursor-interaction" aria-pressed="false">ATIVAR SOM</button><span>A CIDADE PERMANECE.</span></footer>
+  <footer class="city-footer"><span>PRÉVIA CONCEITUAL / 0.28</span><button type="button" class="city-sound-toggle cursor-interaction" aria-pressed="false">ATIVAR SOM</button><span>A CIDADE PERMANECE.</span></footer>
   <section class="city-rpg" hidden aria-label="Exploração de Kamila">
     <canvas class="rpg-canvas" tabindex="0" aria-label="Mapa explorável. Use WASD ou as setas para caminhar. E ou Enter para interagir. No celular, use os controles na tela."></canvas>
     <header class="rpg-header"><div><span class="rpg-kicker">THE CITY / KAMILA CZARNY</span><h2 class="rpg-location">A rua sem nome</h2></div><div class="rpg-topbuttons"><button type="button" class="rpg-sound">ATIVAR SOM</button><button type="button" data-rpg="menu">MENU ↗</button></div></header>
@@ -1251,12 +1251,12 @@ const rpg=(()=>{
   {speaker:'KAMILA CZARNY',text:'Eu acordei ali embaixo. Você está ferido. O que aconteceu?'},
   {speaker:'HOMEM FERIDO',text:'Eu fechei a porta. Eu SEI que fechei. Não devia ter conseguido passar…'},
   {speaker:'KAMILA CZARNY',text:'Quem não devia ter passado?'}
- ],()=>{phase('reveal');story.monster={x:70,y:396,visible:true,alpha:0,step:0};objective('ALGUMA COISA À ESQUERDA','O homem para de olhar para Kamila.');sound('creature')});}
+ ],()=>{phase('reveal');story.monster={x:215,y:295,visible:true,alpha:0,step:0,peek:true};objective('ALGUMA COISA À ESQUERDA','O homem para de olhar para Kamila.');sound('creature')});}
  function startShots(){phase('shots');story.shot=0;story.flash=0;objective('OS DISPAROS ECOAM','A criatura continua avançando.');}
  function startFlight(retry=false){
-  if(retry){current=streetMap;player.x=20.4*T*streetX;player.y=15*T;player.dir='down';story.man={x:520,y:414,visible:true,alpha:1,fallen:true,weapon:'pistola calibre .457'};story.monster={x:514,y:416,visible:true,alpha:1,step:0};}
+  if(retry){current=streetMap;player.x=20.4*T*streetX;player.y=15*T;player.dir='down';story.man={x:520,y:414,visible:true,alpha:1,fallen:true,weapon:'pistola calibre .457'};story.monster={x:520-4-CL_PIN[0],y:414-8-CL_PIN[1],visible:true,alpha:1,step:0};}
   dialog.hidden=true;surface.dataset.talking='false';setInert(false);dialogMode='line';queue=[];after=null;
-  phase('flight');story.feeding=2.4;story.route=[];story.repath=0;story.man.fallen=true;story.man.visible=true;story.monster.visible=true;story.monster.alpha=1;
+  phase('flight');story.feeding=CL_FEED;story.route=[];story.repath=0;story.man.fallen=true;story.man.visible=true;story.monster.visible=true;story.monster.alpha=1;
   objective('CORRA PARA O ENTRELUZ','Desça a rua e entre no café à direita.');$('.rpg-location').textContent='De volta pelo mesmo caminho';focusGame();
  }
  function caught(){phase('caught');sound('creature');surface.dataset.talking='true';dialog.hidden=false;setInert(true);dialogMode='choice';queue=[];after=null;
@@ -1271,6 +1271,9 @@ const rpg=(()=>{
  }
  function toward(actor,x,y,speed,dt){const dx=x-actor.x,dy=y-actor.y,d=Math.hypot(dx,dy),step=Math.min(d,speed*dt);if(d){actor.x+=dx/d*step;actor.y+=dy/d*step}return d<=step+.01}
  function chaseRoute(){return findPath(story.monster.x,story.monster.y,player.x,player.y,streetMap)}
+ // 0.28: ritmo do encontro. CL_ATK < 1 deixa o ataque mais lento; CL_DEV deixa o devorar mais lento;
+ // CL_FEED é quanto tempo ela passa catando as peças antes de perseguir; CL_RUN e CL_CATCH: velocidade e raio de captura.
+ const CL_ATK=.75,CL_DEV=.72,CL_FEED=3.4,CL_RUN=265,CL_CATCH=38;
  function updateStory(dt){
   if(current!==streetMap||story.phase==='explore'||story.phase==='shelter')return;
   story.flash=Math.max(0,story.flash-dt);if(!dialog.hidden)return;story.time+=dt;
@@ -1278,24 +1281,27 @@ const rpg=(()=>{
    story.man.alpha=Math.min(1,story.time/1.6);toward(story.man,520,414,110,dt);toward(player,20.4*T*streetX,15*T,85,dt);player.dir='right';
    if(story.time>2.8)encounterConversation();
   }else if(story.phase==='reveal'){
-   story.monster.alpha=Math.min(1,story.time/1.5);toward(story.monster,320,402,84,dt);story.monster.step+=dt*3;
-   if(story.time>3.1){phase('warning');player.dir='left';talk([{speaker:'NARRAÇÃO',text:'À esquerda, membros longos demais se desdobram da névoa. O pescoço claro se curva acima das fachadas. A cabeça parece procurar o som da respiração.'},{speaker:'HOMEM FERIDO',text:'Não fica parada. VOLTA!'}],startShots);}
+   // 0–3,6 s: só a cabeça aparece por cima das fachadas da esquerda, olhando; 3,6–4,4 s: some; depois sai da névoa e anda.
+   const m=story.monster,tt=story.time;
+   if(tt<4.4){m.peek=true;m.alpha=tt<1.4?tt/1.4:tt<3?1:Math.max(0,1-(tt-3)/.6)}
+   else{if(m.peek){m.peek=false;m.x=40;m.y=396;m.alpha=0;if(m.cl){m.cl.lx=m.x;m.cl.ly=m.y;m.cl.fx=m.x;m.cl.fy=m.y}}m.alpha=Math.min(1,(tt-4.4)/1.2);toward(m,320,402,84,dt);m.step+=dt*3}
+   if(story.time>7.6){phase('warning');player.dir='left';talk([{speaker:'NARRAÇÃO',text:'À esquerda, membros longos demais se desdobram da névoa. O pescoço claro se curva acima das fachadas. A cabeça parece procurar o som da respiração.'},{speaker:'HOMEM FERIDO',text:'Não fica parada. VOLTA!'}],startShots);}
   }else if(story.phase==='shots'){
    const marks=[.15,.62,1.14];if(story.shot<marks.length&&story.time>=marks[story.shot]){story.shot++;story.flash=.11;sound('shot')}
    toward(story.monster,390,410,42,dt);story.monster.step+=dt*4;
    if(story.time>1.65){phase('attack');sound('creature')}
   }else if(story.phase==='attack'){
    toward(story.monster,story.man.x-4-CL_PIN[0],story.man.y-8-CL_PIN[1],210,dt);story.monster.step+=dt*9;
-   if(story.time>.55)story.man.fallen=true;
-   if(story.time>1.1){phase('ready');talk([{speaker:'NARRAÇÃO',text:'A criatura se dobra sobre o homem. O grito termina de repente. Enquanto ela o devora, o caminho de volta fica livre.'}],()=>startFlight(),'FUGIR PARA O CAFÉ ↓');}
+   if(story.time>.55/CL_ATK)story.man.fallen=true;
+   if(story.time>1.1/CL_ATK){phase('ready');talk([{speaker:'NARRAÇÃO',text:'A criatura se dobra sobre o homem. O grito termina de repente. Enquanto ela o devora, o caminho de volta fica livre.'}],()=>startFlight(),'FUGIR PARA O CAFÉ ↓');}
   }else if(story.phase==='flight'){
    story.monster.step+=dt*(story.feeding>0?2:6);
    if(Math.hypot(player.x-cafeDoor.x,player.y-cafeDoor.y)<49){reachCafe();return}
-   if(story.feeding>0){story.feeding-=dt;story.man.alpha=Math.max(0,story.feeding/2.4);if(story.feeding<=0)story.man.visible=false;}
+   if(story.feeding>0){story.feeding-=dt;story.man.alpha=Math.max(0,story.feeding/CL_FEED);if(story.feeding<=0)story.man.visible=false;}
    else{story.repath-=dt;if(story.repath<=0){story.route=chaseRoute();story.repath=.32}
-    if(story.route.length){const p=story.route[0];if(toward(story.monster,p.x,p.y,216,dt))story.route.shift();}
-    else if(Math.floor(story.monster.x/T)===Math.floor(player.x/T)&&Math.floor(story.monster.y/T)===Math.floor(player.y/T))toward(story.monster,player.x,player.y,216,dt);
-    if(Math.hypot(player.x-story.monster.x,player.y-story.monster.y)<29)caught();
+    if(story.route.length){const p=story.route[0];if(toward(story.monster,p.x,p.y,CL_RUN,dt))story.route.shift();}
+    else if(Math.floor(story.monster.x/T)===Math.floor(player.x/T)&&Math.floor(story.monster.y/T)===Math.floor(player.y/T))toward(story.monster,player.x,player.y,CL_RUN,dt);
+    if(Math.hypot(player.x-story.monster.x,player.y-story.monster.y)<CL_CATCH)caught();
    }
   }
  }
@@ -1423,7 +1429,7 @@ const rpg=(()=>{
    else{P.jaw=.3;P.a=.45+tw(1.8,1.3)}
   }else if(ph==='attack'){
    // Empina, abre a boca, cai sobre o homem e o prende, sacudindo a cabeça.
-   const k=story.time,R=rel(story.man.x,story.man.y),th=k>.55?1:0;
+   const k=story.time*CL_ATK,R=rel(story.man.x,story.man.y),th=k>.55?1:0;
    P.hip=track(k,[[0,[-2,-98]],[.3,[-10,-114]],[.5,[4,-80]],[1.1,[2,-76]]]);P.chest=track(k,[[0,[7,-128]],[.3,[-6,-160]],[.5,[28,-96]],[1.1,[24,-92]]]);
    P.feet[2]=track(k,[[0,[-64,0]],[.3,[-38,-76]],[.5,[R[0]-44,2]]]);P.feet[3]=track(k,[[0,[74,0]],[.3,[64,-98]],[.5,[R[0]+38,2]]]);P.bends=k>.5?[1,-1,1,-1]:[1,1,1,1];
    P.head=track(k,[[0,[40,-198]],[.3,[18,-232]],[.5,[R[0]+2,R[1]-20]],[1.1,[R[0]+2,R[1]-18]]]);P.head[0]+=th*Math.sin(t*42)*3;
@@ -1439,7 +1445,7 @@ const rpg=(()=>{
    if(d>2){P.head=[-20+Math.sin(t*.9)*6,-124+Math.sin(t*1.7)*4];P.a=1+Math.sin(t*.7)*.15;P.jaw=.2+(Math.sin(t*3)>.55?.35:0)}
   }else if(ph==='flight'&&story.feeding>0){
    // Cata o braço e a perna caídos, um de cada vez, e engole os dois antes de perseguir Kamila.
-   const e=2.4-story.feeding,[arm,leg]=L.parts,A=arm?rel(arm.gx,arm.gy):[-46,8],B=leg?rel(leg.gx,leg.gy):[42,12];crouch();
+   const e=(CL_FEED-story.feeding)*2.4/CL_FEED,[arm,leg]=L.parts,A=arm?rel(arm.gx,arm.gy):[-46,8],B=leg?rel(leg.gx,leg.gy):[42,12];crouch();
    P.chest=[track(e,[[0,2],[.4,-14],[.9,8],[1.45,26],[1.9,10],[2.4,14]]),track(e,[[0,-100],[.4,-90],[.9,-118],[1.45,-90],[1.9,-118],[2.4,-120]])];
    P.head=track(e,[[0,[-20,-124]],[.4,[A[0],A[1]-14]],[.5,[A[0],A[1]-14]],[.85,[18,-178]],[1.1,[30,-188]],[1.45,[B[0],B[1]-14]],[1.55,[B[0],B[1]-14]],[1.9,[22,-182]],[2.15,[34,-190]],[2.4,[66,-158]]]);
    P.a=track(e,[[0,1],[.4,.1],[.5,.1],[.85,2.5],[1,2.5],[1.1,.45],[1.45,.1],[1.55,.1],[1.9,2.5],[2.05,2.5],[2.15,.45],[2.4,.3]]);
@@ -1509,7 +1515,7 @@ const rpg=(()=>{
    else if(v===2)cue('i'+cy,u>.05,'clChatter',.8);
    else{cue('i'+cy+'b',u>.02,'clBreath',.6);cue('i'+cy,u>=2.9,'clCrack',.8)}}
   if(ph==='shots')cue('f'+story.shot,story.flash>0,'clFlinch',.8);
-  if(ph==='attack'){const k=story.time;if(!L.cues['a-scream']){L.cues['a-scream']=1;if(soundtrack.effect)soundtrack.effect('screamMan',{cut:.56,vol:.9,pan:Math.max(-.8,Math.min(.8,(story.man.x-player.x)/350))})}cue('a-bite',k>.5,'bite',1);cue('a-sq',k>.66,'squelch',.8);cue('a-bite2',k>.88,'bite',.7)}
+  if(ph==='attack'){const k=story.time*CL_ATK;if(!L.cues['a-scream']){L.cues['a-scream']=1;if(soundtrack.effect)soundtrack.effect('screamMan',{cut:.56,vol:.9,pan:Math.max(-.8,Math.min(.8,(story.man.x-player.x)/350))})}cue('a-bite',k>.5,'bite',1);cue('a-sq',k>.66,'squelch',.8);cue('a-bite2',k>.88,'bite',.7)}
   if(ph==='flight'&&story.feeding<=0){L.chT=(L.chT??1.2)-dt;if(L.chT<=0){L.chT=1.3+Math.random()*1.2;clSfx('clChatter',.6)}}
   if(ph==='caught'){cue('k-bite',true,'bite',1);if(!L.cues['k-scream']){L.cues['k-scream']=1;if(soundtrack.effect)soundtrack.effect('screamKamila',{cut:.5,vol:.9})}}
   const grab=()=>{if(L.held)return;L.held=true;m.held=true;L.decals.push({k:'pool',x:m.x,y:m.y},{k:'trail',x:m.x+30,y:m.y+9},{k:'cloth',x:m.x+16,y:m.y-3},{k:'gun',x:m.x-31,y:m.y+3})};
@@ -1517,7 +1523,7 @@ const rpg=(()=>{
   const drop=instant=>{if(L.dropped)return;L.dropped=true;
    for(const [k,gx,gy] of [['arm',n.x+f*(CL_BITE[0]-10),n.y+CL_BITE[1]+6],['leg',n.x+f*(CL_BITE[0]+10),n.y+CL_BITE[1]+10]]){const x0=L.mouth?L.mouth[0]:n.x,y0=L.mouth?L.mouth[1]:n.y-150;
     const p={k,gx,gy,x0,y0,x:instant?gx:x0,y:instant?gy:y0,t:0,rot:k==='arm'?Math.PI/2:-Math.PI/2,state:instant?'ground':'fall'};L.parts.push(p);if(instant)L.decals.push({k:'splat',x:gx,y:gy})}};
-  if(ph==='ready'){L.dv+=dt;grab();if(L.dv>=.76)drop(false);if(L.dv>=.85)swallow();
+  if(ph==='ready'){L.dv+=dt*CL_DEV;grab();if(L.dv>=.76)drop(false);if(L.dv>=.85)swallow();
    // Som de carne: rasgar ao erguer, morder, partes se soltando, engolir e mastigar enquanto espera.
    const d=L.dv;cue('d-tear',d>.08,'tear',.8);cue('d-sq',d>.4,'squelch',.8);cue('d-b1',d>.58,'bite',.9);cue('d-b2',d>.7,'bite',.7);cue('d-rip',d>.76,'tear',1);cue('d-gulp',d>.86,'gulp',1);cue('d-gulp2',d>1.15,'gulp',.6);
    if(d>2.1){L.chewT=(L.chewT??0)-dt;if(L.chewT<=0){L.chewT=.9+Math.random()*.8;clSfx('chew',.45)}}}
@@ -1556,19 +1562,26 @@ const rpg=(()=>{
  function clFrame(n,L){
   const ph=story.phase,t=clock,vx=n.x-(L.fx??n.x),vy=n.y-(L.fy??n.y);L.fx=n.x;L.fy=n.y;if(Math.hypot(vx,vy)>.05)L.mt=t;
   const moving=t-(L.mt??-9)<.15,walk=()=>['andar',Math.floor(L.gp*3)%6],idle=()=>['parada',Math.floor(t/3.4)%4];
-  if(ph==='reveal'){const k=story.time/2.7;return k<1?['surgir',Math.min(3,Math.floor(k*4))]:moving?walk():idle()}
+  if(ph==='reveal'){if(n.peek)return ['parada',[0,1,0,2][Math.floor(t/.9)%4]];const k=(story.time-4.4)/2.7;return k<1?['surgir',Math.min(3,Math.floor(Math.max(0,k)*4))]:moving?walk():idle()}
   if(ph==='warning')return moving?walk():idle();
   if(ph==='shots'){if(story.flash>0)L.fl=t;const a=t-(L.fl??-9);return a<.22?['tiro',0]:a<.6?['tiro',1]:moving?walk():idle()}
-  if(ph==='attack'){const k=story.time;return k<.15?['ataque',0]:k<.32?['ataque',1]:k<.5?['ataque',2]:k<.62?['ataque',3]:['ataque',4+Math.floor(t*12)%2]}
+  if(ph==='attack'){const k=story.time*CL_ATK;return k<.15?['ataque',0]:k<.32?['ataque',1]:k<.5?['ataque',2]:k<.62?['ataque',3]:['ataque',4+Math.floor(t*12)%2]}
   if(ph==='ready'){const d=L.dv;if(d<.25)return ['engolir',0];if(d<.55)return ['engolir',1];if(d<.92)return ['engolir',2];if(d<1)return ['engolir',3];if(d<1.25)return ['engolir',4];if(d<1.5)return ['engolir',5];return ['mastigar',Math.floor(t*3)%3]}
-  if(ph==='flight'&&story.feeding>0){const e=2.4-story.feeding;if(e>2.15)return ['correr',0];const s=e<1.05?e:e-1.05;return ['catar',s<.4?0:s<.55?1:s<.85?2:3]}
+  if(ph==='flight'&&story.feeding>0){const e=(CL_FEED-story.feeding)*2.4/CL_FEED;if(e>2.15)return ['correr',0];const s=e<1.05?e:e-1.05;return ['catar',s<.4?0:s<.55?1:s<.85?2:3]}
   if(ph==='flight'){if(vy>Math.abs(vx)*1.2&&vy>.3)return ['correr_frente',Math.floor(L.gp*3)%4];return ['correr',Math.floor(L.gp*3)%6]}
   if(ph==='caught'){const k=story.time;return k<.25?['pegar',0]:k<.45?['pegar',1]:['pegar',2+Math.floor(t*10)%2]}
   return idle()}
+ let clPeek=null;
  function drawMonster(g,x,y){const n=story.monster,L=n.cl||clSync();if(!L)return;const P=clPose(n,L),[a,i]=clFrame(n,L),im=CL_IMG[a];
   // Sem a imagem (ainda carregando ou com erro), vale o desenho por código das versões anteriores.
   if(!im||!im.complete||!im.naturalWidth){const S=renderMonster(P);g.save();g.globalAlpha=n.alpha;g.imageSmoothingEnabled=true;g.translate(x,y);g.scale(n.face||1,1);g.drawImage(monCanvas,-MON.ax,-MON.ay,monCanvas.width/S,monCanvas.height/S);g.restore();g.imageSmoothingEnabled=false;return}
   const f=n.face||1,front=a==='correr_frente',sx=front?1:f,k=1/CL_DENS,bm=CL_ART.boca[a][i];
+  // Andando ou correndo, o desenho só avança quando o quadro muda (passo a passo): os pés não deslizam no chão.
+  if(a==='andar'||a==='correr'||a==='correr_frente'){const key=a+i;if(L.gk!==key||!L.gs){L.gk=key;L.gs=[x,y]}x=L.gs[0];y=L.gs[1]}else L.gk=null;
+  // Espiando: só a cabeça (e um pedaço do pescoço) aparece, por cima das fachadas.
+  if(n.peek){const cv=clPeek||(clPeek=newCanvas(CL_CEL,CL_CEL)),q=cv.getContext('2d'),hx=bm[0]-6,hy=bm[1]-26;q.globalCompositeOperation='source-over';q.clearRect(0,0,CL_CEL,CL_CEL);q.drawImage(im,i*CL_CEL,0,CL_CEL,CL_CEL,0,0,CL_CEL,CL_CEL);
+   const gm=q.createRadialGradient(hx,hy,26,hx,hy,74);gm.addColorStop(0,'#000');gm.addColorStop(1,'rgba(0,0,0,0)');q.globalCompositeOperation='destination-in';q.fillStyle=gm;q.fillRect(0,0,CL_CEL,CL_CEL);q.globalCompositeOperation='source-over';
+   L.mouth=[x+sx*(bm[0]-CL_PIV[0])*k,y+(bm[1]-CL_PIV[1])*k];g.save();g.globalAlpha=n.alpha;g.imageSmoothingEnabled=true;g.translate(x,y);g.scale(sx,1);g.drawImage(cv,-CL_PIV[0]*k,-CL_PIV[1]*k,CL_CEL*k,CL_CEL*k);g.restore();g.imageSmoothingEnabled=false;return}
   // Boca do quadro no mundo: é dela que saem o corpo carregado, as peças que voam e o sangue que pinga.
   L.mouth=[x+sx*(bm[0]-CL_PIV[0])*k,y+(bm[1]-CL_PIV[1])*k];
   g.save();g.globalAlpha=n.alpha;oval(g,x,y+1,58,9,'rgba(4,6,10,.35)');g.imageSmoothingEnabled=true;g.imageSmoothingQuality='high';g.translate(x,y);g.scale(sx,1);

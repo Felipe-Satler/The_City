@@ -1,6 +1,7 @@
 # The City — regras do projeto para agentes
 
-Jogo de terror/suspense para navegador (exploração estilo RPG Maker + visual novel).
+Jogo de terror/suspense para navegador de computador (exploração estilo RPG Maker + visual novel).
+Celular não é prioridade (decisão do criador, 0.28).
 Idioma do jogo e da documentação: português brasileiro.
 
 ## Antes de mexer
