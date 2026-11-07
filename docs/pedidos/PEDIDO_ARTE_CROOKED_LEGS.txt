@@ -1,0 +1,144 @@
+THE CITY — PEDIDO DE ARTE: CROOKED LEGS (FOLHA DE QUADROS COMPLETA)
+Versão 1 — 7 de novembro de 2026 (prévia 0.25)
+
+======================================================================
+1. PARA QUE SERVE
+======================================================================
+
+Hoje a Crooked Legs é desenhada por código e animada por um esqueleto. Com esta
+folha, ela passa a ser animada por quadros (como a Kamila e o Homem Ferido), com
+a sua arte. O corpo do homem, os pedaços e a Kamila continuam sendo desenhados
+por código na boca dela, então os quadros são SÓ DA CRIATURA (boca vazia).
+
+Decisões do criador que valem aqui:
+- Ela continua com um traço DIFERENTE do resto do jogo, de propósito, para causar
+  estranheza.
+- Ela continua TODA PÁLIDA.
+
+======================================================================
+2. COMO ELA É
+======================================================================
+
+- Humanoide muito alto, magro, quase esquelético; muito maior que uma pessoa:
+  em pé, cerca de 4 vezes a altura da Kamila.
+- Membros extremamente longos, angulosos, com aspecto de aranha, joelhos e
+  cotovelos ossudos e dobrados "errado"; pés e mãos finos com garras.
+- Tronco estreito; pescoço claro, longo, curvado sobre o corpo.
+- Cabeça pequena e pálida, olhos escuros e vazios, boca que se estica muito,
+  cheia de dentes, interior escuro.
+- Tudo pálido: branco-osso, cinza-pálido, com sombras frias acinzentadas; o
+  único escuro forte é o dos olhos, da boca e de algumas juntas.
+- Poses e movimentos propositalmente "errados" (articulações que dobram demais,
+  cabeça torta, assimetria).
+
+======================================================================
+3. ESTILO (diferente do jogo, de propósito)
+======================================================================
+
+- NÃO é pixel art: traço liso, como desenho/pintura em resolução de tela, com
+  contorno fino e irregular, levemente granulado e um pouco borrado nas bordas.
+- Sombreamento suave e frio; nada de cores quentes.
+- A animação é "stop-motion": a pose muda em saltos, então os quadros podem ser
+  bem diferentes entre si; não precisam de transição suave.
+- Sangue: nenhum nesta folha (o jogo desenha o sangue e os pedaços por cima).
+
+======================================================================
+4. ENTREGA TÉCNICA
+======================================================================
+
+- Uma tira (PNG) por ação, com fundo TRANSPARENTE, sem sombra no chão, sem halo,
+  sem névoa e sem fundo.
+- Células de 512 × 512 px, lado a lado, margem e espaçamento zero.
+- Mesma escala em todos os quadros: em pé, do pé ao alto da cabeça ≈ 400 px.
+- Os pés no chão ficam sempre na mesma linha, perto da base da célula
+  (≈ 20 px acima da borda de baixo). Nos quadros em que ela está agachada ou
+  empinada, os pés de apoio continuam nessa linha.
+- Virada para a DIREITA (ela vem da esquerda na direção do homem). Eu espelho
+  no código quando ela corre para a esquerda.
+- Se a ferramenta permitir, um atlas .json com o nome de cada quadro e o ponto da
+  BOCA (x, y dentro da célula) nos quadros em que ela morde ou segura algo. Se
+  não der, eu marco a boca à mão.
+
+======================================================================
+5. QUADROS (por arquivo)
+======================================================================
+
+CL_SURGIR.png — 4 quadros: sai da névoa à esquerda com a cabeça de ponta-cabeça,
+  que vai se endireitando aos trancos.
+  (1) membros ainda dobrados, saindo, cabeça virada de ponta-cabeça;
+  (2) cabeça girada uns 90°, membros abrindo;
+  (3) cabeça quase no lugar, corpo erguendo;
+  (4) em pé, completa.
+
+CL_PARADA.png — 4 quadros: parada observando, variações que se alternam
+  (cabeça inclinada para um lado, para o outro, boca entreaberta, um membro
+  mudando de apoio).
+
+CL_ANDAR.png — 6 quadros: caminhada lenta e aracnídea, um ciclo completo
+  (o 6º emenda no 1º).
+
+CL_TIRO.png — 2 quadros: (1) encolhe ao ser atingida (cabeça para trás, membros
+  se fechando); (2) volta com a cabeça torta.
+
+CL_ATAQUE.png — 6 quadros:
+  (1) empina, corpo para trás;
+  (2) boca aberta ao máximo, no alto;
+  (3) mergulha para a frente;
+  (4) cabeça no chão, prendendo (a boca fica onde o homem está caído);
+  (5) sacudindo a cabeça presa no chão, variação A;
+  (6) variação B.
+
+CL_ENGOLIR.png — 6 quadros:
+  (1) ergue a cabeça com a boca aberta segurando algo;
+  (2) sacode no alto;
+  (3) joga a cabeça para trás, boca para cima;
+  (4) boca fechando, engolindo;
+  (5) volume descendo pelo pescoço (alto do pescoço);
+  (6) volume descendo (perto do tronco).
+
+CL_MASTIGAR.png — 3 quadros: parada, mastigando devagar, satisfeita.
+
+CL_CATAR.png — 4 quadros: (1) abaixa a cabeça até o chão; (2) morde/pega algo no
+  chão; (3) ergue; (4) cabeça para trás para engolir.
+
+CL_CORRER.png — 6 quadros: perseguição, corpo baixo, pescoço esticado para a
+  frente, mandíbula batendo (alternar boca aberta e fechada); ciclo completo.
+
+CL_PEGAR.png — 4 quadros: (1) bote, esticando o pescoço; (2) mordida com a cabeça
+  baixa; (3) sacudindo, variação A; (4) variação B.
+
+Opcional:
+CL_CORRER_FRENTE.png — 4 quadros: correndo de frente para a câmera (para quando
+  ela desce a rua atrás da Kamila). Se não vier, uso a corrida de lado.
+
+Total: 45 quadros (49 com o opcional).
+
+======================================================================
+6. PEDIDO PRONTO PARA A FERRAMENTA (repetir trocando a ação)
+======================================================================
+
+"Crie uma tira de sprites de uma criatura de terror chamada Crooked Legs, com fundo
+transparente, N quadros de 512 × 512 px lado a lado, sem margem, sem sombra no chão,
+sem fundo. A criatura é toda pálida (branco-osso e cinza-pálido com sombras frias):
+um humanoide altíssimo, magro e quase esquelético, com membros extremamente longos,
+angulosos e com aspecto de aranha, articulações ossudas que dobram de um jeito
+errado, tronco estreito, pescoço longo e curvado, cabeça pequena com olhos escuros
+e vazios e uma boca que se estica muito, cheia de dentes. Traço liso de ilustração
+(NÃO pixel art), contorno fino e irregular, levemente granulado e borrado, como um
+stop-motion inquietante. Sem sangue. Sempre virada para a direita, mesma escala em
+todos os quadros (em pé ≈ 400 px), pés de apoio sempre na mesma linha perto da base.
+Ação: [DESCREVER A AÇÃO E OS QUADROS, COMO NA SEÇÃO 5]."
+
+Dica: gerar uma imagem de referência da criatura parada primeiro e anexá-la em
+todas as tiras ajuda a manter o mesmo rosto e as mesmas proporções.
+
+======================================================================
+7. O QUE EU FAÇO QUANDO CHEGAR
+======================================================================
+
+- Troco o desenho por código pelos quadros, fase por fase do encontro, mantendo os
+  tempos atuais e o efeito de pose em saltos.
+- Marco a boca de cada quadro para o corpo do homem, os pedaços, o sangue que pinga
+  e a Kamila aparecerem no lugar certo.
+- Testo a cena inteira no navegador e registro no relatório. Só depois disso
+  revisamos a cena de devorar, como combinado.
