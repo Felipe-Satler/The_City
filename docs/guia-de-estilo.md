@@ -1,6 +1,6 @@
 # Guia de estilo visual
 
-Estado: **0.19**. A direção de arte oficial é `docs/DIRECAO_DE_ARTE.txt` (do criador); este guia resume e
+Estado: **0.20**. A direção de arte oficial é `docs/DIRECAO_DE_ARTE.txt` (do criador); este guia resume e
 registra a situação de cada elemento. Em conflito, vale a direção de arte.
 
 ## Alvo
@@ -20,16 +20,19 @@ e luzes pálidas; o café como o único calor.
 - **Proporções:** sprite de exploração compacto (cabeça grande, quase chibi); retrato com proporções
   completas.
 
-## Situação de cada elemento (0.19)
+## Situação de cada elemento (0.20)
 | Elemento | Como está | Situação |
 |---|---|---|
 | Kamila — sprite e retrato do jogo | arte nova | no estilo |
 | Kamila — card do menu | imagem atual | mantida por decisão |
 | Homem Ferido — sprite e retrato | arte do criador, folha 6 × 2 (0.19) | no estilo |
 | Pedaços do homem e pistola caída | por código (0.18) | provisório; falta arte |
-| Rua sem nome | procedural, 2 px de arte por px de mundo | prova do estilo novo feita no trecho do EntreLuz (`docs/provas/`), aguardando aprovação |
-| Carros, motos, postes | imagens do criador em `arte/cenario/` | usadas só na prova por enquanto |
-| Café Entreluz | procedural, 1 px de arte por px de mundo | densidade antiga (metade da rua) e sem contorno |
+| Chão da rua (asfalto, calçada, meio-fio, poças) | estilo novo por código (0.20) | no estilo |
+| Café EntreLuz (fachada) | estilo novo por código (0.20) | no estilo |
+| Árvores e lixeiras | estilo novo por código, a partir da imagem da rua (0.20) | no estilo |
+| Outros prédios, placa da rua | estilo antigo | pendente |
+| Carros, motos, postes | imagens do criador (0.20) | no estilo |
+| Interior do café | procedural, 1 px de arte por px de mundo | pendente |
 | Cidade do menu | pixel art 640 × 400 ampliada | a decidir |
 | Criatura | traço liso, sem grade, movimento em saltos | **diferente de propósito** (decisão do criador) |
 

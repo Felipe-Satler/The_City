@@ -1,0 +1,131 @@
+THE CITY — PEDIDO DE ARTE: HOMEM FERIDO DEVORADO, PEÇAS E PISTOLA CAÍDA
+Versão 1 — 7 de novembro de 2026 (prévia 0.20)
+Para gerar na mesma ferramenta e no mesmo traço de HOMEM_FERIDO_SPRITES.png.
+
+======================================================================
+1. PARA QUE SERVE
+======================================================================
+
+Hoje a cena da Crooked Legs devorando o homem reaproveita uma imagem só: o quadro
+"caído" é girado e encolhido dentro da boca da criatura. O braço e a perna que voam
+da boca e a pistola no chão são desenhos simples feitos por código. Com os quadros
+abaixo, a cena ganha passos intermediários e as peças ficam no mesmo traço do homem.
+
+A criatura continua com o traço próprio (diferente de propósito). Só o homem, as
+peças, a arma e o sangue seguem a direção de arte do jogo.
+
+======================================================================
+2. COMO A CENA ACONTECE NO JOGO (onde cada quadro entra)
+======================================================================
+
+1. Ataque (~1,1 s): a criatura empina, cai sobre o homem e o prende no chão,
+   sacudindo a cabeça. → o homem aparece CAÍDO (quadro que já existe).
+2. Erguer e sacudir (~0,5 s): a criatura o levanta preso na boca e sacode.
+   → alternar os quadros AGARRADO A e AGARRADO B.
+3. Estraçalhar (~0,3 s): o braço e a perna se soltam e voam da boca para o chão.
+   → o corpo passa para o quadro ESTRAÇALHADO; BRAÇO e PERNA caem girando.
+4. Engolir (~0,3 s): a criatura joga a cabeça para trás e engole; o corpo entra
+   na boca e some (o jogo encolhe a imagem). → METADE FINAL antes de sumir.
+5. Chão: ficam a POÇA, RESPINGOS, a PISTOLA e um RETALHO do casaco.
+6. Durante a fuga da Kamila, a criatura cata o braço e depois a perna e engole cada
+   um. → BRAÇO e PERNA são reaproveitados (no chão e na boca).
+
+O jogo gira, encolhe e posiciona tudo por código; a arte não precisa de várias
+rotações. Basta cada peça em UMA orientação, como indicado.
+
+======================================================================
+3. ENTREGA TÉCNICA
+======================================================================
+
+HOMEM_FERIDO_DEVORADO.png
+- PNG RGBA com fundo transparente.
+- Grade de 6 colunas × 2 linhas, células de 209 × 209 px (1254 × 418 px no total).
+- Margem e espaçamento zero; cada desenho inteiro dentro da sua célula.
+- MESMA ESCALA de HOMEM_FERIDO_SPRITES.png: o homem em pé mede ~196 px ali.
+  Referências de tamanho: corpo deitado ~190 px de comprimento; perna ~85–90 px;
+  braço ~65–70 px; pistola ~40 px.
+- Sem sombra no chão, sem halo, sem fundo, sem brilho/névoa embutidos (o jogo põe
+  luz e sombra por cima).
+- Sem pontos soltos quase transparentes ao redor dos recortes.
+
+Linha 1 — o corpo nas mandíbulas (horizontal, CABEÇA À ESQUERDA, como o "caído"):
+  (1) AGARRADO A: corpo mole erguido pela cintura, dobrado em arco para baixo;
+      cabeça, braços e pernas pendendo; casaco aberto caindo; olhos fechados ou vazios.
+  (2) AGARRADO B: o mesmo instante sacudido: membros e casaco balançados para o
+      outro lado, para alternar com o (1).
+  (3) ESTRAÇALHADO: o mesmo corpo já SEM o braço esquerdo e SEM a perna direita;
+      os pontos de corte são manchas escuras recortadas, sem anatomia interna detalhada.
+  (4) METADE FINAL: só o quadril e a perna que sobrou, com a barra rasgada do casaco
+      (o que ainda está para fora da boca no fim do engolir).
+  (5) BRAÇO ESQUERDO ARRANCADO: manga do casaco cinza-esverdeado ensanguentada e a
+      mão; deitado na horizontal, ponta rasgada à DIREITA, mão à esquerda.
+  (6) PERNA DIREITA ARRANCADA: calça escura e sapato escuro; horizontal, ponta
+      rasgada à DIREITA, sapato à esquerda.
+
+Linha 2 — no chão (vistos de cima, levemente em três quartos, como o resto do mapa):
+  (1) PISTOLA CAÍDA, sozinha: a mesma pistola da folha (inspirada na Beretta M9),
+      deitada no chão, cano para a esquerda.
+  (2) POÇA DE SANGUE grande e irregular (~150 × 60 px).
+  (3) RESPINGO médio.
+  (4) GOTAS e um rastro curto.
+  (5) RETALHO do casaco rasgado com sangue.
+  (6) vazia (alpha zero).
+
+Opcional: HOMEM_FERIDO_DEVORADO_ATLAS.json com os retângulos e nomes, como no
+atlas anterior.
+
+======================================================================
+4. ESTILO (resumo de docs/DIRECAO_DE_ARTE.txt)
+======================================================================
+
+- Anime pixel art de alta resolução, coerente com a Kamila e com a folha do homem:
+  contornos escuros com matiz (carvão, vinho, violeta), sombras em planos definidos,
+  detalhe seletivo, silhuetas claras.
+- Mesmas roupas e lados dos membros: braço ESQUERDO é o ferido; pistola era da mão
+  DIREITA; casaco longo cinza-esverdeado, camisa clara, calça e sapatos escuros,
+  cabelo castanho-escuro.
+- Violência estilizada: sangue vinho e vermelho escuro com poucos acentos mais vivos;
+  cortes como formas gráficas escuras. Sem vísceras, ossos expostos detalhados ou
+  textura realista. O horror vem da silhueta, da postura e do sangue escuro.
+- Valores contidos: nada pode ficar mais claro que a Kamila nem mais saturado que o
+  sangue dela nos retratos.
+
+Observação prática: algumas ferramentas recusam pedidos com violência explícita.
+Pedir o resultado estilizado, como acima, costuma passar e é o que o jogo precisa.
+
+======================================================================
+5. PEDIDO PRONTO PARA A FERRAMENTA
+======================================================================
+
+Anexar como referência: HOMEM_FERIDO_SPRITES.png, HOMEM_FERIDO_RETRATO.png e a
+folha da Kamila (heroina_sprites.png).
+
+"Crie uma folha de sprites no mesmo estilo, traço, paleta e ESCALA da folha anexada
+do homem ferido (anime pixel art de alta resolução, contornos escuros coloridos,
+sombras em planos, detalhe seletivo). Fundo transparente, grade de 6 colunas por 2
+linhas, células de 209 × 209 px, margem zero, sem sombra no chão, sem halo e sem
+fundo. Cena de terror estilizado: o homem está sendo carregado e despedaçado por uma
+criatura (a criatura NÃO aparece). Violência estilizada, sangue vinho escuro, cortes
+como formas escuras recortadas, sem vísceras nem ossos detalhados.
+Linha 1, sempre na horizontal com a cabeça à esquerda: (1) corpo mole erguido pela
+cintura, dobrado em arco, cabeça, braços e pernas pendendo, casaco aberto caindo;
+(2) o mesmo corpo sacudido, membros e casaco balançando para o outro lado;
+(3) o mesmo corpo sem o braço esquerdo e sem a perna direita; (4) só o quadril e
+uma perna com a barra rasgada do casaco; (5) o braço esquerdo arrancado, manga
+cinza-esverdeada ensanguentada e mão, horizontal, ponta rasgada à direita;
+(6) a perna direita arrancada, calça e sapato escuros, horizontal, ponta rasgada
+à direita.
+Linha 2, vistos de cima: (1) a pistola dele caída sozinha no chão, cano para a
+esquerda; (2) poça de sangue grande e irregular; (3) respingo médio; (4) gotas e
+rastro curto; (5) retalho rasgado do casaco com sangue; (6) vazia.
+Mesmas roupas, cores e lados dos membros da referência. Avaliar na escala do jogo."
+
+======================================================================
+6. O QUE EU FAÇO QUANDO CHEGAR
+======================================================================
+
+- Troco o "caído girado" por AGARRADO A/B alternando na sacudida, ESTRAÇALHADO no
+  instante em que as peças voam e METADE FINAL enquanto o corpo entra na boca.
+- Braço, perna, pistola, poça, respingos e retalho substituem os desenhos por código.
+- Ajusto escala, pontos de apoio e tempos, testo a cena inteira no navegador e
+  registro tudo no relatório da versão.
