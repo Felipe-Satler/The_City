@@ -1,6 +1,6 @@
 # Guia de estilo visual
 
-Estado: **0.25**. A direção de arte oficial é `docs/DIRECAO_DE_ARTE.txt` (do criador); este guia resume e
+Estado: **0.26**. A direção de arte oficial é `docs/DIRECAO_DE_ARTE.txt` (do criador); este guia resume e
 registra a situação de cada elemento. Em conflito, vale a direção de arte.
 
 ## Alvo
@@ -20,7 +20,7 @@ e luzes pálidas; o café como o único calor.
 - **Proporções:** sprite de exploração compacto (cabeça grande, quase chibi); retrato com proporções
   completas.
 
-## Situação de cada elemento (0.25)
+## Situação de cada elemento (0.26)
 | Elemento | Como está | Situação |
 |---|---|---|
 | Kamila — sprite e retrato do jogo | arte nova | no estilo |
@@ -35,7 +35,7 @@ e luzes pálidas; o café como o único calor.
 | Carros, motos, postes | imagens do criador (0.20) | no estilo |
 | Interior do café | estilo novo por código, 2 px de arte por px de mundo (0.24) | no estilo |
 | Cidade do menu | estilo novo, 800 × 500, paleta fria de 32 cores sem pontilhado (0.25) | no estilo |
-| Criatura | traço liso, sem grade, movimento em saltos | **diferente de propósito** (decisão do criador) |
+| Criatura (Crooked Legs) | 49 quadros do criador, toda pálida, traço liso próprio (0.26) | **diferente de propósito** (decisão do criador) |
 
 ## Regras para converter o resto — PROPOSTA
 1. **Densidade:** cenários com pelo menos 2 px de arte por px de mundo (como a rua); personagens na

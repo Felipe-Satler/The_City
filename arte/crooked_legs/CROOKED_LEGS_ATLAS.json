@@ -1,0 +1,1723 @@
+{
+  "meta": {
+    "name": "Crooked Legs",
+    "version": 2,
+    "date": "2026-11-07",
+    "format": "custom-multi-strip-v1",
+    "cellSize": {
+      "w": 512,
+      "h": 512
+    },
+    "frameCount": 49,
+    "textureCount": 11,
+    "margin": 0,
+    "spacing": 0,
+    "alpha": true,
+    "defaultFacing": "right",
+    "groundY": 492,
+    "suggestedPivot": {
+      "x": 256,
+      "y": 492
+    },
+    "standingHeightApprox": 400,
+    "mouthCoordinates": "local cell pixels, origin top-left",
+    "mouthPrecision": "visually estimated; calibrate in engine",
+    "engineTested": false,
+    "revision": "Elongated lower jaw, black empty mouth, no nose, numerous long pointed teeth, eerily happy expression"
+  },
+  "textures": {
+    "CL_SURGIR.png": {
+      "w": 2048,
+      "h": 512,
+      "frames": 4
+    },
+    "CL_PARADA.png": {
+      "w": 2048,
+      "h": 512,
+      "frames": 4
+    },
+    "CL_ANDAR.png": {
+      "w": 3072,
+      "h": 512,
+      "frames": 6
+    },
+    "CL_TIRO.png": {
+      "w": 1024,
+      "h": 512,
+      "frames": 2
+    },
+    "CL_ATAQUE.png": {
+      "w": 3072,
+      "h": 512,
+      "frames": 6
+    },
+    "CL_ENGOLIR.png": {
+      "w": 3072,
+      "h": 512,
+      "frames": 6
+    },
+    "CL_MASTIGAR.png": {
+      "w": 1536,
+      "h": 512,
+      "frames": 3
+    },
+    "CL_CATAR.png": {
+      "w": 2048,
+      "h": 512,
+      "frames": 4
+    },
+    "CL_CORRER.png": {
+      "w": 3072,
+      "h": 512,
+      "frames": 6
+    },
+    "CL_PEGAR.png": {
+      "w": 2048,
+      "h": 512,
+      "frames": 4
+    },
+    "CL_CORRER_FRENTE.png": {
+      "w": 2048,
+      "h": 512,
+      "frames": 4
+    }
+  },
+  "frames": {
+    "surgir_01": {
+      "image": "CL_SURGIR.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 89,
+        "y": 286,
+        "w": 339,
+        "h": 207
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 385,
+        "y": 325
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "surgir_02": {
+      "image": "CL_SURGIR.png",
+      "frame": {
+        "x": 512,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 73,
+        "y": 260,
+        "w": 380,
+        "h": 233
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 337,
+        "y": 288
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "surgir_03": {
+      "image": "CL_SURGIR.png",
+      "frame": {
+        "x": 1024,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 78,
+        "y": 158,
+        "w": 347,
+        "h": 335
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 320,
+        "y": 212
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "surgir_04": {
+      "image": "CL_SURGIR.png",
+      "frame": {
+        "x": 1536,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 64,
+        "y": 93,
+        "w": 362,
+        "h": 400
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 336,
+        "y": 156
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "parada_01": {
+      "image": "CL_PARADA.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 69,
+        "y": 100,
+        "w": 348,
+        "h": 393
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 293,
+        "y": 139
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "parada_02": {
+      "image": "CL_PARADA.png",
+      "frame": {
+        "x": 512,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 64,
+        "y": 98,
+        "w": 360,
+        "h": 395
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 325,
+        "y": 130
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "parada_03": {
+      "image": "CL_PARADA.png",
+      "frame": {
+        "x": 1024,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 66,
+        "y": 81,
+        "w": 357,
+        "h": 412
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 318,
+        "y": 143
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "parada_04": {
+      "image": "CL_PARADA.png",
+      "frame": {
+        "x": 1536,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 62,
+        "y": 110,
+        "w": 380,
+        "h": 383
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 321,
+        "y": 174
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "andar_01": {
+      "image": "CL_ANDAR.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 55,
+        "y": 93,
+        "w": 374,
+        "h": 400
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 300,
+        "y": 149
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "andar_02": {
+      "image": "CL_ANDAR.png",
+      "frame": {
+        "x": 512,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 57,
+        "y": 93,
+        "w": 350,
+        "h": 400
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 300,
+        "y": 150
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "andar_03": {
+      "image": "CL_ANDAR.png",
+      "frame": {
+        "x": 1024,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 58,
+        "y": 93,
+        "w": 407,
+        "h": 400
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 299,
+        "y": 149
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "andar_04": {
+      "image": "CL_ANDAR.png",
+      "frame": {
+        "x": 1536,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 56,
+        "y": 93,
+        "w": 374,
+        "h": 400
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 300,
+        "y": 149
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "andar_05": {
+      "image": "CL_ANDAR.png",
+      "frame": {
+        "x": 2048,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 81,
+        "y": 93,
+        "w": 350,
+        "h": 400
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 302,
+        "y": 149
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "andar_06": {
+      "image": "CL_ANDAR.png",
+      "frame": {
+        "x": 2560,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 58,
+        "y": 92,
+        "w": 373,
+        "h": 401
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 299,
+        "y": 149
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "tiro_01": {
+      "image": "CL_TIRO.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 123,
+        "y": 140,
+        "w": 229,
+        "h": 353
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 203,
+        "y": 195
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "tiro_02": {
+      "image": "CL_TIRO.png",
+      "frame": {
+        "x": 512,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 72,
+        "y": 93,
+        "w": 364,
+        "h": 400
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 336,
+        "y": 151
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "ataque_01": {
+      "image": "CL_ATAQUE.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 66,
+        "y": 64,
+        "w": 354,
+        "h": 429
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 222,
+        "y": 111
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "ataque_02": {
+      "image": "CL_ATAQUE.png",
+      "frame": {
+        "x": 512,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 65,
+        "y": 53,
+        "w": 360,
+        "h": 440
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 254,
+        "y": 112
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "ataque_03": {
+      "image": "CL_ATAQUE.png",
+      "frame": {
+        "x": 1024,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 46,
+        "y": 155,
+        "w": 424,
+        "h": 338
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 391,
+        "y": 216
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "ataque_04": {
+      "image": "CL_ATAQUE.png",
+      "frame": {
+        "x": 1536,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 64,
+        "y": 270,
+        "w": 372,
+        "h": 223
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 412,
+        "y": 457
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "ataque_05": {
+      "image": "CL_ATAQUE.png",
+      "frame": {
+        "x": 2048,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 66,
+        "y": 268,
+        "w": 371,
+        "h": 225
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 410,
+        "y": 439
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "ataque_06": {
+      "image": "CL_ATAQUE.png",
+      "frame": {
+        "x": 2560,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 68,
+        "y": 267,
+        "w": 381,
+        "h": 226
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 423,
+        "y": 459
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "engolir_01": {
+      "image": "CL_ENGOLIR.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 77,
+        "y": 174,
+        "w": 335,
+        "h": 319
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 376,
+        "y": 232
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "engolir_02": {
+      "image": "CL_ENGOLIR.png",
+      "frame": {
+        "x": 512,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 73,
+        "y": 100,
+        "w": 342,
+        "h": 393
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 318,
+        "y": 162
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "engolir_03": {
+      "image": "CL_ENGOLIR.png",
+      "frame": {
+        "x": 1024,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 73,
+        "y": 84,
+        "w": 342,
+        "h": 409
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 263,
+        "y": 128
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "engolir_04": {
+      "image": "CL_ENGOLIR.png",
+      "frame": {
+        "x": 1536,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 77,
+        "y": 86,
+        "w": 346,
+        "h": 407
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 283,
+        "y": 113
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "engolir_05": {
+      "image": "CL_ENGOLIR.png",
+      "frame": {
+        "x": 2048,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 73,
+        "y": 83,
+        "w": 342,
+        "h": 410
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 290,
+        "y": 117
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "engolir_06": {
+      "image": "CL_ENGOLIR.png",
+      "frame": {
+        "x": 2560,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 74,
+        "y": 92,
+        "w": 341,
+        "h": 401
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 291,
+        "y": 129
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "mastigar_01": {
+      "image": "CL_MASTIGAR.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 69,
+        "y": 86,
+        "w": 359,
+        "h": 407
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 321,
+        "y": 135
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "mastigar_02": {
+      "image": "CL_MASTIGAR.png",
+      "frame": {
+        "x": 512,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 69,
+        "y": 95,
+        "w": 359,
+        "h": 398
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 327,
+        "y": 130
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "mastigar_03": {
+      "image": "CL_MASTIGAR.png",
+      "frame": {
+        "x": 1024,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 70,
+        "y": 98,
+        "w": 359,
+        "h": 395
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 327,
+        "y": 146
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "catar_01": {
+      "image": "CL_CATAR.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 45,
+        "y": 200,
+        "w": 409,
+        "h": 293
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 378,
+        "y": 429
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "catar_02": {
+      "image": "CL_CATAR.png",
+      "frame": {
+        "x": 512,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 45,
+        "y": 199,
+        "w": 408,
+        "h": 294
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 379,
+        "y": 454
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "catar_03": {
+      "image": "CL_CATAR.png",
+      "frame": {
+        "x": 1024,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 45,
+        "y": 134,
+        "w": 409,
+        "h": 359
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 366,
+        "y": 188
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "catar_04": {
+      "image": "CL_CATAR.png",
+      "frame": {
+        "x": 1536,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 45,
+        "y": 83,
+        "w": 409,
+        "h": 410
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 295,
+        "y": 106
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "correr_01": {
+      "image": "CL_CORRER.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 45,
+        "y": 214,
+        "w": 429,
+        "h": 279
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 432,
+        "y": 281
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "correr_02": {
+      "image": "CL_CORRER.png",
+      "frame": {
+        "x": 512,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 108,
+        "y": 232,
+        "w": 307,
+        "h": 261
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 396,
+        "y": 272
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "correr_03": {
+      "image": "CL_CORRER.png",
+      "frame": {
+        "x": 1024,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 28,
+        "y": 230,
+        "w": 445,
+        "h": 263
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 430,
+        "y": 297
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "correr_04": {
+      "image": "CL_CORRER.png",
+      "frame": {
+        "x": 1536,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 44,
+        "y": 235,
+        "w": 436,
+        "h": 258
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 425,
+        "y": 276
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "correr_05": {
+      "image": "CL_CORRER.png",
+      "frame": {
+        "x": 2048,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 105,
+        "y": 215,
+        "w": 318,
+        "h": 278
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 400,
+        "y": 275
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "correr_06": {
+      "image": "CL_CORRER.png",
+      "frame": {
+        "x": 2560,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 30,
+        "y": 217,
+        "w": 435,
+        "h": 276
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 442,
+        "y": 259
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "pegar_01": {
+      "image": "CL_PEGAR.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 42,
+        "y": 138,
+        "w": 419,
+        "h": 355
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 442,
+        "y": 199
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "pegar_02": {
+      "image": "CL_PEGAR.png",
+      "frame": {
+        "x": 512,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 42,
+        "y": 238,
+        "w": 420,
+        "h": 255
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 439,
+        "y": 454
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "pegar_03": {
+      "image": "CL_PEGAR.png",
+      "frame": {
+        "x": 1024,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 43,
+        "y": 109,
+        "w": 390,
+        "h": 384
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 348,
+        "y": 149
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "pegar_04": {
+      "image": "CL_PEGAR.png",
+      "frame": {
+        "x": 1536,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 42,
+        "y": 174,
+        "w": 391,
+        "h": 319
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 392,
+        "y": 276
+      },
+      "mouthEstimated": true,
+      "facing": "right"
+    },
+    "correr_frente_01": {
+      "image": "CL_CORRER_FRENTE.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 102,
+        "y": 87,
+        "w": 296,
+        "h": 406
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 273,
+        "y": 156
+      },
+      "mouthEstimated": true,
+      "facing": "camera"
+    },
+    "correr_frente_02": {
+      "image": "CL_CORRER_FRENTE.png",
+      "frame": {
+        "x": 512,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 101,
+        "y": 90,
+        "w": 270,
+        "h": 403
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 253,
+        "y": 134
+      },
+      "mouthEstimated": true,
+      "facing": "camera"
+    },
+    "correr_frente_03": {
+      "image": "CL_CORRER_FRENTE.png",
+      "frame": {
+        "x": 1024,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 110,
+        "y": 94,
+        "w": 286,
+        "h": 399
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 284,
+        "y": 166
+      },
+      "mouthEstimated": true,
+      "facing": "camera"
+    },
+    "correr_frente_04": {
+      "image": "CL_CORRER_FRENTE.png",
+      "frame": {
+        "x": 1536,
+        "y": 0,
+        "w": 512,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 512,
+        "h": 512
+      },
+      "contentBounds": {
+        "x": 92,
+        "y": 101,
+        "w": 285,
+        "h": 392
+      },
+      "pivot": {
+        "x": 256,
+        "y": 492
+      },
+      "mouth": {
+        "x": 258,
+        "y": 147
+      },
+      "mouthEstimated": true,
+      "facing": "camera"
+    }
+  },
+  "animations": {
+    "surgir": {
+      "frames": [
+        "surgir_01",
+        "surgir_02",
+        "surgir_03",
+        "surgir_04"
+      ],
+      "loop": false,
+      "timing": "use existing game scene timings"
+    },
+    "parada": {
+      "frames": [
+        "parada_01",
+        "parada_02",
+        "parada_03",
+        "parada_04"
+      ],
+      "loop": true,
+      "timing": "use existing game scene timings"
+    },
+    "andar": {
+      "frames": [
+        "andar_01",
+        "andar_02",
+        "andar_03",
+        "andar_04",
+        "andar_05",
+        "andar_06"
+      ],
+      "loop": true,
+      "timing": "use existing game scene timings"
+    },
+    "tiro": {
+      "frames": [
+        "tiro_01",
+        "tiro_02"
+      ],
+      "loop": false,
+      "timing": "use existing game scene timings"
+    },
+    "ataque": {
+      "frames": [
+        "ataque_01",
+        "ataque_02",
+        "ataque_03",
+        "ataque_04",
+        "ataque_05",
+        "ataque_06"
+      ],
+      "loop": false,
+      "timing": "use existing game scene timings"
+    },
+    "engolir": {
+      "frames": [
+        "engolir_01",
+        "engolir_02",
+        "engolir_03",
+        "engolir_04",
+        "engolir_05",
+        "engolir_06"
+      ],
+      "loop": false,
+      "timing": "use existing game scene timings"
+    },
+    "mastigar": {
+      "frames": [
+        "mastigar_01",
+        "mastigar_02",
+        "mastigar_03"
+      ],
+      "loop": true,
+      "timing": "use existing game scene timings"
+    },
+    "catar": {
+      "frames": [
+        "catar_01",
+        "catar_02",
+        "catar_03",
+        "catar_04"
+      ],
+      "loop": false,
+      "timing": "use existing game scene timings"
+    },
+    "correr": {
+      "frames": [
+        "correr_01",
+        "correr_02",
+        "correr_03",
+        "correr_04",
+        "correr_05",
+        "correr_06"
+      ],
+      "loop": true,
+      "timing": "use existing game scene timings"
+    },
+    "pegar": {
+      "frames": [
+        "pegar_01",
+        "pegar_02",
+        "pegar_03",
+        "pegar_04"
+      ],
+      "loop": false,
+      "timing": "use existing game scene timings"
+    },
+    "correr_frente": {
+      "frames": [
+        "correr_frente_01",
+        "correr_frente_02",
+        "correr_frente_03",
+        "correr_frente_04"
+      ],
+      "loop": true,
+      "timing": "use existing game scene timings"
+    }
+  }
+}

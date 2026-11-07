@@ -1,0 +1,124 @@
+REVISÃO 2 — ROSTO E EXPRESSÃO
+Rosto mais alongado, principalmente na mandíbula inferior.
+Boca maior verticalmente, interior negro e sem língua.
+Nariz e narinas removidos; superfície pálida entre olhos e boca.
+Dentes mais longos e pontiagudos, mantendo a dentição numerosa.
+Olhos redondos e vazios; cantos da boca erguidos em satisfação inquietante.
+A expressão de felicidade estranha substitui a leitura de raiva.
+
+As 11 tiras foram revisadas. O atlas contém novos pontos de boca estimados
+visualmente. Use os PNGs e o atlas desta revisão juntos; os pontos antigos
+podem não coincidir com a mandíbula alongada. A contagem de quadros, nomes,
+grade e linha de apoio permanecem compatíveis com a entrega anterior.
+O desenho da cabeça varia conforme a abertura da mandíbula e a rotação;
+a quantidade visível de dentes depende do ângulo e da escala de cada quadro.
+Os arquivos foram verificados localmente; não houve integração no jogo.
+
+THE CITY — CROOKED LEGS
+Pacote de animações por quadros — 7 de novembro de 2026
+
+CONTEÚDO
+11 tiras PNG RGBA, 49 quadros, incluindo a corrida frontal opcional.
+Cada célula mede exatamente 512 × 512 px. Não há margens externas nem
+espaçamento entre células. A área transparente dentro de cada célula faz
+parte do enquadramento e deve ser preservada.
+
+ARQUIVO                    QUADROS   DIMENSÕES
+CL_SURGIR.png                  4      2048 × 512
+CL_PARADA.png                  4      2048 × 512
+CL_ANDAR.png                   6      3072 × 512
+CL_TIRO.png                    2      1024 × 512
+CL_ATAQUE.png                  6      3072 × 512
+CL_ENGOLIR.png                 6      3072 × 512
+CL_MASTIGAR.png                3      1536 × 512
+CL_CATAR.png                   4      2048 × 512
+CL_CORRER.png                  6      3072 × 512
+CL_PEGAR.png                   4      2048 × 512
+CL_CORRER_FRENTE.png            4      2048 × 512
+
+DIREÇÃO E ENQUADRAMENTO
+As ações laterais olham para a direita. A corrida frontal olha para a câmera.
+Pés de apoio próximos de y=492, aproximadamente 20 px acima da borda inferior.
+Pivô sugerido: (256,492), em pixels da célula.
+Altura habitual em pé: aproximadamente 400 px. Poses empinadas podem passar
+dessa altura; poses baixas permanecem menores. Foi aplicada uma única escala
+por ação, sem ampliar individualmente as poses agachadas para preencher a célula.
+A escala visual entre ações foi aproximada a partir das poses de referência.
+
+ORDEM DOS QUADROS — SEMPRE DA ESQUERDA PARA A DIREITA
+SURGIR: cabeça invertida; rotação lateral; erguendo; em pé.
+PARADA: inclinação A; inclinação B; boca entreaberta; mudança de apoio.
+ANDAR: seis fases de caminhada aracnídea em ciclo.
+TIRO: contração; recuperação com cabeça torta.
+ATAQUE: empina; boca aberta no alto; mergulho; prende no chão; sacode A; sacode B.
+ENGOLIR: levanta a cabeça; sacode; cabeça para trás; fecha a boca;
+         volume no alto do pescoço; volume perto do tronco.
+MASTIGAR: mandíbula aberta; fechada; parcialmente aberta.
+CATAR: abaixa; morde; ergue; joga a cabeça para trás.
+CORRER: seis fases de corrida baixa, boca aberta/fechada alternadamente.
+PEGAR: bote com pescoço esticado; mordida baixa; sacode A; sacode B.
+CORRER_FRENTE: quatro fases de corrida em direção à câmera.
+
+DIREÇÃO DE ARTE
+Foi seguida a escolha explícita do pedido: a criatura tem um traço diferente
+do anime pixel art da Kamila e do Homem Ferido. A pele é pálida, com sombras
+frias, contornos finos, textura discreta e formas pintadas de modo contínuo.
+O pescoço curvo, a cabeça pequena, os quatro membros muito longos e as juntas
+angulosas retomam a silhueta da imagem anexada. A assimetria e as mudanças de
+pose são intencionais para o movimento aos saltos de stop-motion.
+Não há sangue, vítimas ou objetos dentro da boca. Esses elementos pertencem
+às sobreposições do jogo. Os arquivos PNG não incluem fundo, névoa ou chão.
+
+ATLAS E BOCA
+CROOKED_LEGS_ATLAS.json usa um esquema simples de múltiplas tiras, sem
+dependência de uma engine. Não é uma exportação nativa do TexturePacker.
+textures: nome e dimensões de cada PNG.
+frames: chave de cada quadro, image, frame, contentBounds, mouth e pivot.
+animations: sequência ordenada de nomes por ação e indicação de repetição.
+frame.x/y/w/h: recorte dentro da tira.
+mouth.x/y: ponto aproximado de encaixe no interior da boca, relativo à célula,
+           com origem no canto superior esquerdo; NÃO é relativo à tira.
+contentBounds: região ocupada pela figura, somente para consulta; não recorte
+               automaticamente essa região, pois isso perde o alinhamento.
+
+Os 49 pontos de boca foram estimados visualmente. Em bocas fechadas, o ponto
+fica na linha dos lábios. Eles são uma base de ajuste, não uma calibração
+final de contato ou colisão. Use as cenas do jogo para acertar o encaixe do
+homem, dos pedaços e da Kamila. A direção e a rotação dos objetos precisam
+acompanhar a pose; o atlas fornece somente a posição, não esses ângulos.
+
+EXEMPLO DE POSICIONAMENTO
+Com escala s e origem de desenho no canto superior esquerdo da célula:
+  bocaMundoX = origemX + mouth.x * s
+  bocaMundoY = origemY + mouth.y * s
+Ao espelhar horizontalmente, o ponto local passa a x=511-mouth.x.
+Com pivô no chão (256,492):
+  origemX = posicaoNoChaoX - 256 * s
+  origemY = posicaoNoChaoY - 492 * s
+
+ALTURA NO MUNDO
+Os 400 px são uma medida da arte nativa, não a proporção final do jogo.
+Para que ela pareça quatro vezes mais alta que uma Kamila com altura renderizada
+H, use aproximadamente s=(4*H)/400 na criatura. Exemplo: H=196 px implica
+s≈1,96 e altura da criatura em pé próxima de 784 px. Ajuste com a escala e
+a câmera reais do projeto, sem redimensionar o PNG original.
+
+ANIMAÇÃO E INTEGRAÇÃO
+Preserve os tempos existentes do encontro, como solicitado no pedido.
+Troque os quadros diretamente, sem interpolar ou fundir as poses.
+Repetição sugerida: parada, andar, mastigar e ambas as corridas.
+As demais ações são sequências únicas comandadas pelo estado da cena.
+O pacote foi conferido quanto a dimensões, número de quadros, canal alfa e
+enquadramento. Não foi integrado nem testado dentro do jogo nesta entrega.
+Confira especialmente as transições entre ações, a passagem do último quadro
+para o primeiro nos ciclos e o encaixe das sobreposições na boca.
+
+ORIGEM E RASTREABILIDADE
+Especificação: arquivo PEDIDO_ARTE_CROOKED_LEGS.txt fornecido pelo usuário.
+Referência visual: imagem CrookedLegs(1).webp fornecida pelo usuário.
+As artes foram geradas a partir dessas referências e preparadas em tiras.
+PROMPTS_CROOKED_LEGS.txt registra as instruções usadas na geração.
+
+Fontes fornecidas nesta conversa:
+https://chatgpt.com/library?file_id=libfile_e0680c2148c881918a523b0b1bc51bef&account_id=personal
+https://chatgpt.com/library?file_id=libfile_7b346e46ae2c8191a7756047189336a0&account_id=personal
