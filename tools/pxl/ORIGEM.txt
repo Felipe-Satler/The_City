@@ -1,0 +1,2 @@
+Cópia do pxl (MIT) — https://github.com/uilianks/pxl, commit: ce073135f6deab156051125a0d4451a01303cd23 2026-11-06 18:33:05 +0000
+Copiado sem alterações (pastas bin, src, types e a documentação). Não precisa de instalação: roda com Node >= 22.18 via 'node tools/pxl/bin/pxl.js'.

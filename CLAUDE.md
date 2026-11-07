@@ -28,5 +28,8 @@ Propostas são apresentadas como propostas; decisões do criador são registrada
 - Versão visível: rodapé `PRÉVIA CONCEITUAL / x.y` no menu. Comentários de código marcam a
   versão em que cada trecho mudou (ex.: `// 0.17: ...`).
 - Arte-fonte fica em `arte/` (ex.: `arte/kamila/`); o HTML recebe cópias embutidas.
+- Objetos da rua (0.29) são feitos com o pxl (`tools/pxl/`, MIT): fonte em `arte/pxl/rua.px.js`;
+  gerar com `node tools/pxl/bin/pxl.js build arte/pxl/rua.px.js --out arte/pxl/out` e embutir com
+  `python3 tools/embutir_pxl.py`. Não edite o base64 dos sprites à mão.
 - Teste no Chromium do ambiente com Playwright (`require('playwright')`, sem instalar nada).
   Fluxo mínimo: menu → Iniciar → Kamila → ACORDAR → falas → cruzamento → "FUGIR PARA O CAFÉ".

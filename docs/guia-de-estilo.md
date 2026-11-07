@@ -1,6 +1,6 @@
 # Guia de estilo visual
 
-Estado: **0.26**. A direção de arte oficial é `docs/DIRECAO_DE_ARTE.txt` (do criador); este guia resume e
+Estado: **0.29**. A direção de arte oficial é `docs/DIRECAO_DE_ARTE.txt` (do criador); este guia resume e
 registra a situação de cada elemento. Em conflito, vale a direção de arte.
 
 ## Alvo
@@ -20,7 +20,7 @@ e luzes pálidas; o café como o único calor.
 - **Proporções:** sprite de exploração compacto (cabeça grande, quase chibi); retrato com proporções
   completas.
 
-## Situação de cada elemento (0.26)
+## Situação de cada elemento (0.29)
 | Elemento | Como está | Situação |
 |---|---|---|
 | Kamila — sprite e retrato do jogo | arte nova | no estilo |
@@ -29,9 +29,10 @@ e luzes pálidas; o café como o único calor.
 | Homem devorado, pedaços, pistola e sangue | folha do criador (0.21) | no estilo |
 | Chão da rua (asfalto, calçada, meio-fio, poças) | estilo novo por código (0.20) | no estilo |
 | Café EntreLuz (fachada) | estilo novo por código (0.20) | no estilo |
-| Árvores e lixeiras | estilo novo por código, a partir da imagem da rua (0.20) | no estilo |
+| Árvores | estilo novo por código, a partir da imagem da rua (0.20) | no estilo |
+| Lixeiras, ar-condicionado de parede, bueiros, grelhas, floreiras do café | pxl, `arte/pxl/rua.px.js` (0.29) | no estilo |
 | Outros prédios | estilo novo com personalidade por prédio (0.22–0.23) | no estilo |
-| Placa da rua, parquímetros | por código (0.23) | no estilo |
+| Placa da rua, parquímetros | pxl, `arte/pxl/rua.px.js` (0.29) | no estilo |
 | Carros, motos, postes | imagens do criador (0.20) | no estilo |
 | Interior do café | estilo novo por código, 2 px de arte por px de mundo (0.24) | no estilo |
 | Cidade do menu | estilo novo, 800 × 500, paleta fria de 32 cores sem pontilhado (0.25) | no estilo |
@@ -47,6 +48,21 @@ e luzes pálidas; o café como o único calor.
    (café, postes), sangue e personagens. A névoa e a camada de luz continuam por cima de tudo.
 5. **Exceção:** a criatura não segue estas regras.
 6. **Retratos:** busto, proporção ~0,78 (largura/altura), fundo transparente.
+
+## Objetos feitos com o pxl (0.29)
+O pxl (`tools/pxl/`, licença MIT, cópia sem alterações) desenha pixel art a partir de um arquivo de código:
+paleta, rampas de tons com matiz deslocado (`shades`), formas (`rect`, `circ`, `poly`, `ellipse`...) e contorno
+automático com matiz (`selout`). Os objetos da rua ficam em `arte/pxl/rua.px.js`.
+- **Densidade:** 2 px de arte por px de mundo (a mesma do chão da rua). Um objeto de 16 × 22 de mundo é um sprite
+  de 32 × 44 (+1 px de contorno em volta).
+- **Regras:** contorno `k` (`#15161c`) via `selout`; 3–4 tons por material; luz de cima à esquerda; sombras puxando
+  para violeta; nada de ruído de enchimento; ferrugem e sujeira só onde têm causa (parafuso, cinta, chão).
+- **Caminho:** editar `arte/pxl/rua.px.js` → `node tools/pxl/bin/pxl.js build arte/pxl/rua.px.js --out arte/pxl/out`
+  → conferir `arte/pxl/out/_preview/` → `python3 tools/embutir_pxl.py`. `pxl lint` aponta pixels soltos e cores
+  repetidas.
+- **No jogo:** `pxlChao(nome, x, y, ax, ay)` pinta no chão; `pxlAlto(nome, x, y, ax, ay, tipo)` cria um elemento alto
+  ordenado com os personagens. `(ax, ay)` é o ponto de apoio em pixels de arte dentro do sprite.
+- Personagens, criaturas e retratos continuam vindo da ferramenta do criador; o pxl é para objetos e cenário.
 
 ## Técnica usada nos desenhos por código (0.18)
 Usada no Homem Ferido; serve de base para os próximos NPCs e objetos.

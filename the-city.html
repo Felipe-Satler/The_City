@@ -15,7 +15,7 @@
       <button type="button" class="city-menuitem cursor-interaction" data-action="exit"><span class="city-number">03</span><span>SAIR</span><span class="city-arrow">↗</span></button>
     </nav>
   </main>
-  <footer class="city-footer"><span>PRÉVIA CONCEITUAL / 0.28</span><button type="button" class="city-sound-toggle cursor-interaction" aria-pressed="false">ATIVAR SOM</button><span>A CIDADE PERMANECE.</span></footer>
+  <footer class="city-footer"><span>PRÉVIA CONCEITUAL / 0.29</span><button type="button" class="city-sound-toggle cursor-interaction" aria-pressed="false">ATIVAR SOM</button><span>A CIDADE PERMANECE.</span></footer>
   <section class="city-rpg" hidden aria-label="Exploração de Kamila">
     <canvas class="rpg-canvas" tabindex="0" aria-label="Mapa explorável. Use WASD ou as setas para caminhar. E ou Enter para interagir. No celular, use os controles na tela."></canvas>
     <header class="rpg-header"><div><span class="rpg-kicker">THE CITY / KAMILA CZARNY</span><h2 class="rpg-location">A rua sem nome</h2></div><div class="rpg-topbuttons"><button type="button" class="rpg-sound">ATIVAR SOM</button><button type="button" data-rpg="menu">MENU ↗</button></div></header>
@@ -846,9 +846,9 @@ const rpg=(()=>{
   curbV(ROAD.l,-1);curbV(ROAD.r,1);
   orect(g,0,ROAD.top-5,RW,4,PVC.curb);hrect(g,0,ROAD.top-5,RW,1,PVC.curbL);hrect(g,0,ROAD.top-1,RW,4,'rgba(10,12,16,.45)');for(let x=0;x<RW;x+=24)hrect(g,x,ROAD.top-5,.5,4,PVC.line);
   for(const [a,b] of [[0,ROAD.l-5],[ROAD.r+5,RW]]){orect(g,a,ROAD.bottom,b-a,4,PVC.curb);hrect(g,a,ROAD.bottom,b-a,1,PVC.curbL);hrect(g,a,ROAD.bottom-3,b-a,3,'rgba(10,12,16,.45)')}
-  // Tampas de bueiro e grelhas de sarjeta.
-  for(const y of [22,34,42]){const x=ROAD.mid,yy=y*T;oval(g,x,yy+1.5,14,8.5,'rgba(8,10,14,.5)');oval(g,x,yy,13.5,8,PVC.line);oval(g,x,yy,12.5,7.2,'#3b3f47');oval(g,x,yy,10,5.6,'#2c2f36');for(let k=-8;k<=8;k+=3)hrect(g,x+k,yy-4.5+Math.abs(k)*.15,1,9-Math.abs(k)*.3,'#41464f');hrect(g,x-12,yy-.5,24,.5,'#545a63')}
-  for(const y of [18,27,36,44])for(const x of [ROAD.l+3,ROAD.r-15]){orect(g,x,y*T,12,24,'#1b1d23');for(let k=0;k<10;k++)hrect(g,x+1.5,y*T+2+k*2.2,9,1,'#3d424b');hrect(g,x,y*T,12,.5,'#5c626b')}
+  // Tampas de bueiro e grelhas de sarjeta (0.29: sprites do pxl).
+  for(const y of [22,34,42]){const x=ROAD.mid,yy=y*T;oval(g,x,yy+1.5,14,8.5,'rgba(8,10,14,.5)');pxlChao('bueiro',x,yy,28,17)}
+  for(const y of [18,27,36,44])for(const x of [ROAD.l+3,ROAD.r-15])pxlChao('grelha',x,y*T,1,1);
   // Poças: forma plana escura com borda de cima clara (o brilho das luzes vem depois, na camada de luz).
   for(const p of stPuddles){g.save();g.translate(0,-1);puddlePath(g,p);g.fillStyle='rgba(120,130,150,.18)';g.fill();g.restore();puddlePath(g,p);g.fillStyle='#1b1f27';g.fill();
    g.save();puddlePath(g,p);g.clip();g.fillStyle='rgba(90,104,124,.22)';g.fillRect(p.cx-p.w*.5,p.cy-p.h*.6,p.w*.6,1);g.fillRect(p.cx-p.w*.2,p.cy-p.h*.15,p.w*.45,.5);g.restore()}
@@ -915,8 +915,7 @@ const rpg=(()=>{
   {const ay=top+5,ax0=X+4,aw=W-8;orect(g,ax0,ay-7,aw,8,'#2b4236');for(let k=ax0;k<ax0+aw;k+=10)hrect(g,k,ay-7,5,8,'#33503f');hrect(g,ax0,ay-7,aw,1,'#4d6b58');
    for(let k=ax0;k<ax0+aw-1;k+=10){oval(g,k+5,ay+1.5,5.6,3.6,PVC.line);oval(g,k+5,ay+1,5,3,'#2b4236');oval(g,k+5,ay+.4,3,1.4,'#355241')}hrect(g,ax0,ay+4.5,aw,3,'rgba(8,10,14,.35)')}
   // Floreiras com arbustos redondos.
-  for(const px of [dc-42,dc+30]){orect(g,px,B-14,12,12,'#4a3a2c');hrect(g,px,B-14,12,1,'#6a5440');hrect(g,px,B-6,12,1,'#3a2c20');
-   oval(g,px+6,B-18,10,8,PVC.line);oval(g,px+6,B-18,9,7,'#2d4632');oval(g,px+4,B-21,5,4,'#3f5e44');oval(g,px+9,B-20,3,3,'#36523b')}
+  for(const px of [dc-42,dc+30])pxlChao('floreira',px+6,B-2,20,45);
  }
  // Veículos: imagens do criador na escala física (Kamila 1,65 m = 57 px de mundo).
  const PV_CARS=[];
@@ -944,7 +943,19 @@ const rpg=(()=>{
   const px=dir>0?X-27*PV_LAMP_S:X-(sz[0]-27)*PV_LAMP_S;stProps.push({img:cv,x:px,y:Y-304*PV_LAMP_S,base:Y,cx:X,kind:'lamp'});
   if(!o.dead)stLamps.push({x:X+dir*69*PV_LAMP_S,y:Y-(304-34)*PV_LAMP_S,gx:X+dir*18,gy:Y+10,r:o.r||104,flicker:!!o.flicker,phase:sp(0,9),speed:sp(.8,1.3)});
  }
- pvReady.then(()=>{pvDrawVehicles();streetMap.g.clearRect(0,0,RW,RH);streetMap.g.drawImage(streetHi,0,0,RW,RH);if(typeof artCache!=='undefined')artCache.clear();window.CENARIO_PRONTO=true});
+ // ---------- Objetos da rua feitos com o pxl (0.29) ----------
+ // Fonte: arte/pxl/rua.px.js (ferramenta em tools/pxl, licença MIT). Os PNGs são embutidos por tools/embutir_pxl.py.
+ // Densidade da rua: 2 px de arte = 1 px do mundo. (ax, ay) é o ponto de apoio em pixels de arte dentro do sprite.
+ // pxlChao: pintado no chão (sg) quando a imagem carrega. pxlAlto: elemento alto, ordenado com os personagens.
+ const PXL_SRC=/*PXL:INICIO*/{"ar":{"w":48,"h":28,"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAcCAMAAAAQssz4AAAAFVBMVEUAAABNT1QoKCyanaBydnsVFhxuRDB9+WXUAAAAAXRSTlMAQObYZgAAAF1JREFUeNrtkEEOgCAQA7t16/+fbJCTIYGtiZycM7OZAkQRkgSAOIrcEgBmkb0Cp2S2CQ9hvrYft5IGYZU0bFglff9Lf9KGpDCwBXkCSb0QQIcmlJEvnJ4AyXvfuQCUXwtdPQtYyAAAAABJRU5ErkJggg=="},"bueiro":{"w":58,"h":36,"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAAAkCAMAAADvudnxAAAAD1BMVEUAAAAwMTUQEBFzd3pRVFg5FO5QAAAAAXRSTlMAQObYZgAAAMlJREFUeNrV1cEOg0AIBNAdyv9/c7MKAsq2SHto57BpGl9GV8Uxvh1YiMqK5vEPCzPNVNp4Hg8fnnmtpQ1pNr2UjrGP/Znj2WiMfIynWKEw0GlVzUy5ZL6iY1VMibSrwmqrLhZ75bLP1rMViQJFtHK2VKKxF7ss0s1Gimoc1dJqq6uVn/9Ggc4+aW3j5nxKe0+T2sYzbLa2RfGtE/vuFiXvq9rOlJiWm7NpDD2d+xMx4JtzWDGjMf13TKGo+s05tHhN7UsXvGb8Up4DfQp2Uy+EhAAAAABJRU5ErkJggg=="},"floreira":{"w":40,"h":48,"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAwCAMAAABUpcipAAAAHlBMVEUAAAAIDAofLyVEYEhtjWwVFhwPCQhrVkWUhWk/LCVQxNHYAAAAAXRSTlMAQObYZgAAAMNJREFUeNrd1UESgyAMBVA+EGjvf+GOgiGhBFqnLuzf6IQ3CMlC5y4PStbMl8wpELYsaWGCmi7G+IHcXSdpCGMUsm5J5ob9x+k0hA/qjOXlXWKD4tbcp66b2zzCMLpHtgvqnBMX1I1gOwUHG3o99SoF9Lw46iZ4wYvIAorEseCtKDhLhYSl+xKuJDtHaBLdc3c8GkKlkGkVHjZhHoYpJS6m7glQczkfNMlwhRrM+WHkPHwauRuktMhf3vr37XG0yDU/0xei6xfPSAnzRgAAAABJRU5ErkJggg=="},"grelha":{"w":26,"h":50,"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAyCAMAAAB1azunAAAAElBMVEUAAAAQEBEwMTVRVFhzd3oVFhyssKroAAAAAXRSTlMAQObYZgAAADZJREFUeNrtzbENACAMA8F3AvuvzABJBA2dv7WsA0UfKFdfoBxeuk279DJlyZYtW7Z+WMOEhjhOjw9x+883SwAAAABJRU5ErkJggg=="},"lixeira":{"w":36,"h":48,"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAwCAMAAABOmSgnAAAAKlBMVEUAAAA9VUggLimBmYNcemQVFhxMZVQtQDcRGBZNT1SanaAoKCxaJCtuRDDuJFaKAAAAAXRSTlMAQObYZgAAAI5JREFUeNrt0dEKwjAMheEsetLEzvd/XZnWua1ptCLOC3/YzeEbBEr0iw1RzHw1h6jJ9aBjCXP35W3EpQjV9SAenjSh+Y5WeBURICKSnFRVgdvjaYioG6mk7fdHK2SnICsomxnMC2Z5gZrlzU3j+XHP2Dr8gyh1or2fBRq0EyIE0QLZavC26i93q42/fakLOeUcFsPwDO8AAAAASUVORK5CYII="},"parquimetro":{"w":28,"h":62,"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAA+CAMAAAAPt4ubAAAAJFBMVEUAAABaJCuyiHUeCxKQSUMVFhwbIitWZ3pNT1RuRDBydnsoKCyk+udFAAAAAXRSTlMAQObYZgAAAJFJREFUeNrt00EOwyAMRNGhZgop979vZYgU3DpUDSzzt08YQgQwU3Db7eHWVKKbTCLFje1EjDHakx5W546RXV/47HIwpXSOw5WtdHmli9cv4SfW2wl55dj+V/6H678TIrLpXq+cS92TZPciuBEoigQkiHkuQ4SOOUV0CMcOxI03LsaiKdY+F5msspi4CEETZnsD7PsQIt8ZDksAAAAASUVORK5CYII="},"placa":{"w":106,"h":102,"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGoAAABmCAMAAAAUPfTeAAAAJFBMVEUAAAAIDAsVFhxBXE2anaAgMSooKCxlhW1aJCtuRDBNT1RydnuhPmsjAAAAAXRSTlMAQObYZgAAAQFJREFUeNrt2tEOgyAMBVBGLbju//932Zzb2ASkFhPjvY8+cNJQTIk6hxwtF+t47zMSWeehnYwa2DBDkQrRMKFIjXFTHeEdZo7X9ZR8pdV6UqOGaq6rgSJKrNfDLlRaFpcoWrJWU6SneHLqFCcUt+5UYlc68J9StLyK0qWJ0q39k8gHov7XFVrcUlNqPgu02D4rKapTkqYnVbW2U5yhxHaviChv9Wz2Slmm56r8iuxyhFXUYDnGVCYmy+GsPDHZj+0notx0TbHJTURC9tJjmTBRe9wKQYECBQoUKFCgQIECBQoUKFCgQIECBQoUKFAHoPb7UOE/f+P0LgyUQVvMcWfIHbMdPeSgqdCQAAAAAElFTkSuQmCC"}}/*PXL:FIM*/,PXL={},pxlFila=[],pxlAltos=[];
+ const pxlReady=Promise.all(Object.entries(PXL_SRC).map(([k,o])=>new Promise(r=>{const im=new Image();im.onload=()=>{PXL[k]=im;r()};im.onerror=r;im.src=o.src})));
+ const pxlGrade=v=>Math.round(v*ST_D)/ST_D;
+ function pxlChao(k,x,y,ax=0,ay=0){pxlFila.push({k,x:pxlGrade(x-ax/ST_D),y:pxlGrade(y-ay/ST_D)})}
+ function pxlAlto(k,x,y,ax,ay,kind){const o=PXL_SRC[k],cv=document.createElement('canvas');cv.width=o.w;cv.height=o.h;cv.lw=o.w/ST_D;cv.lh=o.h/ST_D;pxlAltos.push({k,cv});
+  stProps.push({img:cv,x:pxlGrade(x-ax/ST_D),y:pxlGrade(y-ay/ST_D),base:y,cx:x,kind})}
+ function pxlPintar(){sg.save();sg.imageSmoothingEnabled=false;for(const q of pxlFila){const im=PXL[q.k];if(im)sg.drawImage(im,q.x,q.y,im.width/ST_D,im.height/ST_D)}sg.restore();
+  for(const q of pxlAltos){const im=PXL[q.k];if(im)q.cv.getContext('2d').drawImage(im,0,0)}}
+ Promise.all([pvReady,pxlReady]).then(()=>{pxlPintar();pvDrawVehicles();streetMap.g.clearRect(0,0,RW,RH);streetMap.g.drawImage(streetHi,0,0,RW,RH);if(typeof artCache!=='undefined')artCache.clear();window.CENARIO_PRONTO=true});
  // Árvore da referência: canteiro quadrado de tijolo, tronco contornado e copa em tufos redondos (verde frio de noite).
  function stTree(x,y){
   const X=Math.round(x*T*SX),Y=y*T;streetMap.solid.push({x:(x*T-8)*SX,y:Y-4,w:16*SX,h:16});
@@ -969,11 +980,8 @@ const rpg=(()=>{
   stProps.push({img:a,x:X-ax,y:Y-ay,base:Y,cx:X,kind:'tree'});
  }
  // Lixeira verde-escura com tampa, como na referência.
- function stBin(x,y){const X=Math.round(x*T*SX),Y=y*T,g=sg;block(streetMap,x*SX,y,.7*SX,.8);
-  oval(g,X+10,Y+24,11,4,'rgba(5,8,12,.45)');orect(g,X,Y+9,16,15,'#2f4438');hrect(g,X,Y+9,1.5,15,'#3f5a4a');hrect(g,X+14,Y+9,2,15,'#22332a');
-  for(let k=3;k<14;k+=3.5)hrect(g,X+k,Y+12,.5,10,'#22332a');hrect(g,X,Y+17,16,1,'#22332a');
-  orect(g,X-1,Y+3,18,7,'#3d5a49');hrect(g,X-1,Y+3,18,1,'#5a7b66');hrect(g,X-1,Y+9,18,1,'#263a30');orect(g,X+5,Y+5,6,2,'#1c2a23');
-  hrect(g,X+1,Y+24,3,1.5,PVC.line);hrect(g,X+12,Y+24,3,1.5,PVC.line)}
+ function stBin(x,y){const X=Math.round(x*T*SX),Y=y*T;block(streetMap,x*SX,y,.7*SX,.8);
+  oval(sg,X+9,Y+24,11,4,'rgba(5,8,12,.45)');pxlChao('lixeira',X+8,Y+25,17,45)}
 
  // ---------- Personalidade de cada fachada (0.23, a partir da imagem da rua do criador) ----------
  // Desenhado por cima do que stBuilding pintou, com a mesma geometria. Nada de escrever a categoria da loja.
@@ -981,8 +989,8 @@ const rpg=(()=>{
   return {X,Y,W,H,FY,B,dc:X+Math.round(W*.52),sy:FY+52,top:FY+74,bot:B-8}}
  // Cano de descida com braçadeiras.
  function fPipe(x,y0,y1){const g=sg;orect(g,x,y0,3,y1-y0,'#4b5058');hrect(g,x,y0,1,y1-y0,'#656a73');for(let y=y0+8;y<y1-4;y+=22)orect(g,x-1,y,5,2,'#363a42');orect(g,x-2,y1-3,7,3,'#3e424a')}
- // Aparelho de ar-condicionado na parede, com grade e mancha de água embaixo.
- function fAC(x,y){const g=sg;hrect(g,x+2,y+12,22,3,'rgba(6,8,12,.4)');orect(g,x,y,22,12,'#6a6f78');hrect(g,x,y,22,1,'#868b94');for(let k=x+2;k<x+20;k+=2.5)hrect(g,k,y+3,1,7,'#4a4e56');orect(g,x+18,y+3,2,7,'#3a3e46');hrect(g,x+9,y+13,1.5,sp(10,18),'rgba(10,12,18,.2)')}
+ // Aparelho de ar-condicionado na parede (0.29: sprite do pxl), com mancha de água descendo do cano.
+ function fAC(x,y){const g=sg;hrect(g,x+2,y+12,22,3,'rgba(6,8,12,.4)');pxlChao('ar',x,y,1,1);hrect(g,x+21.5,y+13,1.5,sp(10,18),'rgba(10,12,18,.2)')}
  // Lanterna de parede apagada.
  function fLantern(x,y){const g=sg;orect(g,x,y,1.5,4,'#2a2d34');orect(g,x-2.5,y+3,6.5,8,'#2c3038');hrect(g,x-1.5,y+4.5,4.5,5,'#3f4650');hrect(g,x-1.5,y+4.5,1,5,'#5a6370')}
  // Cartaz rasgado colado na parede.
@@ -1018,19 +1026,12 @@ const rpg=(()=>{
  function fApartamentos(x,y,w,h){const {X,W,FY,B}=fGeo(x,y,w,h,'flats');fPipe(X+W-11,FY-2,B-2);fAC(X+8,FY+30)}
  // Casa: lanterna apagada ao lado da porta e plaquinha sem número legível.
  function fCasa(x,y,w,h){const g=sg,{dc,B}=fGeo(x,y,w,h,'home');fLantern(dc-20,B-50);orect(g,dc+20,B-50,8,5,'#5e6068');hrect(g,dc+21.5,B-48.5,5,1,'#3c3f46')}
- // Parquímetro vermelho-escuro na beira da calçada (elemento alto).
- function stParq(x,y){const X=Math.round(x),Y=Math.round(y);streetMap.solid.push({x:X-3,y:Y-3,w:6,h:6});oval(sg,X+2,Y+1,5,2,'rgba(5,8,12,.5)');
-  const [a,t]=propCanvas(16,30),ax=8,ay=28;orect(t,ax-1,ay-18,2,18,'#3a3e46');orect(t,ax-4,ay-27,8,10,'#6a2a2a');hrect(t,ax-4,ay-27,8,1,'#8a3a36');orect(t,ax-2.5,ay-25,5,3,'#1d242c');hrect(t,ax-2,ay-24.5,2,1,'#5a6a7a');orect(t,ax-1,ay-20,2,1.5,'#8a8f98');orect(t,ax-3,ay-1,6,1.5,'#2a2d34');
-  stProps.push({img:a,x:X-ax,y:Y-ay,base:Y,cx:X,kind:'meter'})}
- // Placa da rua: poste contornado e placa verde com a tinta descascada (o nome não se lê).
- function stSign(){const X=Math.round(27.7*T*SX),Y=14*T+42;
-  const [a,t]=propCanvas(52,52),ax=42,ay=48;oval(t,ax+1,ay,5,2,'rgba(5,8,12,.5)');
-  orect(t,ax-1,ay-44,2.5,44,'#4a5058');hrect(t,ax-1,ay-44,.5,44,'#6a7078');
-  orect(t,ax-37,ay-48,42,15,'#2d4a3c',PVC.line,1);hrect(t,ax-36,ay-47,40,1,'#4a6a58');hrect(t,ax-36,ay-34,40,1,'#1f3529');
-  for(let k=0;k<6;k++){pvBlob(t,ax-34+sr()*36,ay-44+sr()*8,sp(2,5),sp(1.2,2.5),k+3);t.fillStyle=sr()>.5?'#5f6168':'#4c4e55';t.fill()}
-  for(let k=0;k<9;k++)if(sr()>.3)hrect(t,ax-33+k*4,ay-44+sr()*3,1,sp(2,5),'rgba(200,206,190,.35)');
-  for(const [qx,qy] of [[-35.5,-46],[3,-46],[-35.5,-35.5],[3,-35.5]])hrect(t,ax+qx,ay+qy,1,1,'#8a8f98');
-  stProps.push({img:a,x:X-ax,y:Y-ay,base:Y,cx:X,kind:'sign'})}
+ // Parquímetro vermelho-escuro na beira da calçada (elemento alto; 0.29: sprite do pxl).
+ function stParq(x,y){const X=Math.round(x),Y=Math.round(y);streetMap.solid.push({x:X-3,y:Y-3,w:6,h:6});oval(sg,X+2,Y+1,7,2.5,'rgba(5,8,12,.5)');
+  pxlAlto('parquimetro',X,Y,14,59,'meter')}
+ // Placa da rua: poste contornado e placa verde com a tinta descascada (o nome não se lê). 0.29: sprite do pxl.
+ function stSign(){const X=Math.round(27.7*T*SX),Y=14*T+42;oval(sg,X+1,Y,6,2.5,'rgba(5,8,12,.5)');
+  pxlAlto('placa',X,Y,85,99,'sign')}
  function stPersonalidade(){
   fCaiada(1,1,10,7);fApartamentos(13,1,14,7);fCasa(29,1,10,7);fAco(1,17,10,8);fApartamentos(29,17,10,8);fLivraria(1,28,10,10);fCasa(2,41,9,6);fCasa(29,41,10,6);
   for(const [x,y] of [[ROAD.l-12,22*T],[ROAD.l-12,37*T]])stParq(x,y)}
