@@ -1,0 +1,31 @@
+HEROÍNA — PACOTE DE SPRITES v1
+
+CONTEÚDO
+heroina_sprites.png: folha RGBA com transparência, 1881 × 836 px.
+heroina_atlas.json: retângulos exatos dos 36 quadros e sequências sugeridas.
+preview.html: visualizador local; extraia o ZIP inteiro e abra este arquivo no navegador.
+
+GRADE
+9 colunas × 4 linhas; cada célula tem 209 × 209 px.
+Margem e espaçamento da grade: zero. Coordenadas começam no canto superior esquerdo.
+A célula é uma região da imagem gerada; não representa uma resolução lógica nativa de 209 px de pixel-art.
+
+LINHAS (de cima para baixo)
+1 — Frente / down
+2 — Direita / right
+3 — Costas / up
+4 — Esquerda / left
+
+COLUNAS (da esquerda para a direita)
+1 — Repouso: um quadro estático.
+2 a 5 — Caminhada: quatro quadros, sugestão inicial de 8 fps.
+6 a 9 — Corrida: quatro quadros, sugestão inicial de 12 fps.
+Total: 12 sequências, combinando três ações com quatro direções.
+
+IMPORTAÇÃO
+O PNG é o recurso principal. O JSON usa retângulos de atlas e um campo auxiliar próprio chamado animations; nem todo motor importa esse campo automaticamente.
+No Godot, crie um AnimatedSprite2D e um recurso SpriteFrames. Use Add frames from a Sprite Sheet, escolha o PNG e configure 9 divisões horizontais e 4 verticais. Selecione os quadros de cada sequência conforme a tabela acima.
+Fonte oficial: https://docs.godotengine.org/en/stable/tutorials/2d/2d_sprite_animation.html
+
+ESTADO DESTA VERSÃO
+Base para prototipagem. A arte foi gerada por IA com base na personagem aprovada, com simplificação dos detalhes para múltiplas poses. Foram conferidos tamanho, transparência, divisibilidade da grade e limites dos retângulos. Não houve teste em motor de jogo. Revise pequenas variações de proporção, posição, contorno e continuidade ao animar; os ciclos não receberam acabamento manual quadro a quadro. Não inclui combate, salto, dano ou morte.
