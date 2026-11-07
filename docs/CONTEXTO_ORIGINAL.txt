@@ -1,0 +1,663 @@
+THE CITY — CONTEXTO CONSOLIDADO PARA DESENVOLVIMENTO
+Documento de passagem de contexto para agentes de IA
+Atualizado em: 05 de novembro de 2026, horário de Brasília
+Referência: the-city.html, prévia conceitual 0.10, versão salva 9
+
+======================================================================
+1. COMO USAR ESTE DOCUMENTO
+======================================================================
+
+Você está dando continuidade a um jogo que já possui um protótipo funcional.
+Leia este documento antes de propor mudanças. Se a tarefa envolver código,
+leia também o arquivo the-city.html enviado junto com ele.
+
+Este TXT reúne a intenção criativa, os pedidos do criador, a evolução das
+decisões, o que foi implementado e o que permanece indefinido. Não é um roteiro
+completo nem uma especificação definitiva de todos os sistemas do jogo.
+
+As descrições usam três níveis de certeza:
+- DEFINIDO: pedido ou decisão expressa do criador.
+- PROTÓTIPO: solução presente na implementação; pode ser refinada sem ser
+  confundida com uma decisão definitiva de narrativa ou de produção.
+- EM ABERTO: ainda não há uma decisão estabelecida.
+
+O código informa como a versão atual funciona. As decisões explícitas do
+criador informam a direção desejada. Uma implementação provisória não deve
+ser transformada automaticamente em cânone da história.
+
+Se este TXT for enviado sozinho, o agente poderá ajudar com planejamento e
+design, mas não terá os recursos visuais nem o código executável. Para editar
+o jogo existente, enviar também o HTML. Para reproduzir fielmente a arte,
+enviar as imagens de referência originais.
+
+======================================================================
+2. VISÃO GERAL
+======================================================================
+
+Nome do jogo: The City.
+Plataforma inicial: navegador.
+Idioma atual da interface e dos diálogos: português brasileiro.
+Gênero e atmosfera: terror e suspense, com mistério, isolamento, estranhamento
+e uma cidade de escala imensa cercada por floresta.
+Direção visual desejada: estilizada, com influência de anime; sombria,
+monótona, acinzentada e com sensação de espaços liminares.
+
+O projeto começou como uma tela inicial animada e evoluiu para uma abertura
+jogável centrada em Kamila Czarny. Hoje existe um recorte do jogo: menu,
+seleção de personagens, apresentação do Homem da Lua, exploração de uma rua,
+encontro no cruzamento, perseguição e refúgio em um café.
+
+Não existe ainda uma história completa estabelecida para a Cidade. Sua
+origem, natureza, localização, regras e relação com os personagens estão
+em aberto. A sensação de mistério não deve ser substituída por explicações
+inventadas pelos agentes como se já tivessem sido aprovadas.
+
+======================================================================
+3. ESTRUTURA DE JOGABILIDADE E COMBATE
+======================================================================
+
+DEFINIDO
+- O jogo terá elementos de visual novel (VN).
+- A exploração será no estilo RPG Maker.
+- O criador aceitou a direção de um jogo híbrido com três camadas.
+- Haverá combate.
+- Combate contra criaturas será bastante limitado, reservado a alguns
+  contextos.
+- Combate contra pessoas será mais viável de iniciar, mas continuará sendo
+  desafiador. “Mais tranquilo de se engajar” não significa fácil de vencer.
+
+Para dar continuidade, considerar exploração espacial, interação/investigação
+ambiental e apresentação narrativa por diálogos como eixos do protótipo.
+A formulação completa da proposta original de “três camadas” não está
+registrada nas mensagens disponíveis. Não atribuir a ela regras adicionais.
+
+Point-and-click foi discutido como uma possibilidade. A escolha explícita
+posterior foi exploração no estilo RPG Maker. No protótipo, clicar no chão
+serve para caminhar; isso não significa que todo o jogo deva virar uma
+aventura exclusivamente point-and-click.
+
+“Estilo RPG Maker” descreve a experiência de exploração desejada. Não há
+decisão de migrar para a engine RPG Maker: a implementação atual usa
+HTML, CSS e JavaScript no navegador.
+
+EM ABERTO
+- Combate por turnos, em tempo real, híbrido ou outro modelo.
+- Vida, dano, defesa, equipamentos, armas, munição, habilidades e progressão.
+- Frequência de confrontos humanos e suas consequências narrativas.
+- Situações em que enfrentar uma criatura será possível.
+- Inventário, puzzles, escolhas ramificadas, relações e finais.
+
+IMPORTANTE: o protótipo atual NÃO contém um sistema de combate controlado
+pelo jogador. Os tiros do homem e o ataque da criatura são eventos
+roteirizados. A ação jogável do encontro é fugir e chegar ao café.
+
+======================================================================
+4. IDENTIDADE VISUAL E MENU PRINCIPAL
+======================================================================
+
+DEFINIDO
+- Tela inicial com “Iniciar”, “Configurações” e “Sair”.
+- Botões brutalistas, organizados, monótonos, cinzentos e sombrios.
+- Fundo animado de uma cidade gigantesca, vista à distância, à noite.
+- Muitas casas, prédios médios e prédios grandes, com maior altura e
+  densidade em direção ao centro urbano.
+- A cidade deve transmitir magnitude real; não parecer um pequeno bairro.
+- Luzes pálidas e mortas acendem e apagam de maneira sutil.
+- Névoa discreta sobrevoa a paisagem.
+- Floresta densa e fechada cerca a cidade até onde a vista alcança.
+- Evitar pinheiros; privilegiar árvores de copas largas.
+- Uma estrada de terra deve aparecer discretamente indo até o perímetro
+  urbano.
+
+Texto atual do menu, preservando a formulação:
+“O que você acha que há além da névoa?”
+
+Textos descartados; não reinserir:
+- “Um lugar além da floresta”
+- “Terror Psicológico”
+- “Todas as luzes levam a algum lugar”
+
+A remoção do rótulo “Terror Psicológico” da tela não elimina a direção de
+terror e suspense do projeto.
+
+PROTÓTIPO
+- Cidade e floresta desenhadas proceduralmente em Canvas 2D.
+- Tipografia forte, interface escura, contornos retos, granulação e vinheta.
+- Configurações de volume, música, brilho, névoa, animações e luzes oscilantes.
+- Botão de ativar/silenciar som.
+- “Sair” apresenta um encerramento da prévia e permite retornar; não fecha
+  automaticamente a aba.
+- Há ajustes de layout para telas menores e controles por toque, ainda
+  sujeitos a verificação completa em dispositivos reais.
+
+======================================================================
+5. PERSONAGENS SELECIONÁVEIS
+======================================================================
+
+DEFINIDO — nomes e ordem dos três blocos:
+1. Alanderson Santos
+2. Chris Nutzcracker
+3. Kamila Czarny
+
+Ao clicar em “Iniciar”, deve aparecer a seleção dividida em três blocos com
+as imagens dos personagens. Ao selecionar qualquer um deles, o Homem da
+Lua reaparece.
+
+PROTÓTIPO
+- As três opções e suas imagens estão incorporadas ao HTML.
+- Alanderson e Chris passam pela apresentação do Homem da Lua e retornam
+  automaticamente ao menu através da névoa.
+- Kamila passa pela mesma apresentação e segue para a rua explorável.
+- Somente a abertura de Kamila está jogável.
+
+Não foram estabelecidos biografias, idades, poderes, atributos, profissões,
+relações entre os três, personalidade detalhada ou arcos individuais.
+Não inventar essas informações como fatos.
+
+Referências originais dos três personagens, na ordem em que foram anexadas:
+- image(20261009-193210).png
+- image(20261009-193234).png
+- image(20261009-193500).png
+
+Confirmar visualmente a correspondência dos arquivos antes de alterar arte.
+Este documento não substitui as referências.
+
+======================================================================
+6. O HOMEM DA LUA
+======================================================================
+
+DEFINIDO — aparência:
+- Figura humanoide masculina.
+- Terno escuro e gravata branca.
+- Rosto em formato de Lua crescente, com parte clara e parte escura.
+- Na parte clara: olho negro, sem pupila, maior que o normal e irregular.
+- Na parte escura: apenas um ponto branco brilhante como olho.
+- Sorriso aberto e enorme, interior negro, dentes grandes e irregulares.
+- Luvas brancas.
+- Mão direita fazendo “shiu”, com o indicador levantado.
+- Postura inspirada na imagem enviada pelo criador.
+
+Apresentação: a tela escurece e a figura aparece atrás do texto.
+
+Texto atual, a preservar exatamente:
+“Um pouco adiantado. A Cidade começa aqui, meu caro. Eu me pergunto… que tipo
+de histórias você irá contar?”
+
+Texto anterior substituído, que não deve reaparecer:
+“A floresta termina aqui. O silêncio, não. Esta é uma entrada demonstrativa;
+a história ainda não começou.”
+
+PROTÓTIPO
+- A imagem da figura está incorporada ao HTML.
+- O título da apresentação é “Você chegou.”
+- Após um intervalo de leitura, a névoa cobre a tela.
+- Para Alanderson e Chris, a névoa devolve o jogador ao menu.
+- Para Kamila, a transição abre a exploração; o botão “ACORDAR” também
+  permite avançar sem aguardar.
+- Com animações ativas, a cobertura começa aproximadamente 12,55 segundos
+  após o início da apresentação e dura cerca de 2,8 segundos antes da troca.
+
+A intenção original era retornar todos ao menu após a névoa. A entrada na
+rua de Kamila é a evolução funcional do protótipo, preservando o retorno dos
+personagens que ainda não possuem cenário jogável.
+
+EM ABERTO: identidade, motivação, poderes e função narrativa da figura.
+“Homem da Lua” é a designação de trabalho. Não assumir que seja o vilão,
+um deus, um narrador onisciente ou o criador da Cidade.
+
+Referência original: image(20261002-214808).png.
+
+======================================================================
+7. MÚSICA E PAISAGEM SONORA
+======================================================================
+
+DEFINIDO
+- Música de suspense no menu.
+- Usar música original ou material que possa ser utilizado sem problemas
+  de direitos autorais.
+- Incluir vocais baixos do tipo “aaah”, “oooh” e semelhantes em alguns
+  trechos da música.
+
+PROTÓTIPO
+- Trilha chamada “Além da Névoa” nos comentários do código.
+- Composição sintetizada em JavaScript, via Web Audio API.
+- Loop de 48 segundos, com base grave, acordes lentos e notas esparsas.
+- Coro sintético discreto com timbres de vogais “ah” e “oo”.
+- Não utiliza gravações de cantores nem samples musicais externos.
+- Efeitos sintetizados de disparos, porta e criatura no encontro.
+- Som ativado por interação do jogador, com volume e opção de silenciar.
+- A mesma infraestrutura de áudio acompanha as telas e a exploração.
+
+Não descrever a trilha como uma música comercial licenciada nem afirmar
+que existe uma licença formal de domínio público já definida. O fato
+verificável é a síntese original presente no código.
+
+======================================================================
+8. ABERTURA DE KAMILA — INTENÇÃO NARRATIVA
+======================================================================
+
+DEFINIDO — sequência concebida pelo criador:
+1. Kamila acorda em uma rua vazia, cinzenta, fria e parcialmente escura.
+2. Uma névoa cinza e sutil permeia o local.
+3. Ela pode explorar a rua, com construções baixas, lojas pequenas,
+   residências, carros e motocicletas estacionados.
+4. Subindo a rua, encontra uma via que segue para a esquerda e a direita.
+5. Ela está confusa, sem saber onde está nem para onde ir.
+6. Pela direita surge uma silhueta humana: um homem ensanguentado, armado,
+   desnorteado e um pouco insano.
+7. Ocorre um diálogo breve.
+8. Uma criatura aparece pela direção oposta. No pedido mais recente, sua
+   entrada foi especificada pela ESQUERDA do cruzamento.
+9. O homem atira contra a criatura.
+10. Kamila corre de volta por onde veio, buscando o café com luzes acesas.
+11. O monstro devora o homem, dando a ela tempo para escapar quase no limite.
+12. Ela se refugia no café.
+
+A descrição inicial mencionava o monstro “por trás dela”. Para a encenação
+atual, prevalece a orientação mais recente e específica: homem à direita,
+monstro à esquerda, fuga de volta para baixo pela rua de origem.
+
+O monstro deve ser alto e inspirado na segunda referência do pedido do
+cruzamento. Não transformar essa cena em uma luta vencível por Kamila sem
+uma nova decisão do criador.
+
+======================================================================
+9. A RUA INICIAL E A EXPLORAÇÃO
+======================================================================
+
+DEFINIDO
+- Visão e movimentação de exploração no estilo RPG Maker.
+- Mistura de construções comerciais e residenciais.
+- Não escrever a categoria do estabelecimento na vitrine, como “LOJA”,
+  “RESIDÊNCIA” etc. É permitido um nome próprio personalizado.
+- Melhorar o sprite da Kamila, tornando-o mais bonito e atraente.
+- Aumentar a velocidade de corrida em aproximadamente 8% em relação ao
+  valor anterior.
+
+PROTÓTIPO
+- Mapa superior em 2D, com fachadas visíveis, câmera acompanhando Kamila,
+  calçadas, rachaduras, poças, veículos, postes, árvores e névoa.
+- Rua vertical que chega a um cruzamento em T.
+- Nome de interface da área: “A rua sem nome”.
+- Objetivo inicial: “ENCONTRE UM SINAL DE VIDA”.
+- O café iluminado funciona como referência visual no lado direito da rua,
+  próximo da área onde ela desperta.
+- Colisões com edifícios, veículos e objetos relevantes.
+- Minimap e indicação de objetos próximos que podem ser examinados.
+- Onze pontos de interação na rua: vitrine empoeirada, carro entreaberto,
+  motocicleta, porta de metal, residência, placa, café, cruzamento, fim da
+  rua e limites a oeste e a leste.
+- Pequenos textos sugerem abandono ou interrupção da rotina: porta de
+  carro aberta, capacete deixado na moto, lojas vazias, cortinas fechadas,
+  placa ilegível e ausência de respostas.
+
+Esses textos ambientais são conteúdo do protótipo. Não comprovam a causa
+do desaparecimento das pessoas nem outras regras sobrenaturais.
+
+Kamila no protótipo:
+- Sprite original em pixel art com quatro direções.
+- Quatro quadros de caminhada e pose de repouso por direção.
+- Cabelo curto claro/lavanda, detalhes vermelhos, olhos violetas e roupa
+  clara com detalhes vermelhos, seguindo a interpretação do retrato.
+- Caminhada: 110 pixels de mundo por segundo.
+- Corrida: 148 × 1,08 = 159,84 pixels de mundo por segundo.
+- O aumento de 8% já foi aplicado; não aplicá-lo novamente por engano.
+
+Controles atuais:
+- WASD ou setas: mover.
+- Shift: correr durante a exploração normal.
+- E ou Enter: interagir/avançar quando aplicável.
+- Clique no chão: caminhar até um ponto alcançável.
+- Botões direcionais na tela: movimentação por toque.
+- Botão de interação na tela: observar/entrar.
+- Menu: retornar à tela inicial.
+- Escape: em exploração, retorna ao menu; durante diálogos simples pode
+  avançá-los. Escolhas exigem o botão correspondente.
+
+A exploração inicial e as interações têm ritmo livre. O encontro começa
+ao subir até a região do cruzamento, e não por um cronômetro desde o despertar.
+
+======================================================================
+10. CAFÉ ENTRELUZ
+======================================================================
+
+DEFINIDO
+- Deve estar com as luzes acesas, atraindo Kamila e servindo de refúgio.
+- Sua aparência deve se aproximar da imagem de café enviada pelo criador.
+
+PROTÓTIPO
+- Nome próprio adotado: Entreluz, escrito “ENTRELUZ” na fachada.
+- O nome foi uma escolha da implementação; não há história do local definida.
+- Interior com paredes de tijolos aparentes e piso cinzento/concreto.
+- Bancos estofados em tom mostarda ao longo da esquerda e do fundo.
+- Mesas de madeira com pratos, xícaras e pequenos vasos.
+- Balcão de madeira em L à direita, banquetas e máquina de café.
+- Plantas, prateleiras/estruturas escuras e luminárias pendentes quentes.
+- Porta frontal de vidro.
+- Contraste entre o calor discreto do interior e a rua fria e acinzentada.
+
+Referência de aparência: image(20261021-143635).png.
+
+Funcionamento atual:
+- É possível entrar no café antes do encontro e voltar à rua.
+- O interior inicialmente está vazio; ninguém responde.
+- Durante a fuga, basta chegar perto da porta para entrar automaticamente.
+- Após o refúgio, há diálogo de chegada e exploração do interior.
+- Tentar sair nessa fase produz uma fala de Kamila recusando-se a abrir
+  a porta; o protótipo mantém a personagem no abrigo.
+- Há interações com o balcão, mesa posta e saída.
+
+Não foi definido que o café seja um santuário inviolável, que monstros nunca
+possam entrar em locais iluminados ou que exista um atendente específico.
+A segurança temporária desta cena não estabelece uma lei geral da Cidade.
+
+======================================================================
+11. HOMEM FERIDO, MONSTRO E ENCONTRO ATUAL
+======================================================================
+
+Homem — DEFINIDO:
+- Surge pela direita.
+- Está ensanguentado, desnorteado e um pouco insano.
+- Segura uma pistola calibre .457, conforme a grafia solicitada.
+- Dialoga brevemente e atira contra o monstro.
+- É devorado, permitindo a fuga da garota.
+
+Homem — PROTÓTIPO:
+- Não possui nome próprio; aparece como “HOMEM FERIDO”.
+- Sprite de adulto com roupa em tons escuros/acinzentados, sangue no braço
+  e no rosto, arma apontada para a esquerda durante os disparos.
+- Retrato simplificado usado na caixa de diálogo.
+- Origem dos ferimentos e história anterior ainda não foram definidas.
+
+Monstro — referência visual interpretada:
+- Humanoide muito alto, magro e quase esquelético.
+- Corpo escuro e estreito.
+- Membros extremamente longos, angulosos, com aspecto araneiforme.
+- Pescoço claro e alongado, curvado sobre o corpo.
+- Cabeça pequena e pálida, olhos escuros e boca aberta.
+- Silhueta muito maior que a de uma pessoa comum.
+
+Referência: image(20261021-143828).png.
+O desenho atual é feito em Canvas e é uma interpretação estilizada, não
+uma reprodução exata da imagem. A criatura ainda não tem nome, origem,
+espécie, poderes ou regras de percepção estabelecidas.
+
+ENCENAÇÃO IMPLEMENTADA
+1. Ao chegar ao cruzamento, o jogo enquadra a cena e bloqueia a movimentação.
+2. O homem vem da direita e a conversa começa.
+3. O monstro emerge lentamente pela esquerda.
+4. O homem manda Kamila voltar.
+5. Ele dispara três vezes; a criatura continua avançando.
+6. A criatura investe, derruba o homem e se curva sobre ele.
+7. O texto informa que ela o devora. A ação é estilizada, sem animação
+   detalhada de mutilação.
+8. O botão “FUGIR PARA O CAFÉ ↓” inicia a parte controlada pelo jogador.
+9. Kamila corre automaticamente; o jogador escolhe a direção.
+10. O monstro permanece ocupado por um curto intervalo e depois a persegue.
+11. Chegar à porta do Entreluz leva automaticamente ao interior.
+12. Se a criatura a alcançar, é possível repetir apenas a fuga, sem rever
+    toda a conversa, ou voltar ao menu.
+
+O tempo da perseguição não corre enquanto o jogador está lendo o diálogo
+que antecede a fuga. Outras interações da rua ficam suspensas durante ela.
+Objetivo exibido: “CORRA PARA O ENTRELUZ — Desça a rua e entre no café à direita.”
+
+Parâmetros atuais de balanceamento, todos provisórios:
+- Intervalo inicial em que a criatura fica ocupada: 2,4 segundos.
+- Velocidade de perseguição da criatura: 216 pixels de mundo por segundo.
+- Recálculo de caminho: aproximadamente a cada 0,32 segundo.
+- Captura: distância inferior a 29 pixels entre as posições de referência.
+- Entrada automática: distância inferior a 49 pixels da porta.
+- Três disparos roteirizados, aproximadamente em 0,15 / 0,62 / 1,14 segundo
+  da fase de tiros.
+
+O objetivo é uma fuga apertada, mas compreensível e possível. Esses números
+foram testados por simulação, não validados como balanceamento final com
+jogadores reais, teclado, mouse e celulares.
+
+======================================================================
+12. DIÁLOGOS PRINCIPAIS JÁ IMPLEMENTADOS
+======================================================================
+
+Estes textos são a versão atual do protótipo, não um roteiro irrevogável.
+A fala do Homem da Lua, na seção 6, foi especificada diretamente pelo criador.
+
+DESPERTAR
+Kamila: “O chão está gelado. Abro os olhos devagar. Por um instante, só consigo
+ouvir a minha respiração.”
+Kamila: “Apoio a mão no asfalto e me levanto. Não reconheço esta rua. ‘Olá?’”
+Kamila: “Espero alguns segundos. Nada. Talvez haja alguém no café iluminado.”
+
+CRUZAMENTO
+Kamila: “Esquerda… direita… Ei! Senhor? Onde estamos?”
+Narração: “Ele aperta o braço ensanguentado contra o corpo. A pistola .457
+treme na outra mão. Seus olhos procuram alguma coisa atrás dela.”
+Homem ferido: “Fala baixo. Você… você veio sozinha?”
+Kamila: “Eu acordei ali embaixo. Você está ferido. O que aconteceu?”
+Homem ferido: “Eu fechei a porta. Eu SEI que fechei. Não devia ter conseguido
+passar…”
+Kamila: “Quem não devia ter passado?”
+
+APARIÇÃO
+Narração: “À esquerda, membros longos demais se desdobram da névoa. O pescoço
+claro se curva acima das fachadas. A cabeça parece procurar o som da
+respiração.”
+Homem ferido: “Não fica parada. VOLTA!”
+
+ANTES DA FUGA
+Narração: “A criatura se dobra sobre o homem. O grito termina de repente.
+Enquanto ela o devora, o caminho de volta fica livre.”
+
+REFÚGIO
+Narração: “Kamila atravessa a porta de vidro e a fecha com o peso do corpo.
+O sino toca uma única vez.”
+Kamila: “Não… não olha para fora. Só respira.”
+Narração: “Algo roça o vidro. A sombra se demora do outro lado, depois se
+afasta. O zumbido das lâmpadas preenche o café.”
+Kamila: “Aquele homem… Eu não podia…”
+
+AO TENTAR SAIR DO ABRIGO
+Kamila: “Não. Ainda não vou abrir essa porta. Preciso recuperar o fôlego e
+entender o que aconteceu.”
+
+A referência a uma porta fechada e a impressão de que a criatura procura
+respiração são pistas do texto atual. Não significam que o funcionamento
+da criatura ou o acontecimento anterior já estejam definidos.
+
+======================================================================
+13. ESTADO TÉCNICO DO PROTÓTIPO
+======================================================================
+
+Arquivo executável principal: the-city.html.
+Formato: documento HTML autossuficiente, com CSS e JavaScript incorporados.
+Não há uma engine RPG Maker nem projeto Unity/Godot nesta versão.
+Não há backend ou necessidade de banco de dados para esta prévia.
+Pode ser aberto como arquivo HTML em um navegador moderno.
+
+Tecnologias e organização:
+- Canvas 2D para paisagem do menu, mapas, iluminação, névoa e sprites.
+- Elementos HTML/CSS para interface, seleção, configurações e diálogos.
+- Imagens de personagens e Homem da Lua incorporadas como dados no HTML.
+- Web Audio API para música, coro e efeitos.
+- requestAnimationFrame para os ciclos de atualização e desenho.
+- Mapas com obstáculos e pontos de interação.
+- Busca de caminho em grade para cliques e perseguição.
+- Máquina de estados para o encontro.
+
+Principais âncoras para localizar o código:
+- Raiz da interface: #the-city-menu.
+- composeScore: gera a trilha.
+- soundtrack: controla reprodução, volume e efeitos.
+- rpg: contém mapas, personagem, controles, diálogos e encontro.
+- streetMap / cafeMap: mapas de rua e café.
+- story: estado do encontro, homem e monstro.
+- beginEncounter / encounterConversation / updateStory: conduzem a cena.
+- startFlight / caught / reachCafe: fuga, falha e refúgio.
+- drawMan / drawMonster: desenhos dos personagens do encontro.
+- fits / findPath / move: colisão, caminho e movimento.
+- talk / next / ask / choices: diálogos e opções.
+- showArrival / scheduleReturn: apresentação do Homem da Lua e névoa.
+
+Fases atuais do encontro:
+explore, approach, conversation, reveal, warning, shots, attack,
+ready, flight, caught, shelter.
+
+Medidas de referência:
+- Unidade-base da grade: 32 pixels.
+- Rua originalmente desenhada em 40 × 48 unidades e comprimida na
+  horizontal para 28 × 48: área final de 896 × 1536 pixels.
+- Café: 24 × 21 unidades, ou 768 × 672 pixels.
+- Colisão do jogador usa um raio de referência de 7 pixels.
+
+Atenção à compressão horizontal da rua: alterações de geometria devem
+manter arte, colisões, interações, luzes e posições sincronizadas.
+
+Pausa e continuidade:
+- A sequência do encontro usa o relógio do jogo e pausa ao ocultar a aba
+  ou retornar ao menu.
+- Diálogos pausam o avanço das fases que dependem de leitura.
+- A sessão mantém o estado em memória ao retornar ao menu e reabrir Kamila.
+- Não há sistema persistente de salvar/carregar progresso implementado;
+  recarregar a página reinicia o estado.
+
+Materiais auxiliares existentes no ambiente de desenvolvimento anterior:
+- rpg-script.txt: fonte de trabalho do trecho RPG.
+- rpg-style.txt: estilos do trecho RPG.
+- the-city-kamila-street.html: fragmento usado na montagem.
+- build-city.py: montagem do HTML a partir dos trechos de trabalho.
+- Arquivos de testes e renderizações para verificação interna.
+
+Esses auxiliares não acompanham automaticamente este TXT. O the-city.html
+salvo é a referência executável. Se os auxiliares forem utilizados, verificar
+sua sincronização antes de reconstruir para não sobrescrever mudanças novas.
+
+======================================================================
+14. VALIDAÇÃO REALIZADA E LIMITES CONHECIDOS
+======================================================================
+
+Verificações realizadas na última implementação:
+- Sintaxe do JavaScript.
+- Fluxos de menu, seleção dos três personagens, apresentação do Homem da
+  Lua, transição por névoa, configurações e encerramento.
+- Movimentação, corrida com aumento de 8%, colisões e interações da rua.
+- Entrada e saída normais do café e alcance dos pontos de interação.
+- Sequência completa do encontro e seus três disparos.
+- Captura quando Kamila não foge e funcionamento da nova tentativa.
+- Fuga simulada bem-sucedida pela rua até o café.
+- Bloqueio de saída do café após o refúgio.
+- Renderizações internas do café e do encontro para inspeção visual.
+
+Limite importante: a tentativa de abrir o navegador automatizado falhou
+por uma restrição do ambiente. Portanto, os testes de lógica e as imagens
+renderizadas NÃO equivalem a uma validação completa da experiência real
+em navegador. Não afirmar que houve teste visual integral de ponta a ponta.
+
+Pontos a verificar quando houver navegador disponível:
+- Fluxo real do começo até o café, sem atalhos de depuração.
+- Texto, foco, botões e legibilidade com resoluções diferentes.
+- Controle da fuga por teclado, clique e toque.
+- Clareza do caminho de volta e localização da porta.
+- Pausa ao alternar abas e retomada da sessão.
+- Música, volume, efeitos e movimento reduzido.
+- Colisões e caminho da criatura nos contornos dos obstáculos.
+- Possibilidade de completar a fuga na primeira tentativa por quem não
+  conhece o mapa; diferenciar tensão de falta de orientação.
+
+======================================================================
+15. O QUE AINDA NÃO ESTÁ DESENVOLVIDO OU DEFINIDO
+======================================================================
+
+- Continuação da história depois do abrigo no Entreluz.
+- Rotas jogáveis de Alanderson e Chris.
+- Sistema de combate humano ou contra criaturas.
+- Inventário, equipamentos, recursos, dano e progressão.
+- Sistema completo de investigação/puzzles.
+- Escolhas de VN com consequências e ramificações persistentes.
+- Save/load entre sessões.
+- Outros bairros, interiores e capítulos.
+- História da Cidade e do Homem da Lua.
+- Nome, natureza e regras do monstro.
+- Identidade e passado do homem ferido.
+- Personagens do café, se houver.
+- Duração total, finais, classificação indicativa e modelo de distribuição.
+- Pipeline definitivo de arte, animação e produção.
+
+Esses itens são lacunas, não autorização para que cada agente tome decisões
+incompatíveis por conta própria. Propostas devem ser apresentadas como
+propostas e avaliadas à luz da visão do criador.
+
+======================================================================
+16. DIRETRIZES PARA OS PRÓXIMOS AGENTES
+======================================================================
+
+1. Preserve o trabalho existente. Não recrie o menu ou substitua a tecnologia
+   sem necessidade concreta ou pedido do criador.
+2. Leia o código antes de editar; não deduza a implementação só por este TXT.
+3. Mantenha os três nomes, os textos solicitados e o gesto/aparência do
+   Homem da Lua. Não reinserir textos removidos.
+4. Mantenha a floresta fechada sem pinheiros e a escala monumental da cidade.
+5. Preserve o contraste entre a rua fria e o café de iluminação quente.
+6. Não confunda a pixel art atual com a conclusão da direção de arte anime.
+   O protótipo é uma etapa; refinamentos devem manter coerência entre retratos,
+   sprites, cenários e interface.
+7. Não transforme criaturas em inimigos comuns de combate frequente.
+8. Não torne combates humanos triviais apenas porque são mais acessíveis.
+9. Evite excesso de explicações sobre o mistério antes de construir a
+   experiência de isolamento e descoberta.
+10. Priorize leitura visual, controles e colisões. Névoa e escuridão devem
+    produzir atmosfera sem esconder ações essenciais.
+11. Ao alterar a perseguição, preserve tempo de leitura, checkpoint e
+    entrada fácil no café. Teste a experiência, não apenas os números.
+12. Não supor que luz ou portas impedem monstros em toda a narrativa.
+13. Não inventar detalhes visuais de anexos ausentes. Pedir a referência
+    quando a fidelidade visual depender dela.
+14. Diferencie o que foi testado por código do que foi observado no navegador.
+15. Informe o que mudou, como foi validado e eventuais limitações reais.
+
+Sugestão de próximas etapas — não é um escopo adicional já aprovado:
+A. Validar em navegador e ajustar o trecho completo até o Entreluz.
+B. Refinar arte/animações e a sensação de perseguição com base no teste.
+C. Definir com o criador a primeira cena dentro do café após a fuga.
+D. Prototipar separadamente o combate humano, antes de integrá-lo à história.
+E. Expandir progressivamente as rotas e os sistemas com critérios comuns.
+
+======================================================================
+17. REFERÊNCIAS E MATERIAL PARA ENVIAR JUNTO
+======================================================================
+
+Fonte das decisões criativas: histórico de pedidos do criador neste projeto.
+Fonte do estado implementado: the-city.html, prévia 0.10, versão salva 9.
+Os números, estados e diálogos técnicos foram conferidos no arquivo atual.
+
+Arquivo atual do protótipo, na conta de origem:
+https://chatgpt.com/library?file_id=libfile_1655841098a0819194dcbd5408df08e6&account_id=personal
+
+Esse endereço pode exigir acesso à conta de origem. Para outro agente,
+anexe o arquivo HTML em vez de depender somente do link.
+
+Pacote recomendado de contexto:
+- Este TXT.
+- the-city.html.
+- Referência visual do Homem da Lua.
+- Referências visuais de Alanderson, Chris e Kamila.
+- Referência do café.
+- Referência do monstro alto.
+
+Não há fontes externas necessárias para justificar a ficção criada aqui.
+As referências visuais e o código do próprio projeto são as fontes primárias
+para continuar o desenvolvimento sem perder as decisões anteriores.
+
+======================================================================
+18. MENSAGEM DE INÍCIO SUGERIDA PARA OUTRO AGENTE
+======================================================================
+
+“Estou desenvolvendo The City, um jogo de terror/suspense para navegador,
+com exploração no estilo RPG Maker, elementos de visual novel e combate
+previsto. Leia o contexto anexo e o the-city.html antes de trabalhar.
+Preserve as decisões estabelecidas e diferencie propostas de fatos do
+projeto. A abertura jogável atual é a de Kamila: despertar, explorar a rua,
+encontrar o homem ferido, ver o monstro surgir pela esquerda e fugir até o
+café Entreluz. O sistema de combate ainda não existe. Sua tarefa específica
+nesta etapa é: [DESCREVER A TAREFA].”
+
+FIM DO DOCUMENTO
