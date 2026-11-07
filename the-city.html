@@ -181,7 +181,7 @@
 #the-city-menu .city-rpg[data-encounter=flight] .rpg-objective>span{color:#f1d7af}
 #the-city-menu .city-rpg[data-encounter=flight] .rpg-objective{background:#191c19db;padding:12px 15px;border-left:2px solid #d1b584}
 #the-city-menu .city-rpg[data-encounter=caught] .rpg-dialog{border-color:#9f786b}
-#the-city-menu .rpg-portrait{image-rendering:auto}
+#the-city-menu .rpg-portrait{image-rendering:auto}#the-city-menu .rpg-portrait.is-kamila{filter:none}
 #the-city-menu .rpg-fade{position:absolute;inset:0;pointer-events:none;background:#030607;opacity:0}
 #the-city-menu .city-rpg[data-opening=true] .rpg-fade{animation:rpg-wake 2s ease-out both}
 @keyframes rpg-wake{from{opacity:1}to{opacity:0}}
@@ -1161,7 +1161,7 @@ const rpg=(()=>{
  function phase(name){story.phase=name;story.time=0;surface.dataset.encounter=name;surface.dataset.cinematic=String(cinematicPhases.has(name));clearInput();near=null;$('.rpg-near').textContent='';interactButton.disabled=true;}
  function sound(kind){if(!soundtrack.effect)return;const src=kind==='shot'?story.man:kind==='creature'?story.monster:null;soundtrack.effect(kind,{pan:src?Math.max(-.8,Math.min(.8,(src.x-player.x)/350)):0})}
  function sayLine(entry){const row=typeof entry==='string'?{speaker:'KAMILA CZARNY',text:entry}:entry;textBox.textContent=row.text;$('.rpg-speaker').textContent=row.speaker;lineSound(row.text);
-  const portrait=$('.rpg-portrait');portrait.hidden=row.speaker==='NARRAÇÃO';portrait.src=row.speaker==='HOMEM FERIDO'?manPortrait:kamilaPortrait;portrait.alt=row.speaker==='HOMEM FERIDO'?'Homem ensanguentado, com uma pistola .457':'Kamila Czarny';
+  const portrait=$('.rpg-portrait');portrait.hidden=row.speaker==='NARRAÇÃO';portrait.src=row.speaker==='HOMEM FERIDO'?manPortrait:kamilaPortrait;portrait.alt=row.speaker==='HOMEM FERIDO'?'Homem ensanguentado, com uma pistola .457':'Kamila Czarny';portrait.classList.toggle('is-kamila',row.speaker!=='HOMEM FERIDO');
  }
  // Falas que descrevem um som também o fazem tocar.
  function lineSound(text){const cues=[['Bato de leve','knockMetal'],['Bato no vidro','knockGlass'],['Toco a campainha','doorbell'],['Algo roça o vidro','glassScrape']];for(const [k,s] of cues)if(text.includes(k))fxPlay(s,{vol:.9})}
