@@ -1,0 +1,125 @@
+THE CITY — PEDIDO DE ARTE: CIDADE DO MENU PRINCIPAL
+Versão 1 — 7 de novembro de 2026 (prévia 0.25)
+Para gerar na mesma ferramenta e no mesmo traço da Kamila, do Homem Ferido e da rua.
+
+======================================================================
+1. PARA QUE SERVE
+======================================================================
+
+É o fundo animado da tela inicial (atrás de "THE CITY.", "O que você acha que há
+além da névoa?" e dos botões Iniciar / Configurações / Sair). Hoje a cidade é
+desenhada por código; a ideia é trocar pela sua arte e manter a animação por
+cima dela: janelas que acendem e apagam devagar, luz pulsando no alto das três
+torres e névoa andando.
+
+Para eu conseguir animar, a arte precisa vir em CAMADAS separadas (seção 4).
+
+======================================================================
+2. O QUE A CENA PRECISA TER (decisões já registradas no projeto)
+======================================================================
+
+- Cidade gigantesca, vista de longe, à noite. Deve transmitir magnitude real;
+  nunca parecer um bairro pequeno.
+- Muitas casas, prédios médios e prédios grandes, com altura e densidade
+  crescendo em direção ao centro.
+- Três torres imensas no centro, cada uma com uma luz pálida no alto.
+- Luzes pálidas e "mortas" nas janelas (a animação acende e apaga por cima).
+- Névoa discreta sobre a paisagem.
+- Floresta densa e fechada cercando a cidade até onde a vista alcança.
+  SEM PINHEIROS: só árvores de copas largas.
+- Uma estrada de terra aparecendo discretamente, vindo do primeiro plano até o
+  perímetro da cidade.
+- Clima: terror e suspense, sombrio, monótono, acinzentado, frio, com sensação de
+  espaço liminar. Nada de lua no céu, nenhum texto, nenhuma pessoa.
+
+======================================================================
+3. ESTILO (resumo de docs/DIRECAO_DE_ARTE.txt)
+======================================================================
+
+- Anime pixel art de alta resolução, coerente com a Kamila e com a rua: formas
+  estilizadas, contornos escuros com matiz (carvão, azul-noite, violeta), sombras
+  em planos definidos, detalhe seletivo.
+- Prédios: face principal chapada, lateral em sombra, uma faixa de luz no topo;
+  janelas organizadas em grade e andares (não pontos soltos).
+- Copas da floresta em tufos redondos agrupados, como as árvores da rua.
+- Céu em faixas de cor, sem degradê borrado e sem pontilhado/ruído.
+- Paleta fria: azul-noite, cinza-violeta, ardósia, verdes pouco saturados.
+  Quase nada quente: no máximo algumas poucas janelas âmbar.
+- Sem textura fotográfica, sem granulado, sem desfoque.
+
+======================================================================
+4. ENTREGA TÉCNICA
+======================================================================
+
+Tamanho: 1920 × 1200 px (16:10), PNG. Pixel art com o "pixel" de arte em torno de
+2 px (ou seja, uma arte de ~960 × 600 ampliada 2× sem suavização). Se a ferramenta
+gerar em outro tamanho, mande o maior possível e diga o tamanho; eu normalizo.
+
+Todas as camadas com EXATAMENTE o mesmo tamanho e alinhadas pixel a pixel:
+
+  A) CIDADE_BASE.png — a cena inteira, opaca, com TODAS as janelas apagadas
+     (a grade das janelas pode aparecer escura), sem as luzes das torres acesas
+     e com névoa muito leve ou nenhuma.
+  B) CIDADE_JANELAS.png — fundo TRANSPARENTE, só as janelas acesas: pontos
+     pálidos frios (branco-azulado), poucos âmbar; cada janela um bloquinho de
+     1 a 2 pixels de arte; mais janelas no centro, poucas na periferia.
+     Algo entre 600 e 2000 janelas.
+  C) CIDADE_TORRES.png — fundo TRANSPARENTE, só as três luzes no alto das torres
+     (pequenas, pálidas, com um halo curto).
+  D) (opcional) CIDADE_NEVOA.png — fundo transparente, uma faixa de névoa macia
+     na altura da base da cidade, que possa se repetir na horizontal sem emenda.
+     Se não vier, eu mantenho a névoa feita por código.
+  E) (opcional) CIDADE_MONTADA.png — A + B + C juntas, só para referência.
+
+======================================================================
+5. COMPOSIÇÃO NA TELA (onde o menu fica)
+======================================================================
+
+- O título e os botões ocupam o terço ESQUERDO da tela. Essa área deve ser calma
+  e escura (céu e floresta), sem torres nem detalhes importantes.
+- O centro da cidade (as três torres) fica em torno de 2/3 da largura
+  (x ≈ 1270 de 1920), um pouco acima do meio da altura.
+- Linha de referência: o céu ocupa mais ou menos a metade de cima; a base da
+  cidade fica em torno de 55–65% da altura; a floresta ocupa o terço de baixo e
+  a estrada sobe por ela até a cidade.
+- No celular a imagem é cortada nos lados: tudo o que é essencial (as três
+  torres e o miolo da cidade) deve caber entre ~55% e ~80% da largura.
+
+======================================================================
+6. PEDIDO PRONTO PARA A FERRAMENTA
+======================================================================
+
+Anexar como referência de estilo: heroina_sprites.png (Kamila),
+HOMEM_FERIDO_SPRITES.png e a imagem da rua (arte/referencias/rua_entreluz.webp).
+
+"Crie uma paisagem noturna em anime pixel art de alta resolução, no mesmo traço
+das referências anexadas (contornos escuros coloridos, sombras em planos
+definidos, detalhe seletivo, sem textura fotográfica, sem granulado, sem
+desfoque). Uma cidade GIGANTESCA vista de longe, à noite: muitas casas, prédios
+médios e grandes, ficando mais altos e densos em direção ao centro, com três
+torres imensas no centro. Prédios com face chapada, lateral em sombra e faixa de
+luz no topo; janelas em grade. A cidade é cercada por uma floresta densa e
+fechada de árvores de copas largas (NENHUM pinheiro), que vai até o horizonte e
+ocupa o primeiro plano; uma estrada de terra discreta sobe pela floresta até a
+borda da cidade. Céu noturno frio em faixas de cor, sem lua, com nuvens baixas.
+Névoa muito leve. Clima de terror e suspense, sombrio, monótono, acinzentado e
+frio; paleta de azul-noite, cinza-violeta, ardósia e verdes pouco saturados.
+Nenhum texto, nenhuma pessoa. Formato 16:10, 1920 × 1200. O terço esquerdo deve
+ser calmo e escuro (fica atrás do título e dos botões); o centro da cidade fica
+a cerca de 2/3 da largura.
+Gere a cena com TODAS AS JANELAS APAGADAS e as luzes das torres apagadas
+(camada base). Depois, no mesmo enquadramento e tamanho, gere uma camada de fundo
+transparente só com as janelas acesas (pontos pálidos frios, poucos âmbar) e
+outra só com as três luzes no alto das torres."
+
+======================================================================
+7. O QUE EU FAÇO QUANDO CHEGAR
+======================================================================
+
+- A camada base vira o fundo do menu, no mesmo enquadramento de hoje.
+- Separo as janelas acesas em grupos e animo cada grupo devagar (acender, apagar,
+  oscilar), respeitando as opções "Animações do cenário" e "Luzes oscilantes".
+- As três luzes das torres pulsam como hoje.
+- A névoa passa por cima (a sua camada, se vier, ou a de código).
+- Confiro no computador e no celular, meço o tempo de carregamento e registro tudo
+  no relatório da versão.
