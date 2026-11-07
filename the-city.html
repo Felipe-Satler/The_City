@@ -15,7 +15,7 @@
       <button type="button" class="city-menuitem cursor-interaction" data-action="exit"><span class="city-number">03</span><span>SAIR</span><span class="city-arrow">↗</span></button>
     </nav>
   </main>
-  <footer class="city-footer"><span>PRÉVIA CONCEITUAL / 0.17</span><button type="button" class="city-sound-toggle cursor-interaction" aria-pressed="false">ATIVAR SOM</button><span>A CIDADE PERMANECE.</span></footer>
+  <footer class="city-footer"><span>PRÉVIA CONCEITUAL / 0.18</span><button type="button" class="city-sound-toggle cursor-interaction" aria-pressed="false">ATIVAR SOM</button><span>A CIDADE PERMANECE.</span></footer>
   <section class="city-rpg" hidden aria-label="Exploração de Kamila">
     <canvas class="rpg-canvas" tabindex="0" aria-label="Mapa explorável. Use WASD ou as setas para caminhar. E ou Enter para interagir. No celular, use os controles na tela."></canvas>
     <header class="rpg-header"><div><span class="rpg-kicker">THE CITY / KAMILA CZARNY</span><h2 class="rpg-location">A rua sem nome</h2></div><div class="rpg-topbuttons"><button type="button" class="rpg-sound">ATIVAR SOM</button><button type="button" data-rpg="menu">MENU ↗</button></div></header>
@@ -169,7 +169,7 @@
 #the-city-menu .rpg-pad [data-dir=down]{grid-column:2;grid-row:2}
 #the-city-menu .rpg-pad [data-dir=right]{grid-column:3;grid-row:2}
 #the-city-menu .rpg-dialog{position:absolute;bottom:24px;left:4%;right:4%;z-index:3;background:#101a1bf5;border:1px solid #818f80;box-shadow:0 12px 65px #000a;display:flex;gap:24px;padding:24px;min-height:165px}
-#the-city-menu .rpg-portrait{width:90px;height:116px;object-fit:cover;object-position:center 20%;filter:saturate(.5);border:1px solid #64725f}
+#the-city-menu .rpg-portrait{width:90px;height:116px;object-fit:cover;object-position:center 20%;border:1px solid #64725f}
 #the-city-menu .rpg-dialog-body{flex:1;min-width:0}
 #the-city-menu .rpg-speaker{font:10px/1.4 'Courier New',monospace;letter-spacing:2.5px;color:#b2c5ae}
 #the-city-menu .rpg-dialog-text{font:17px/1.65 Georgia,serif;margin:10px 0 18px;color:#d7ded4;max-width:900px}
@@ -181,7 +181,7 @@
 #the-city-menu .city-rpg[data-encounter=flight] .rpg-objective>span{color:#f1d7af}
 #the-city-menu .city-rpg[data-encounter=flight] .rpg-objective{background:#191c19db;padding:12px 15px;border-left:2px solid #d1b584}
 #the-city-menu .city-rpg[data-encounter=caught] .rpg-dialog{border-color:#9f786b}
-#the-city-menu .rpg-portrait{image-rendering:auto}#the-city-menu .rpg-portrait.is-kamila{filter:none}
+#the-city-menu .rpg-portrait{image-rendering:auto}
 #the-city-menu .rpg-fade{position:absolute;inset:0;pointer-events:none;background:#030607;opacity:0}
 #the-city-menu .city-rpg[data-opening=true] .rpg-fade{animation:rpg-wake 2s ease-out both}
 @keyframes rpg-wake{from{opacity:1}to{opacity:0}}
@@ -1061,7 +1061,7 @@ const rpg=(()=>{
   if(story.man.visible&&!story.man.fallen)put(LS.soft,story.man.x,story.man.y-22,70,.9,.45*story.man.alpha);
   // Uma luz neutra leve sobre a criatura, para ela continuar pálida mesmo na penumbra.
   if(story.monster.visible)put(LS.soft,story.monster.x,story.monster.y-110,150,1.15,.34*story.monster.alpha);
-  if(story.phase==='shots'&&story.flash>0&&motion)put(LS.flash,story.man.x-30,story.man.y-38,170,.8,story.flash/.11);
+  if(story.phase==='shots'&&story.flash>0&&motion)put(LS.flash,story.man.x+manMuzzle[0]-1,story.man.y+manMuzzle[1]+2,170,.8,story.flash/.11);
   g.globalAlpha=1;g.setTransform(1,0,0,1,0,0);blitScaled(g,scaledArt(glowArt,RW,RH,z),Math.round(camera.x)*z,Math.round(camera.y)*z,lw,lh);
   g.globalCompositeOperation='source-over';
  }
@@ -1161,7 +1161,7 @@ const rpg=(()=>{
  function phase(name){story.phase=name;story.time=0;surface.dataset.encounter=name;surface.dataset.cinematic=String(cinematicPhases.has(name));clearInput();near=null;$('.rpg-near').textContent='';interactButton.disabled=true;}
  function sound(kind){if(!soundtrack.effect)return;const src=kind==='shot'?story.man:kind==='creature'?story.monster:null;soundtrack.effect(kind,{pan:src?Math.max(-.8,Math.min(.8,(src.x-player.x)/350)):0})}
  function sayLine(entry){const row=typeof entry==='string'?{speaker:'KAMILA CZARNY',text:entry}:entry;textBox.textContent=row.text;$('.rpg-speaker').textContent=row.speaker;lineSound(row.text);
-  const portrait=$('.rpg-portrait');portrait.hidden=row.speaker==='NARRAÇÃO';portrait.src=row.speaker==='HOMEM FERIDO'?manPortrait:kamilaPortrait;portrait.alt=row.speaker==='HOMEM FERIDO'?'Homem ensanguentado, com uma pistola .457':'Kamila Czarny';portrait.classList.toggle('is-kamila',row.speaker!=='HOMEM FERIDO');
+  const portrait=$('.rpg-portrait');portrait.hidden=row.speaker==='NARRAÇÃO';portrait.src=row.speaker==='HOMEM FERIDO'?manPortrait:kamilaPortrait;portrait.alt=row.speaker==='HOMEM FERIDO'?'Homem ensanguentado, com uma pistola .457':'Kamila Czarny';
  }
  // Falas que descrevem um som também o fazem tocar.
  function lineSound(text){const cues=[['Bato de leve','knockMetal'],['Bato no vidro','knockGlass'],['Toco a campainha','doorbell'],['Algo roça o vidro','glassScrape']];for(const [k,s] of cues)if(text.includes(k))fxPlay(s,{vol:.9})}
@@ -1226,111 +1226,266 @@ const rpg=(()=>{
   }
  }
  // ================= PERSONAGENS DO ENCONTRO (prévia 0.12) =================
- // Homem ferido: pixel art no mesmo padrão de Kamila (contorno escuro, quadros prontos).
+ // Homem ferido (0.18): redesenhado no estilo da Kamila (ver bloco "Homem Ferido (0.18)" abaixo).
  // Criatura: técnica de propósito diferente do resto do jogo, para causar desconforto.
  // Ela é desenhada em resolução de tela, sem grade de pixel, granulada e borrada,
  // e muda de pose em saltos ("stop-motion") enquanto o resto do mundo se move suave.
- const MAN_AX=32,MAN_AY=58;
- const manPal={outline:'#22252a',hair:'#3a322d',hairLight:'#5d5046',skin:'#c7a189',skinShade:'#9c7a67',skinLight:'#dfbea4',coat:'#4c524e',coatShade:'#363b38',coatLight:'#6b726c',shirt:'#b7b4a6',shirtShade:'#8b887d',blood:'#7b2024',bloodLight:'#a9342f',bloodDark:'#4a1215',pants:'#30353c',pantsShade:'#252a30',boot:'#1b1e20',bootLight:'#3d4347',gun:'#191d20',gunLight:'#6c757a',eye:'#e6e1d4'};
  function newCanvas(w,h){const a=document.createElement('canvas');a.width=w;a.height=h;return a}
- function manFrame(pose,phase=0){
-  const art=newCanvas(56,64),g=art.getContext('2d'),p=manPal;
-  const box=(x,y,w,h,col)=>{g.fillStyle=p[col]||col;g.fillRect(MAN_AX+x,MAN_AY+y,w,h)};
-  const walk=pose==='walk',bob=walk&&phase%2===1?1:0,stride=walk?[-3,0,3,0][phase]:0,shake=pose==='idle'&&phase===1?1:0;
-  // Pernas: a de trás arrasta um pouco (ele está mancando).
-  function leg(top,foot,far){for(let y=-18;y<-3;y++){const t=(y+18)/15,xx=Math.round(top+(foot-top)*t);box(xx-1,y,1,1,'outline');box(xx,y,3,1,far?'pantsShade':'pants');box(xx+3,y,1,1,'outline')}
-   box(foot-4,-4,7,1,'outline');box(foot-4,-3,7,3,'boot');box(foot-5,-3,1,3,'outline');box(foot+3,-3,1,3,'outline');box(foot-3,-3,2,1,'bootLight')}
-  leg(1,1-Math.round(stride*.5),true);leg(-1,-1+stride,false);
-  box(0,-12,1,2,'bloodDark');box(-1,-7,1,1,'bloodDark');
-  g.save();g.translate(0,bob);
-  // Braço da arma (o direito, mais longe da câmera).
-  if(pose==='aim'||pose==='recoil'){const rx=pose==='recoil'?2:0,ry=pose==='recoil'?-1:0;
-   box(-16+rx,-39+ry,12,1,'outline');box(-16+rx,-38+ry,12,3,'coatShade');box(-16+rx,-35+ry,12,1,'outline');box(-15+rx,-38+ry,10,1,'coat');
-   box(-20+rx,-39+ry,4,4,'outline');box(-19+rx,-38+ry,3,3,'skin');box(-19+rx,-38+ry,1,1,'skinLight');
-   box(-29+rx,-41+ry,11,1,'outline');box(-29+rx,-40+ry,11,3,'gun');box(-28+rx,-40+ry,8,1,'gunLight');box(-29+rx,-37+ry,11,1,'outline');box(-29+rx,-42+ry,1,1,'gun');
-   box(-21+rx,-37+ry,3,5,'gun');box(-22+rx,-37+ry,1,5,'outline');box(-18+rx,-37+ry,1,5,'outline')}
-  else{const s=shake;box(-8,-38,1,11,'outline');box(-7,-38,3,11,'coatShade');box(-7,-38,1,9,'coat');
-   box(-9,-27+s,4,4,'outline');box(-8,-27+s,3,3,'skin');
-   box(-14,-26+s,7,1,'outline');box(-14,-25+s,7,2,'gun');box(-13,-25+s,5,1,'gunLight');box(-14,-23+s,7,1,'outline');box(-9,-24+s,2,4,'gun');box(-10,-24+s,1,4,'outline')}
-  // Casaco.
-  box(-6,-41,12,1,'outline');
-  for(let y=-40;y<-15;y++){const lean=y<-28?0:-1;box(-7+lean,y,1,1,'outline');box(-6+lean,y,12-lean,1,'coat');box(6,y,1,1,'outline')}
-  box(-7,-15,14,1,'outline');box(-6,-40,2,22,'coatLight');box(3,-40,3,24,'coatShade');
-  box(-5,-40,2,9,'shirt');box(-5,-34,1,3,'blood');box(-4,-37,1,2,'bloodLight');box(-5,-31,2,1,'coatShade');
-  box(-1,-30,1,13,'coatShade');
-  // Braço ferido (o esquerdo, perto da câmera), apertado contra a barriga.
-  box(0,-40,5,1,'outline');box(0,-39,1,10,'outline');box(5,-39,1,10,'outline');box(1,-39,4,10,'coatShade');box(1,-39,1,8,'coat');
-  box(2,-36,2,4,'blood');box(3,-35,1,2,'bloodLight');box(1,-31,3,2,'bloodDark');
-  box(-6,-30,11,1,'outline');box(-6,-29,10,3,'coatShade');box(-6,-26,11,1,'outline');box(-4,-29,6,1,'coat');
-  box(-8,-30,3,5,'outline');box(-7,-29,2,3,'skin');box(-7,-29,2,2,'bloodLight');box(-6,-27,1,1,'blood');
-  box(-2,-28,3,2,'blood');box(-1,-25,1,3,'bloodDark');
-  // Cabeça de perfil, olhando para a esquerda.
-  box(-5,-57,10,1,'outline');box(-6,-56,1,15,'outline');box(5,-56,1,13,'outline');box(-5,-42,9,1,'outline');box(4,-43,1,1,'outline');
-  box(-5,-56,10,14,'skin');box(-7,-50,1,3,'outline');box(-6,-50,1,2,'skin');
-  box(-5,-57,10,4,'hair');box(0,-53,5,8,'hair');box(-5,-53,3,1,'hair');box(-5,-52,1,1,'hair');
-  box(-4,-58,2,1,'hair');box(0,-59,2,2,'hair');box(3,-58,2,1,'hair');box(5,-55,1,4,'hair');
-  box(-4,-59,2,1,'outline');box(0,-60,2,1,'outline');box(3,-59,2,1,'outline');box(6,-55,1,4,'outline');box(-6,-58,1,2,'outline');
-  box(-3,-56,3,1,'hairLight');box(1,-57,1,2,'hairLight');box(3,-54,1,3,'hairLight');
-  box(-5,-51,2,1,'#2a2321');box(-5,-50,2,1,'eye');box(-5,-50,1,1,'outline');box(-5,-49,2,1,'skinShade');
-  box(-4,-48,2,2,'skinLight');box(0,-50,2,3,'skinShade');box(1,-49,1,1,'outline');
-  box(-5,-45,2,1,'#5b3a36');box(-4,-44,6,2,'skinShade');box(-3,-43,1,1,'#7d6355');box(0,-44,1,1,'#7d6355');
-  box(-3,-55,2,1,'bloodLight');box(-2,-54,1,4,'blood');box(-3,-50,1,3,'blood');box(-3,-47,1,2,'bloodDark');
-  box(-3,-42,4,2,'skinShade');
-  g.restore();
-  return art;
- }
- function manFallenFrame(){
-  const art=newCanvas(64,30),g=art.getContext('2d'),p=manPal,ax=32,ay=20;
-  const box=(x,y,w,h,col)=>{g.fillStyle=p[col]||col;g.fillRect(ax+x,ay+y,w,h)};
-  box(3,-10,19,9,'outline');box(4,-9,17,3,'pants');box(4,-5,17,3,'pantsShade');box(21,-11,5,5,'outline');box(21,-6,5,5,'outline');box(22,-10,3,3,'boot');box(22,-5,3,3,'boot');
-  box(-15,-13,20,14,'outline');box(-14,-12,18,12,'coat');box(-14,-12,18,2,'coatLight');box(-14,-2,18,2,'coatShade');
-  box(-12,-8,16,3,'shirt');box(-7,-9,7,5,'blood');box(-6,-8,3,2,'bloodLight');box(-1,-6,3,2,'bloodDark');
-  for(let i=0;i<7;i++){box(-12-i,-14-i,4,4,'outline');box(-11-i,-13-i,2,2,'coatShade')}box(-20,-22,4,4,'outline');box(-19,-21,2,2,'skin');
-  box(-5,0,10,4,'outline');box(-4,1,7,2,'coatShade');box(3,1,3,2,'skin');box(3,1,2,1,'bloodLight');
-  box(-26,-12,12,11,'outline');box(-25,-11,10,9,'skin');box(-25,-11,4,9,'hair');box(-21,-11,1,2,'hair');box(-26,-9,1,5,'hair');
-  box(-19,-9,2,1,'#2a2321');box(-19,-5,2,1,'#2a2321');box(-16,-8,1,3,'skinShade');box(-18,-7,1,1,'#5b3a36');
-  box(-21,-10,1,4,'blood');box(-22,-7,2,1,'bloodLight');
-  box(-34,-3,8,1,'outline');box(-34,-2,8,2,'gun');box(-33,-2,5,1,'gunLight');box(-28,0,2,3,'gun');
-  return art;
- }
- const manFrames={walk:[0,1,2,3].map(i=>manFrame('walk',i)),idle:[manFrame('idle',0),manFrame('idle',1)],aim:manFrame('aim'),recoil:manFrame('recoil'),fallen:manFallenFrame()};
+ // ===== Homem Ferido (0.18): redesenhado no estilo da Kamila =====
+ // Desenhado em alta densidade (MD pixels de arte por pixel de mundo, perto dos 3,35 da folha da Kamila):
+ // cada parte do corpo recebe sombreamento chapado (base, sombra, luz) e cada grupo ganha contorno escuro próprio.
+ // Ele está sempre de perfil para a esquerda: vem pela direita e aponta para a criatura à esquerda.
+ const MD=3.2,MW=216,MH=234,MAX=120,MAY=214;
+ const man2={line:'#17181c',skin:'#d6ae97',skinS:'#ad8574',skinL:'#ebcab4',skinD:'#87645a',
+  hair:'#3a302b',hairS:'#231c19',hairL:'#5f4d43',coat:'#4b524f',coatS:'#343a39',coatL:'#68706b',coatD:'#262b2b',
+  shirt:'#c0bcb0',shirtS:'#8f8b81',pants:'#2e333a',pantsS:'#20242a',pantsL:'#444b54',boot:'#1c1e21',bootL:'#454b50',
+  blood:'#8c1f25',bloodL:'#bb3a31',bloodD:'#4c0f14',gun:'#1d2124',gunS:'#0e1012',gunL:'#77828a',eyeW:'#ece6da',iris:'#4a5149'};
+ function mLayer(w=MW,h=MH,ax=MAX,ay=MAY){const cv=newCanvas(w,h),g=cv.getContext('2d');g.translate(ax,ay);g.lineCap='round';g.lineJoin='round';return {cv,g}}
+ // Pinta uma forma (desenhada por fn) com base, faixa de sombra do lado oposto à luz e filete de luz do lado da luz.
+ function mCel(fn,base,shade,light,s=[5,4],l=[-2,-3],w=MW,h=MH,ax=MAX,ay=MAY){
+  const m=mLayer(w,h,ax,ay);m.g.fillStyle=m.g.strokeStyle='#000';fn(m.g);
+  const tint=col=>{const t=newCanvas(w,h),tg=t.getContext('2d');tg.drawImage(m.cv,0,0);tg.globalCompositeOperation='source-in';tg.fillStyle=col;tg.fillRect(0,0,w,h);tg.globalCompositeOperation='source-over';return t};
+  const out=tint(base),og=out.getContext('2d');
+  for(const [col,d] of [[shade,s],[light,l]])if(col){const t=tint(col),tg=t.getContext('2d');tg.globalCompositeOperation='destination-out';tg.drawImage(m.cv,-d[0],-d[1]);og.drawImage(t,0,0)}
+  return out}
+ // Tubo afinando (membros): círculos nas juntas ligados por quadriláteros.
+ function mTube(g,pts,ws){for(let i=0;i<pts.length;i++){g.beginPath();g.arc(pts[i][0],pts[i][1],ws[i]/2,0,Math.PI*2);g.fill()}
+  for(let i=1;i<pts.length;i++){const [x0,y0]=pts[i-1],[x1,y1]=pts[i],a=Math.atan2(y1-y0,x1-x0)+Math.PI/2,r0=ws[i-1]/2,r1=ws[i]/2,c=Math.cos(a),s=Math.sin(a);
+   g.beginPath();g.moveTo(x0+c*r0,y0+s*r0);g.lineTo(x1+c*r1,y1+s*r1);g.lineTo(x1-c*r1,y1-s*r1);g.lineTo(x0-c*r0,y0-s*r0);g.closePath();g.fill()}}
+ function mPoly(g,pts){g.beginPath();pts.forEach(([x,y],i)=>i?g.lineTo(x,y):g.moveTo(x,y));g.closePath();g.fill()}
+ // Detalhe por cima de uma camada, preso à forma dela.
+ function mOn(cv,fn,ax=MAX,ay=MAY){const g=cv.getContext('2d');g.save();g.globalCompositeOperation='source-atop';g.translate(ax,ay);g.lineCap='round';g.lineJoin='round';fn(g);g.restore();return cv}
+ // Junta camadas num grupo e dá ao grupo um contorno de r pixels de arte.
+ function mGroup(dst,layers,r=1.7){const w=dst.width,h=dst.height,grp=newCanvas(w,h),gg=grp.getContext('2d');layers.forEach(l=>l&&gg.drawImage(l,0,0));
+  const o=newCanvas(w,h),og=o.getContext('2d');for(let a=0;a<16;a++){const t=a/16*Math.PI*2;og.drawImage(grp,Math.cos(t)*r,Math.sin(t)*r)}
+  og.drawImage(grp,0,0);og.globalCompositeOperation='source-in';og.fillStyle=man2.line;og.fillRect(0,0,w,h);
+  const d=dst.getContext('2d');d.drawImage(o,0,0);d.drawImage(grp,0,0)}
+ function mBlood(g,x,y,rx,ry,drip=0){const p=man2;let sd=Math.abs(Math.round(x*7+y*13))%97+1;const r=()=>{sd=(sd*16807)%2147483647;return sd/2147483647};
+  g.fillStyle=p.blood;g.beginPath();g.ellipse(x,y,rx*.8,ry*.8,r()*3,0,Math.PI*2);g.fill();
+  for(let i=0;i<5;i++){const a=r()*Math.PI*2,d=.55+r()*.4;g.beginPath();g.ellipse(x+Math.cos(a)*rx*d,y+Math.sin(a)*ry*d,rx*(.25+r()*.3),ry*(.2+r()*.3),a,0,Math.PI*2);g.fill()}
+  if(drip){g.beginPath();g.moveTo(x-2,y);g.lineTo(x+2,y);g.lineTo(x+1,y+drip);g.arc(x,y+drip,1.4,0,Math.PI);g.closePath();g.fill()}
+  g.fillStyle=p.bloodD;g.beginPath();g.ellipse(x+rx*.25,y+ry*.3,rx*.45,ry*.4,.4,0,Math.PI*2);g.fill();
+  g.fillStyle=p.bloodL;g.beginPath();g.ellipse(x-rx*.35,y-ry*.35,rx*.3,ry*.25,0,0,Math.PI*2);g.fill()}
+ // Pose: juntas em pixels de arte, pés em (0, 0), frente para a esquerda (x negativo).
+ // lean < 0 curva o tronco para a frente (ele anda encolhido, apertando o ferimento).
+ function man2Pose(pose,ph=0){
+  const P={lean:-9,bob:0,head:[0,0],legN:[[0,-78],[-5,-41],[-3,-8]],legF:[[6,-78],[7,-41],[8,-8]],toeN:-13,toeF:-10,
+   gun:{sh:[7,-122],el:[4,-98],ha:[-8,-76],ang:-1.05},near:{sh:[0,-123],el:[7,-98],ha:[-9,-90]}};
+  if(pose==='walk'){const st=[-1,0,1,0][ph],up=ph%2;P.bob=up?-2:0;P.lean=-11;
+   P.legN=[[0,-78],[-6-st*8,-41-up],[-4-st*14,-8-(st===0?2:0)]];
+   P.legF=[[6,-78],[7+st*3,-41],[8+st*6,-8]];P.toeF=st>0?-7:-10;
+   P.gun.ha=[-8+st*2,-76];P.head=[0,up]}
+  if(pose==='idle'){P.head=[ph?-1:0,ph];P.gun.ha=[-8,-76+ph];P.gun.ang=-1.05+ph*.06}
+  if(pose==='aim'||pose==='recoil'){const r=pose==='recoil';P.lean=r?-1:-4;
+   P.gun={sh:[5,-124],el:[-21,r?-125:-122],ha:[-45,r?-129:-121],ang:r?.26:0};P.head=[r?2:0,r?-1:0]}
+  if(pose==='limp'){P.lean=0;P.legN=[[0,-78],[-9,-44],[-5,-8]];P.legF=[[6,-78],[13,-45],[15,-8]];
+   P.gun={sh:[7,-122],el:[16,-100],ha:[22,-80],ang:-1.6};P.near={sh:[0,-123],el:[-7,-100],ha:[-16,-82]};P.head=[2,1]}
+  return P}
+ function man2Frame(pose,ph=0){
+  const p=man2,P=man2Pose(pose,ph),out=newCanvas(MW,MH);
+  const T=(x,y)=>[x+(y<-78?P.lean*(-78-y)/48:0),y+(y<-70?P.bob:0)];
+  // Perna: calça afinando (alarga um pouco na barra) + sapato.
+  const leg=(L,toe,far)=>{const pts=L.map(([x,y],i)=>i?[x,y]:[x,y+P.bob]);
+   const pants=mCel(g=>{mTube(g,pts,[17,12.5,11]);const [ax,ay]=pts[2];mPoly(g,[[ax-6,ay-8],[ax+6,ay-8],[ax+7,ay+1],[ax-7,ay+1]])},
+    far?p.pantsS:p.pants,far?'#171a1f':p.pantsS,far?null:p.pantsL,[4,1],[-2,-1]);
+   mOn(pants,g=>{g.strokeStyle=far?'#121418':p.pantsS;g.lineWidth=1;const [kx,ky]=pts[1];g.beginPath();g.moveTo(kx-4,ky-3);g.quadraticCurveTo(kx,ky,kx+3,ky+5);g.stroke();
+    g.beginPath();g.moveTo(kx-3,ky+9);g.lineTo(kx-1,ky+16);g.stroke()});
+   const [ax,ay]=pts[2],shoe=mCel(g=>mPoly(g,[[ax-5,ay-1],[ax+6,ay-1],[ax+7,ay+8],[ax+toe,ay+8],[ax+toe-1,ay+5],[ax+toe+3,ay+2]]),p.boot,p.gunS,p.bootL,[0,3],[-1,-2]);
+   return [pants,shoe]};
+  // Braço: manga do casaco + mão.
+  const arm=(A,far)=>{const s=T(...A.sh),e=T(...A.el),h=T(...A.ha);
+   const sleeve=mCel(g=>mTube(g,[s,e,h],[14,11,10]),far?p.coatS:p.coat,far?p.coatD:p.coatS,far?null:p.coatL,[3,4],[-2,-2]);
+   mOn(sleeve,g=>{g.fillStyle=far?'#1f2424':p.coatD;g.beginPath();g.ellipse(h[0],h[1],4,5.5,Math.atan2(h[1]-e[1],h[0]-e[0])+Math.PI/2,0,Math.PI*2);g.fill()});
+   const hand=mCel(g=>{g.beginPath();g.ellipse(h[0]-1,h[1]+2,4.6,4.2,0,0,Math.PI*2);g.fill()},far?p.skinS:p.skin,far?p.skinD:p.skinS,far?null:p.skinL,[2,2],[-1,-1]);
+   return {sleeve,hand,s,e,h}};
+  const ga=arm(P.gun,true),na=arm(P.near,false);
+  // Pistola .457: ferrolho largo, cabo inclinado, guarda-mato. Origem na mão; o cano aponta para -x girado por ang.
+  const gx=ga.h[0]-1,gy=ga.h[1]-1,ang=P.gun.ang;
+  const gun=mCel(g=>{g.save();g.translate(gx,gy);g.rotate(ang);mPoly(g,[[-21,-8],[4,-8],[5,-6],[5,-1],[-21,-1]]);
+   mPoly(g,[[-4,-2],[4,-2],[7,9],[0,10]]);g.lineWidth=1.6;g.beginPath();g.arc(-6,0,3.2,0,Math.PI);g.stroke();g.restore()},p.gun,p.gunS,p.gunL,[0,2],[0,-1]);
+  mOn(gun,g=>{g.save();g.translate(gx,gy);g.rotate(ang);g.fillStyle=p.gunL;g.fillRect(-19,-7,18,1);g.fillStyle=p.gunS;
+   for(let i=0;i<4;i++)g.fillRect(-1+i*1.4,-6,.7,4);g.fillRect(-21,-6,1.5,3);g.restore()});
+  const mz=[gx+(-21*Math.cos(ang)+4.5*Math.sin(ang)),gy+(-21*Math.sin(ang)-4.5*Math.cos(ang))];
+  // Casaco: curvado nas costas, cintado e abrindo na barra; camisa clara manchada de sangue na frente.
+  const torso=[[8,-137],[16,-129],[18,-113],[13,-90],[14,-76],[18,-55],[-15,-55],[-13,-76],[-12,-89],[-16,-110],[-14,-125],[-8,-135]].map(q=>T(...q));
+  const coat=mCel(g=>mPoly(g,torso),p.coat,p.coatS,p.coatL,[7,3],[-3,-2]);
+  mOn(coat,g=>{g.fillStyle=p.shirt;mPoly(g,[T(-8,-135),T(0,-134),T(-6,-108),T(-13,-104),T(-15,-118)]);
+   g.fillStyle=p.shirtS;mPoly(g,[T(-3,-134),T(0,-134),T(-6,-108),T(-8,-108)]);
+   mBlood(g,...T(-11,-114),3.5,6,5);mBlood(g,...T(-7,-82),5,4,7);
+   g.strokeStyle=p.coatD;g.lineWidth=1.2;
+   g.beginPath();g.moveTo(...T(0,-134));g.lineTo(...T(-6,-108));g.lineTo(...T(-8,-56));g.stroke();
+   g.beginPath();g.moveTo(...T(10,-106));g.quadraticCurveTo(...T(6,-96),...T(11,-86));g.stroke();
+   g.beginPath();g.moveTo(...T(2,-70));g.lineTo(...T(4,-58));g.stroke();
+   g.fillStyle=p.coatD;mPoly(g,[T(-13,-88),T(13,-88),T(13,-85),T(-12,-85)]);
+   g.fillStyle=p.coatS;mPoly(g,[T(-11,-74),T(-2,-74),T(-2,-72),T(-11,-72)]);
+   g.fillStyle='#9ea3a0';g.beginPath();g.arc(...T(-10,-98),1,0,Math.PI*2);g.fill()});
+  const collar=mCel(g=>mPoly(g,[T(10,-142),T(17,-130),T(5,-124),T(-1,-134)]),p.coat,p.coatS,p.coatL,[2,3],[-1,-2]);
+  // Braço ferido apertando a barriga: manga encharcada, sangue entre os dedos, gotas.
+  mOn(na.sleeve,g=>{mBlood(g,na.e[0]-1,na.e[1]+3,4,6,0);mBlood(g,na.h[0]+6,na.h[1]-1,5,4,0)});
+  mOn(na.hand,g=>{mBlood(g,na.h[0]-1,na.h[1]+3,3.5,2.8,0);g.strokeStyle=p.skinS;g.lineWidth=.9;for(let i=0;i<3;i++){g.beginPath();g.moveTo(na.h[0]-4+i*2.5,na.h[1]);g.lineTo(na.h[0]-4.5+i*2.5,na.h[1]+4);g.stroke()}});
+  const drips=mCel(g=>{const [x,y]=na.h;for(const [dx,dy,r] of [[-2,9,1.4],[1,14,1.1]]){g.beginPath();g.ellipse(x+dx,y+dy,r*.8,r*1.3,0,0,Math.PI*2);g.fill()}},p.blood,null,null);
+  // Cabeça de perfil, um pouco maior (proporção da Kamila): crânio, rosto, orelha, olho arregalado, barba por fazer, cabelo bagunçado.
+  const sH=1.12,[nx,ny]=T(-2,-140),H=(x,y)=>[nx+2+(x)*sH+P.head[0],ny+(y+140)*sH+P.head[1]];
+  const neck=mCel(g=>mPoly(g,[H(-6,-144),H(5,-144),H(6,-131),H(-6,-132)]),p.skinS,p.skinD,null,[3,0]);
+  const face=mCel(g=>{g.beginPath();g.arc(...H(2,-161),20*sH,0,Math.PI*2);g.fill();
+    mPoly(g,[H(-15,-175),H(-18.5,-165),H(-17.6,-160.5),H(-19.2,-157),H(-23,-152.6),H(-19.6,-150.6),H(-19.6,-148.2),H(-18.6,-146.8),H(-19.1,-145),H(-17.6,-141.6),H(-14,-138.4),H(-1,-141),H(6,-150),H(12,-160)])},
+   p.skin,p.skinS,p.skinL,[6,4],[-2,-2]);
+  mOn(face,g=>{
+   // barba por fazer só no queixo e na mandíbula
+   g.fillStyle='rgba(70,58,56,.22)';mPoly(g,[H(-19,-146.5),H(-14,-138.4),H(-1,-141),H(2,-146),H(-9,-148)]);
+   for(let i=0;i<30;i++){const u=(i*37%30)/30,v=(i*11%13)/13;const [x,y]=H(-17+u*17,-147.5+v*7.5);g.fillStyle=i%3?'rgba(52,40,38,.5)':'rgba(34,26,24,.55)';g.fillRect(x,y,1,1)}
+   // olheira funda
+   g.fillStyle='rgba(112,78,80,.5)';mPoly(g,[H(-16,-158.2),H(-8,-159.5),H(-7,-155.8),H(-14.5,-156)]);
+   // olho de perfil (cunha), arregalado: branco em volta da íris
+   g.fillStyle=p.eyeW;mPoly(g,[H(-17.2,-163),H(-8.6,-165),H(-9.6,-160.2),H(-15.6,-158.8)]);
+   g.fillStyle=p.iris;g.beginPath();g.ellipse(...H(-14.4,-161.2),1.9*sH,2.6*sH,0,0,Math.PI*2);g.fill();
+   g.fillStyle='#0a0a0a';g.beginPath();g.ellipse(...H(-14.8,-161.2),.9*sH,1.3*sH,0,0,Math.PI*2);g.fill();
+   g.fillStyle='#fffaf0';g.fillRect(...H(-14,-162.8),1.4,1.4);
+   g.fillStyle=p.line;mPoly(g,[H(-18,-163.2),H(-12,-166),H(-7.4,-166.2),H(-6.8,-164.4),H(-8.6,-164.6),H(-17,-162.2)]);
+   mPoly(g,[H(-15.8,-159),H(-10,-160.2),H(-9.8,-159.4),H(-15.4,-158.4)]);
+   // sobrancelha grossa, erguida na ponta de dentro (medo)
+   g.fillStyle=p.hairS;mPoly(g,[H(-19.4,-169.6),H(-14,-170),H(-7,-168.6),H(-7.2,-167),H(-14,-168),H(-18.6,-167.6)]);
+   // boca entreaberta com os dentes cerrados, narina, orelha pequena
+   g.fillStyle='#2b1717';mPoly(g,[H(-19.4,-148.4),H(-14.4,-147.8),H(-15,-145.6),H(-19,-145.6)]);g.fillStyle='#d3cab8';mPoly(g,[H(-19,-148),H(-14.8,-147.6),H(-15,-147),H(-19,-147.2)]);
+   g.fillStyle=p.skinS;mPoly(g,[H(-21.8,-152.4),H(-19,-151.6),H(-19.8,-150.6)]);g.fillStyle=p.skinD;g.fillRect(...H(-20.4,-151.6),1.2,1);
+   g.fillStyle=p.skinS;g.beginPath();g.ellipse(...H(4.6,-153.5),2.6*sH,4*sH,.15,0,Math.PI*2);g.fill();g.fillStyle=p.skinD;g.beginPath();g.ellipse(...H(5,-153.2),1.1*sH,2*sH,.15,0,Math.PI*2);g.fill();
+   // sombra do cabelo na testa, suor, sangue escorrendo da testa pelo olho até o queixo
+   g.fillStyle='rgba(120,86,76,.45)';mPoly(g,[H(-15,-175),H(10,-175),H(10,-169),H(-14,-171)]);
+   g.fillStyle='rgba(235,242,242,.6)';g.fillRect(...H(-3,-167),1,2.4);g.fillRect(...H(0,-160),.9,2);
+   g.fillStyle=p.blood;mPoly(g,[H(-13.5,-175),H(-9,-175),H(-8.8,-167),H(-10.2,-158),H(-11.4,-150),H(-12.6,-142),H(-14,-142),H(-12.8,-152),H(-12,-160)]);
+   g.fillStyle=p.bloodD;mPoly(g,[H(-10.2,-166),H(-9.4,-166),H(-11.2,-151),H(-12,-151)]);g.fillStyle=p.bloodL;g.fillRect(...H(-12.6,-174),2,3)});
+  const hair=mCel(g=>{mPoly(g,[H(-17,-167),H(-23,-173),H(-17,-175),H(-21,-184),H(-11,-180),H(-9,-190),H(-1,-183),H(4,-191),H(9,-182),H(18,-187),H(17,-177),H(25,-175),H(21,-167),H(25,-160),H(18,-156),H(18,-147),H(9,-152),H(8,-160),H(1,-163),H(-4,-170),H(-9,-166),H(-12,-171)])},
+   p.hair,p.hairS,p.hairL,[4,4],[-2,-3]);
+  mOn(hair,g=>{g.strokeStyle=p.hairS;g.lineWidth=1.1;for(const [a,b,c2,d2] of [[-6,-182,-2,-171],[3,-184,6,-171],[10,-180,14,-167],[15,-171,19,-159],[-15,-176,-10,-170]]){g.beginPath();g.moveTo(...H(a,b));g.lineTo(...H(c2,d2));g.stroke()}
+   g.strokeStyle=p.hairL;for(const [a,b,c2,d2] of [[-12,-178,-6,-174],[-2,-183,2,-178],[6,-182,10,-178],[13,-177,17,-172]]){g.beginPath();g.moveTo(...H(a,b));g.lineTo(...H(c2,d2));g.stroke()}
+   g.strokeStyle='rgba(140,118,102,.75)';g.lineWidth=1.6;g.beginPath();g.arc(...H(4,-166),15*sH,-2.5,-1.35);g.stroke();
+   mBlood(g,...H(-10,-173),3,2.5,0)});
+  // Montagem de trás para a frente; cada grupo com o próprio contorno.
+  const [lfP,lfB]=leg(P.legF,P.toeF,true),[lnP,lnB]=leg(P.legN,P.toeN,false);
+  const aimPose=pose==='aim'||pose==='recoil';
+  mGroup(out,[lfP,lfB]);
+  if(!aimPose)mGroup(out,[gun,ga.sleeve,ga.hand]);
+  mGroup(out,[lnP,lnB]);
+  mGroup(out,[coat,collar]);
+  if(aimPose)mGroup(out,[ga.sleeve,gun,ga.hand]);
+  mGroup(out,[neck,face,hair]);
+  mGroup(out,[na.sleeve,na.hand]);
+  out.getContext('2d').drawImage(drips,0,0);mCrisp(out);
+  out.ax=MAX;out.ay=MAY;out.density=MD;out.muzzle=[(mz[0])/MD,(mz[1])/MD];
+  return out}
+ // Caído: a pose largada, deitada (cabeça para a esquerda), com sangue escuro no casaco.
+ function man2Fallen(){const f=man2Frame('limp'),out=newCanvas(MH,MW),g=out.getContext('2d');
+  g.translate(MAY-6,MAX);g.rotate(-Math.PI/2);g.drawImage(f,-MAX,-MAY);
+  mOn(out,g2=>{mBlood(g2,-104,3,11,7,0);mBlood(g2,-166,-4,5,4,0)},MAY-6,MAX);
+  out.ax=MAY-6-92;out.ay=MAX+10;out.density=MD;return out}
+ // Pedaços para a cena da criatura (braço e perna soltos), no mesmo estilo.
+ function man2Part(kind){const arm=kind==='arm',w=arm?30:33,h=arm?60:72,ax=w/2,ay=4,out=newCanvas(w,h),p=man2;
+  const sleeve=mCel(g=>mTube(g,arm?[[0,2],[0,34]]:[[0,2],[0,42]],arm?[15,12]:[18,13]),arm?p.coat:p.pants,arm?p.coatS:p.pantsS,arm?p.coatL:p.pantsL,[4,0],[-2,0],w,h,ax,ay);
+  mOn(sleeve,g=>{mBlood(g,0,2,8,5,8)},ax,ay);
+  const end=mCel(g=>{if(arm){g.beginPath();g.ellipse(0,43,6,7,0,0,Math.PI*2);g.fill()}else mPoly(g,[[-7,40],[7,40],[8,56],[-12,56],[-12,51],[-7,49]])},arm?p.skin:p.boot,arm?p.skinS:p.gunS,arm?p.skinL:p.bootL,[2,2],[-1,-1],w,h,ax,ay);
+  mGroup(out,[sleeve,end],1.7);mCrisp(out);out.density=MD;return out}
+ // Bordas duras de pixel art: cada pixel fica inteiro ou transparente.
+ function mCrisp(cv){const g=cv.getContext('2d'),im=g.getImageData(0,0,cv.width,cv.height),d=im.data;for(let i=3;i<d.length;i+=4)d[i]=d[i]>=110?255:0;g.putImageData(im,0,0);return cv}
+ // Desenha uma imagem de alta densidade no mundo, em pixels de tela, suavizando ao reduzir.
+ function drawDense(g,img,x,y,ax,ay){const d=img.density||1,m=g.getTransform(),k=m.a/d,sx=m.a*x+m.e,sy=m.d*y+m.f;
+  g.save();g.setTransform(1,0,0,1,0,0);g.imageSmoothingEnabled=k<.97;g.imageSmoothingQuality='high';
+  g.drawImage(img,Math.round(sx-ax*k),Math.round(sy-ay*k),Math.round(img.width*k),Math.round(img.height*k));g.restore()}
+ // Pistola caída no chão (depois que a criatura o agarra).
+ function man2GunDecal(){const w=96,h=48,ax=48,ay=24,out=newCanvas(w,h),p=man2;
+  const gun=mCel(g=>{g.rotate(.25);mPoly(g,[[-21,-8],[4,-8],[5,-6],[5,-1],[-21,-1]]);mPoly(g,[[-4,-2],[4,-2],[7,9],[0,10]])},p.gun,p.gunS,p.gunL,[0,2],[0,-1],w,h,ax,ay);
+  mGroup(out,[gun],1.7);mCrisp(out);out.ax=ax;out.ay=ay;out.density=MD;return out}
+ // Retrato do diálogo (0.18): busto em três quartos, no estilo do retrato da Kamila.
+ // 190 x 244 px de arte (o dobro da caixa de 90 x 116 da tela, para telas de alta densidade), fundo transparente.
+ function man2Portrait(){
+  const W=190,Hh=244,p=man2,out=newCanvas(W,Hh);
+  const cel=(fn,b,s,l,sv=[7,3],lv=[-2,-2])=>mCel(fn,b,s,l,sv,lv,W,Hh,0,0),on=(cv,fn)=>mOn(cv,fn,0,0);
+  const poly=(g,pts)=>mPoly(g,pts);
+  // Forma orgânica fechada (curvas pelos pontos médios), para manchas de sangue encharcando o tecido.
+  const blob=(g,pts)=>{const n=pts.length,m=i=>[(pts[i%n][0]+pts[(i+1)%n][0])/2,(pts[i%n][1]+pts[(i+1)%n][1])/2];g.beginPath();g.moveTo(...m(0));for(let i=1;i<=n;i++)g.quadraticCurveTo(...pts[i%n],...m(i));g.closePath();g.fill()};
+  const soak=(g,pts,dx=2,dy=3)=>{g.fillStyle='#3d0c10';blob(g,pts);g.fillStyle='#6a171c';blob(g,pts.map(([x,y])=>[x-dx*.4,y-dy*.4]).map(([x,y],i,a)=>{const cx=a.reduce((s,q)=>s+q[0],0)/a.length,cy=a.reduce((s,q)=>s+q[1],0)/a.length;return [cx+(x-cx)*.78,cy+(y-cy)*.78]}));
+   g.fillStyle='rgba(30,6,8,.35)';for(let i=0;i<pts.length;i++){const [x,y]=pts[i];g.beginPath();g.arc(x,y,1.6,0,Math.PI*2);g.fill()}};
+  // Casaco com gola levantada.
+  const coat=cel(g=>poly(g,[[0,244],[4,206],[22,186],[58,172],[80,176],[112,174],[140,170],[170,184],[186,206],[190,244]]),p.coat,p.coatS,p.coatL,[10,4],[-3,-3]);
+  on(coat,g=>{g.fillStyle=p.coatD;poly(g,[[60,176],[82,244],[74,244],[54,180]]);poly(g,[[118,176],[104,244],[112,244],[126,178]]);
+   g.strokeStyle=p.coatS;g.lineWidth=1.6;g.beginPath();g.moveTo(26,214);g.quadraticCurveTo(34,204,46,206);g.stroke();g.beginPath();g.moveTo(150,206);g.quadraticCurveTo(160,200,172,212);g.stroke();
+   soak(g,[[136,186],[152,184],[164,192],[166,206],[170,222],[162,226],[156,212],[146,206],[134,198]])});
+  const shirt=cel(g=>poly(g,[[64,174],[96,186],[124,174],[112,244],[76,244]]),p.shirt,p.shirtS,null,[6,2]);
+  on(shirt,g=>{g.fillStyle=p.shirtS;poly(g,[[94,186],[100,186],[98,244],[93,244]]);g.fillStyle='#e7e2d6';g.beginPath();g.arc(97,206,2,0,Math.PI*2);g.fill();g.beginPath();g.arc(96,230,2,0,Math.PI*2);g.fill();
+   soak(g,[[102,200],[114,198],[120,210],[118,226],[112,240],[106,232],[104,218],[98,210]]);soak(g,[[80,224],[88,222],[90,232],[84,238],[78,232]])});
+  const collar=cel(g=>{poly(g,[[56,176],[70,150],[84,168],[96,188],[74,182]]);poly(g,[[122,172],[128,146],[140,168],[132,180],[98,190]])},p.shirt,p.shirtS,'#d8d4ca',[4,3],[-1,-2]);
+  on(collar,g=>{soak(g,[[118,164],[128,160],[132,172],[124,178],[116,174]])});
+  const coatCollar=cel(g=>{poly(g,[[30,190],[48,150],[66,140],[62,176]]);poly(g,[[160,188],[146,146],[132,140],[138,172]])},p.coat,p.coatS,p.coatL,[6,4],[-2,-2]);
+  // Pescoço (sombreado pelo queixo).
+  const neck=cel(g=>poly(g,[[78,128],[120,124],[124,180],[96,190],[76,176]]),p.skinS,p.skinD,null,[8,0]);
+  on(neck,g=>{g.fillStyle=p.skinD;poly(g,[[78,128],[124,124],[122,146],[96,152],[78,144]]);g.strokeStyle=p.skinD;g.lineWidth=1.5;g.beginPath();g.moveTo(104,154);g.lineTo(108,172);g.stroke()});
+  // Rosto em três quartos virado para a esquerda.
+  const face=cel(g=>{poly(g,[[50,66],[136,62],[140,96],[134,118],[124,134],[104,150],[86,156],[74,152],[60,138],[52,118],[48,96]])},p.skin,p.skinS,p.skinL,[12,6],[-3,-3]);
+  on(face,g=>{
+   // sombra do lado de perto e sob as maçãs
+   g.fillStyle='rgba(150,104,92,.42)';poly(g,[[118,104],[134,102],[132,122],[110,144],[100,146],[112,128]]);
+   // barba por fazer
+   g.fillStyle='rgba(80,64,60,.2)';poly(g,[[58,126],[74,150],[88,156],[106,148],[126,130],[114,128],[98,138],[80,138]]);
+   for(let i=0;i<120;i++){const u=(i*0.618034)%1,v=(i*0.381966*3)%1,x=58+u*68,y=124+v*30;const inside=y>126+Math.abs(x-90)*.1&&!(y<140&&x>74&&x<104);if(inside){g.fillStyle=i%3?'rgba(50,38,36,.55)':'rgba(30,22,20,.6)';g.fillRect(Math.round(x),Math.round(y),1.4,1.4)}}
+   // olheiras fundas
+   g.fillStyle='rgba(118,80,84,.55)';poly(g,[[58,104],[80,104],[78,112],[62,112]]);poly(g,[[94,106],[124,104],[122,114],[98,114]]);
+   // olhos arregalados, olhando de lado (íris pequena, branco em volta)
+   const eye=(cx,cy,w,h,ix)=>{g.fillStyle='#d8d2c4';g.beginPath();g.ellipse(cx,cy,w/2,h/2,-.06,0,Math.PI*2);g.fill();
+    g.fillStyle='rgba(120,110,100,.55)';g.beginPath();g.ellipse(cx,cy-h*.32,w/2,h*.22,-.06,0,Math.PI*2);g.fill();
+    g.fillStyle=p.iris;g.beginPath();g.arc(cx+ix,cy,h*.32,0,Math.PI*2);g.fill();
+    g.fillStyle='#0b0b0b';g.beginPath();g.arc(cx+ix-.4,cy,h*.13,0,Math.PI*2);g.fill();
+    g.fillStyle='#fffaf0';g.fillRect(cx+ix+.8,cy-h*.28,1.8,1.8);
+    g.strokeStyle='rgba(170,70,70,.45)';g.lineWidth=.8;g.beginPath();g.moveTo(cx+w*.42,cy);g.lineTo(cx+w*.25,cy-1);g.stroke();
+    g.strokeStyle=p.line;g.lineWidth=2.6;g.beginPath();g.ellipse(cx,cy,w/2+1,h/2+1,-.06,Math.PI*1.08,Math.PI*1.95);g.stroke();
+    g.lineWidth=1.1;g.beginPath();g.ellipse(cx,cy,w/2,h/2+.5,-.06,Math.PI*.15,Math.PI*.85);g.stroke()};
+   eye(70,100,19,13,-3.5);eye(108,99,24,15,-5);
+   // sobrancelhas grossas, erguidas no meio (medo)
+   g.fillStyle=p.hairS;poly(g,[[54,90],[66,87],[80,80],[83,83],[68,91],[56,94]]);poly(g,[[91,80],[106,84],[126,90],[126,94],[106,89],[91,84]]);
+   g.strokeStyle='rgba(120,86,76,.6)';g.lineWidth=1;g.beginPath();g.moveTo(82,78);g.lineTo(88,74);g.stroke();g.beginPath();g.moveTo(84,82);g.lineTo(90,79);g.stroke();
+   // nariz: linha do dorso do lado de perto, ponta e narina
+   g.strokeStyle=p.skinD;g.lineWidth=1.6;g.beginPath();g.moveTo(90,96);g.quadraticCurveTo(92,110,86,122);g.stroke();
+   g.fillStyle=p.skinD;poly(g,[[80,122],[88,121],[91,124],[83,126]]);g.fillStyle='rgba(150,104,92,.5)';poly(g,[[88,104],[94,104],[96,122],[90,122]]);
+   g.fillStyle=p.skinL;poly(g,[[84,112],[87,112],[86,119],[83,119]]);
+   // boca aberta numa careta: cantos para baixo, dentes de cima à mostra, escuro por dentro
+   g.fillStyle='#241212';poly(g,[[70,138],[78,132],[94,132],[102,138],[98,144],[86,146],[74,144]]);
+   g.fillStyle='#d6cdbb';poly(g,[[77,133],[95,133],[96,136],[78,136]]);g.fillStyle='#a99e89';for(const x of [82,87,92])g.fillRect(x,133,1,3);
+   g.fillStyle='#8e4c4c';poly(g,[[80,142],[92,142],[90,145],[82,145]]);
+   g.strokeStyle=p.skinD;g.lineWidth=1.2;g.beginPath();g.moveTo(74,149);g.quadraticCurveTo(86,152,98,148);g.stroke();
+   g.beginPath();g.moveTo(68,137);g.lineTo(66,142);g.stroke();g.beginPath();g.moveTo(104,137);g.lineTo(106,142);g.stroke();
+   // suor
+   g.fillStyle='rgba(236,244,244,.75)';g.beginPath();g.ellipse(124,82,1.6,2.6,0,0,Math.PI*2);g.fill();g.beginPath();g.ellipse(56,116,1.4,2.2,0,0,Math.PI*2);g.fill();
+   // ferimento na linha do cabelo; o sangue desce pela testa, contorna a sobrancelha e escorre pela face até o queixo
+   g.fillStyle=p.bloodD;blob(g,[[66,66],[80,64],[82,74],[76,80],[68,78]]);
+   g.fillStyle=p.blood;g.beginPath();g.moveTo(70,70);g.quadraticCurveTo(78,72,76,82);g.quadraticCurveTo(70,92,64,94);g.quadraticCurveTo(58,104,60,118);
+   g.quadraticCurveTo(62,130,60,142);g.lineTo(57,142);g.quadraticCurveTo(58,128,55,118);g.quadraticCurveTo(53,102,60,90);g.quadraticCurveTo(68,82,66,72);g.closePath();g.fill();
+   g.beginPath();g.moveTo(74,80);g.quadraticCurveTo(80,88,78,96);g.lineTo(76,96);g.quadraticCurveTo(77,88,72,82);g.closePath();g.fill();
+   g.beginPath();g.ellipse(58.5,145,2,3,0,0,Math.PI*2);g.fill();g.beginPath();g.ellipse(77,99,1.4,2,0,0,Math.PI*2);g.fill();
+   g.fillStyle=p.bloodD;g.beginPath();g.moveTo(66,76);g.quadraticCurveTo(68,86,62,94);g.lineTo(60,93);g.quadraticCurveTo(65,86,64,77);g.closePath();g.fill();
+   g.fillStyle=p.bloodL;g.beginPath();g.ellipse(72,70,3,1.6,-.3,0,Math.PI*2);g.fill();
+   });
+  // Orelha do lado de perto.
+  const ear=cel(g=>{g.beginPath();g.ellipse(138,108,8,13,.15,0,Math.PI*2);g.fill()},p.skin,p.skinS,null,[4,2]);
+  on(ear,g=>{g.strokeStyle=p.skinD;g.lineWidth=1.6;g.beginPath();g.arc(139,107,5,-1.2,1.8);g.stroke()});
+  // Cabelo bagunçado com mechas e faixa de brilho.
+  const hair=cel(g=>{poly(g,[[42,108],[36,84],[40,60],[30,52],[46,44],[40,28],[60,32],[62,14],[80,24],[90,6],[102,22],[118,10],[124,28],[142,20],[140,40],[156,40],[148,58],[158,70],[146,76],[148,96],[140,104],[134,80],[124,70],[112,74],[100,64],[96,76],[84,66],[78,82],[70,70],[62,86],[56,74],[52,96],[48,108]])},p.hair,p.hairS,p.hairL,[9,6],[-3,-4]);
+  on(hair,g=>{g.strokeStyle=p.hairS;g.lineWidth=1.8;for(const [a,b,c2,d2] of [[60,40,66,70],[78,30,82,62],[98,24,98,58],[116,30,112,62],[132,44,128,70],[48,66,50,94],[142,62,140,90]]){g.beginPath();g.moveTo(a,b);g.lineTo(c2,d2);g.stroke()}
+   g.fillStyle='rgba(140,116,98,.6)';for(const [x,y,a] of [[58,46,.5],[76,34,.2],[96,30,0],[114,34,-.2],[132,44,-.5],[46,70,.8],[146,64,-.8]]){g.save();g.translate(x,y);g.rotate(a);poly(g,[[-1.2,-6],[1.2,-6],[.3,9],[-.3,9]]);g.restore()}
+   g.fillStyle=p.hairS;for(const [x,y] of [[70,74],[90,70],[108,72],[126,76]]){poly(g,[[x-3,y-10],[x+3,y-10],[x,y+2]])}
+   g.fillStyle=p.bloodD;blob(g,[[64,64],[76,62],[78,70],[68,72]])});
+  // Montagem com contornos por grupo.
+  mGroup(out,[coat],2.2);mGroup(out,[shirt],1.6);mGroup(out,[coatCollar],2.2);mGroup(out,[neck],1.6);mGroup(out,[collar],1.8);mGroup(out,[ear],2);mGroup(out,[face],2.4);mGroup(out,[hair],2.4);
+  return mCrisp(out)}
+ const manFrames={walk:[0,1,2,3].map(i=>man2Frame('walk',i)),idle:[man2Frame('idle',0),man2Frame('idle',1)],aim:man2Frame('aim'),recoil:man2Frame('recoil'),fallen:man2Fallen(),gun:man2GunDecal()};
  function drawMan(g,x,y,fallen=false,aim=false,alpha=1,at=0){
   if(story.man.held||story.man.eaten)return;
   g.save();g.globalAlpha=alpha;const X=Math.round(x),Y=Math.round(y);
-  if(fallen){oval(g,X-2,Y+2,30,9,'rgba(74,18,21,.78)');oval(g,X-8,Y+1,18,6,'rgba(104,28,30,.6)');g.drawImage(manFrames.fallen,X-32,Y-18);g.restore();return}
+  if(fallen){oval(g,X-2,Y+2,30,9,'rgba(74,18,21,.78)');oval(g,X-8,Y+1,18,6,'rgba(104,28,30,.6)');const f=manFrames.fallen;drawDense(g,f,X,Y,f.ax,f.ay);g.restore();return}
   oval(g,X,Y+1,12,4,'rgba(6,12,14,.45)');
   const img=aim?(story.flash>0?manFrames.recoil:manFrames.aim):story.phase==='approach'?manFrames.walk[Math.floor(at*6)%4]:manFrames.idle[motion?Math.floor(at*7)%2:0];
-  g.drawImage(img,X-MAN_AX,Y-MAN_AY);g.restore();
+  drawDense(g,img,X,Y,img.ax,img.ay);g.restore();
  }
- // Retrato do diálogo: busto em pixel art (30 x 39), ampliado 6 vezes sem suavização.
- const manPortrait=(()=>{
-  const small=newCanvas(30,39),g=small.getContext('2d'),p=manPal;
-  const box=(x,y,w,h,col)=>{g.fillStyle=p[col]||col;g.fillRect(x,y,w,h)};
-  const bg=g.createLinearGradient(0,0,0,39);bg.addColorStop(0,'#1d292a');bg.addColorStop(1,'#0e1516');g.fillStyle=bg;g.fillRect(0,0,30,39);
-  g.fillStyle=p.outline;g.beginPath();g.moveTo(1,39);g.lineTo(4,31);g.lineTo(10,28);g.lineTo(20,28);g.lineTo(26,31);g.lineTo(29,39);g.fill();
-  g.fillStyle=p.coat;g.beginPath();g.moveTo(2,39);g.lineTo(5,32);g.lineTo(11,29);g.lineTo(19,29);g.lineTo(25,32);g.lineTo(28,39);g.fill();
-  box(5,32,4,7,'coatLight');box(22,32,5,7,'coatShade');
-  box(12,29,6,10,'shirt');box(15,29,3,10,'shirtShade');box(11,29,2,6,'coatShade');box(18,29,2,6,'coatShade');
-  box(19,31,5,6,'blood');box(20,32,3,3,'bloodLight');box(22,36,2,3,'bloodDark');box(13,33,2,3,'blood');box(14,36,1,2,'bloodDark');
-  box(12,24,6,6,'skinShade');box(12,24,2,5,'skin');
-  const rows=[[8,11,18],[9,9,20],[10,8,21],[11,8,21],[12,8,21],[13,8,21],[14,8,21],[15,8,21],[16,8,21],[17,8,21],[18,8,21],[19,8,21],[20,9,20],[21,9,20],[22,9,20],[23,10,19],[24,11,18],[25,12,17]];
-  for(const [y,a,b] of rows){box(a-1,y,1,1,'outline');box(a,y,b-a+1,1,'skin');box(b+1,y,1,1,'outline')}
-  box(12,26,6,1,'outline');
-  box(18,10,4,15,'skinShade');box(9,17,3,3,'skinLight');box(10,11,4,2,'skinLight');
-  box(9,4,12,4,'hair');box(8,7,14,4,'hair');box(8,4,2,2,'hair');box(12,2,2,3,'hair');box(16,3,3,2,'hair');box(21,6,2,4,'hair');box(20,10,3,9,'hair');box(7,10,2,4,'hair');box(10,11,2,2,'hair');box(14,11,1,3,'hair');
-  box(8,3,2,1,'outline');box(12,1,2,1,'outline');box(16,2,3,1,'outline');box(23,6,1,13,'outline');box(7,6,1,4,'outline');
-  box(11,5,3,1,'hairLight');box(9,8,2,1,'hairLight');box(17,5,2,1,'hairLight');
-  box(22,14,2,4,'skinShade');box(23,15,1,2,'outline');
-  box(9,13,4,1,'#2b2320');box(12,12,1,1,'#2b2320');box(15,13,4,1,'#2b2320');box(15,12,1,1,'#2b2320');
-  box(9,14,3,2,'eye');box(15,14,3,2,'eye');box(10,14,1,1,'#101010');box(16,15,1,1,'#101010');
-  box(9,16,3,1,'skinShade');box(15,16,3,1,'#8a6656');box(15,17,2,1,'#7a5a52');
-  box(12,15,2,4,'skinShade');box(12,15,1,3,'skinLight');box(11,18,3,1,'#7b5c50');box(12,19,1,2,'bloodDark');
-  box(11,21,6,1,'#3a2321');box(12,21,3,1,'#bdb39f');box(11,22,6,1,'skinShade');box(16,22,1,1,'blood');
-  for(let i=0;i<22;i++){const sx=9+Math.floor(sr()*12),sy=19+Math.floor(sr()*6);if(sy<25&&sx>8)box(sx,sy,1,1,sr()>.5?'#8d6f61':'#7a5d50')}
-  box(16,9,3,1,'bloodLight');box(17,10,2,1,'blood');box(19,11,1,6,'blood');box(19,17,1,4,'bloodDark');box(18,21,1,3,'blood');box(10,19,2,1,'blood');box(17,24,1,2,'bloodDark');
-  const big=newCanvas(180,234),bg2=big.getContext('2d');bg2.imageSmoothingEnabled=false;bg2.drawImage(small,0,0,180,234);
-  return big.toDataURL('image/png');
- })();
+ // Boca da pistola na pose de mira, em pixels de mundo a partir dos pés dele (clarão e luz do disparo).
+ const manMuzzle=manFrames.aim.muzzle;
+ const manPortrait=man2Portrait().toDataURL('image/png');
 
  // ---------- Crooked Legs (nome interno da criatura) ----------
  // Destoa do resto do jogo pela técnica: traço liso em resolução de tela, sem grade de pixel.
@@ -1458,16 +1613,12 @@ const rpg=(()=>{
   g.fillStyle='rgba(98,93,86,.5)';for(let i=2;i<neck.length-2;i+=2){const [x,y]=neck[i],[x2,y2]=neck[i+1],an=Math.atan2(y2-y,x2-x)+Math.PI/2;g.beginPath();g.ellipse(x+Math.cos(an)*1.5,y+Math.sin(an)*1.5,2.3,.8,an,0,6.2832);g.fill()}
   if(P.bulge>=0){const idx=Math.min(neck.length-1,Math.max(0,Math.round((1-P.bulge)*(neck.length-1)))),[bx,by]=neck[idx];
    g.fillStyle=CLC.line;g.beginPath();g.ellipse(bx,by,8.2,7,0,0,6.2832);g.fill();g.fillStyle=CLC.base;g.beginPath();g.ellipse(bx,by,7.2,6,0,0,6.2832);g.fill();g.fillStyle=CLC.shade;g.beginPath();g.ellipse(bx+1.4,by+1.6,4.6,3.4,0,0,6.2832);g.fill();g.fillStyle=CLC.light;g.beginPath();g.ellipse(bx-2,by-2.2,2.6,1.6,0,0,6.2832);g.fill()}
-  if(P.held){const img=P.held.img;g.save();g.translate(P.head[0],P.head[1]);g.rotate(P.a);g.translate(0,mouthY(P.jaw)+P.held.k);g.rotate(P.held.rot??Math.PI/2);g.scale(P.held.sc,P.held.sc);g.imageSmoothingEnabled=false;g.drawImage(img,-img.width/2,-img.height/2);g.imageSmoothingEnabled=true;g.restore()}
+  if(P.held){const img=P.held.img;g.save();g.translate(P.head[0],P.head[1]);g.rotate(P.a);g.translate(0,mouthY(P.jaw)+P.held.k);g.rotate(P.held.rot??Math.PI/2);g.scale(P.held.sc,P.held.sc);const dn=img.density||1;g.imageSmoothingEnabled=dn>1;g.drawImage(img,-img.width/2/dn,-img.height/2/dn,img.width/dn,img.height/dn);g.imageSmoothingEnabled=true;g.restore()}
   clHead(g,P.head[0],P.head[1],P.a,P.jaw);
   limb(3);
   return S;
  }
- function partSprite(kind){const arm=kind==='arm',a=newCanvas(arm?8:9,arm?18:22),g=a.getContext('2d'),p=manPal,box=(x,y,w,h,col)=>{g.fillStyle=p[col]||col;g.fillRect(x,y,w,h)};
-  if(arm){box(1,0,6,13,'outline');box(2,0,4,12,'coatShade');box(2,0,1,11,'coat');box(1,0,6,2,'bloodDark');box(2,0,4,1,'bloodLight');box(1,13,6,5,'outline');box(2,13,4,4,'skin');box(2,13,2,2,'skinLight');box(3,16,2,1,'skinShade')}
-  else{box(1,0,7,16,'outline');box(2,0,5,15,'pants');box(2,0,2,14,'pantsShade');box(1,0,7,2,'bloodDark');box(2,0,5,1,'bloodLight');box(0,16,9,6,'outline');box(1,16,7,5,'boot');box(1,16,3,1,'bootLight')}
-  return a}
- const PART={arm:partSprite('arm'),leg:partSprite('leg')};
+ const PART={arm:man2Part('arm'),leg:man2Part('leg')};
  // Som posicionado: mais baixo quanto mais longe de Kamila, e no lado em que a criatura está.
  function clSfx(kind,vol=1,extra={}){if(!soundtrack.effect)return;const n=story.monster,d=Math.hypot(n.x-player.x,n.y-player.y);soundtrack.effect(kind,{vol:vol*Math.max(.3,Math.min(1,1.25-d/650)),pan:Math.max(-.8,Math.min(.8,(n.x-player.x)/350)),...extra})}
  // Passos do homem ferido: um passo pesado e o outro arrastado, porque ele manca.
@@ -1522,11 +1673,11 @@ const rpg=(()=>{
   if(d.k==='pool'){oval(g,d.x-2,d.y+2,30,9,'rgba(74,18,21,.8)');oval(g,d.x-8,d.y+1,18,6,'rgba(104,28,30,.6)');oval(g,d.x+14,d.y+4,8,3,'rgba(60,14,16,.7)')}
   else if(d.k==='splat'){oval(g,d.x,d.y+2,10,3.5,'rgba(84,20,22,.75)');for(let i=0;i<5;i++)oval(g,d.x+Math.cos(i*1.7)*14,d.y+2+Math.sin(i*1.7)*4,1.6,1,'rgba(90,22,24,.7)')}
   else if(d.k==='drop'){oval(g,d.x,d.y,1.8,.9,'rgba(96,20,22,.75)')}
-  else if(d.k==='gun'){const X=Math.round(d.x),Y=Math.round(d.y),p=manPal;rect(g,X-1,Y-1,11,4,p.outline);rect(g,X,Y,9,2,p.gun);rect(g,X+1,Y,6,1,p.gunLight);rect(g,X+7,Y+2,2,3,p.gun)}}
- function drawPart(p){const img=PART[p.k],g=c;if(p.state==='fall')oval(g,p.gx,p.gy+2,7,2.5,'rgba(5,10,12,.4)');g.save();g.translate(Math.round(p.x),Math.round(p.y-(p.state==='ground'?3:0)));g.rotate(p.rot);g.drawImage(img,-img.width/2,-img.height/2);g.restore()}
+  else if(d.k==='gun'){const G=manFrames.gun;drawDense(g,G,Math.round(d.x)+5,Math.round(d.y)+2,G.ax,G.ay)}}
+ function drawPart(p){const img=PART[p.k],g=c;if(p.state==='fall')oval(g,p.gx,p.gy+2,7,2.5,'rgba(5,10,12,.4)');g.save();g.translate(Math.round(p.x),Math.round(p.y-(p.state==='ground'?3:0)));g.rotate(p.rot);const dn=img.density||1;g.imageSmoothingEnabled=dn>1;g.drawImage(img,-img.width/2/dn,-img.height/2/dn,img.width/dn,img.height/dn);g.restore()}
  function drawMonster(g,x,y){const n=story.monster,L=n.cl||clSync();if(!L)return;const P=clPose(n,L),S=renderMonster(P);
   g.save();g.globalAlpha=n.alpha;g.imageSmoothingEnabled=true;g.translate(x,y);g.scale(n.face||1,1);g.drawImage(monCanvas,-MON.ax,-MON.ay,monCanvas.width/S,monCanvas.height/S);g.restore();g.imageSmoothingEnabled=false}
- function drawFlash(){const m=story.man,n=story.monster;if(story.phase==='shots'&&story.flash>0&&motion){const x=m.x-29,y=m.y-40;c.fillStyle='#e7d49c';c.beginPath();c.moveTo(x,y);c.lineTo(x-19,y-7);c.lineTo(x-13,y);c.lineTo(x-23,y+7);c.closePath();c.fill();line(c,[[x-22,y],[n.x+8*(n.face||1),n.y-124]],'#dfd5ac88',1)}}
+ function drawFlash(){const m=story.man,n=story.monster;if(story.phase==='shots'&&story.flash>0&&motion){const x=m.x+manMuzzle[0],y=m.y+manMuzzle[1];c.fillStyle='#e7d49c';c.beginPath();c.moveTo(x,y);c.lineTo(x-19,y-7);c.lineTo(x-13,y);c.lineTo(x-23,y+7);c.closePath();c.fill();line(c,[[x-22,y],[n.x+8*(n.face||1),n.y-124]],'#dfd5ac88',1)}}
  function fits(x,y,m=current){const r=7;return x>=T+r&&y>=T+r&&x<m.art.width-T-r&&y<m.art.height-T-r&&!m.solid.some(b=>x+r>b.x&&x-r<b.x+b.w&&y+r>b.y&&y-r<b.y+b.h)}
  function focusGame(){screen.focus({preventScroll:true})}
  function clearInput(){keys.clear();path=[];moving=false}

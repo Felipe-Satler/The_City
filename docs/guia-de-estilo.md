@@ -1,6 +1,6 @@
 # Guia de estilo visual
 
-Estado: **rascunho (0.17)**. Os itens "PROPOSTA" ainda dependem da aprovação do criador.
+Estado: **rascunho (0.18)**. Os itens "PROPOSTA" ainda dependem da aprovação do criador.
 
 ## Alvo
 A arte do sprite e do retrato da Kamila (`arte/kamila/`) é o estilo-alvo do jogo inteiro
@@ -19,13 +19,13 @@ e luzes pálidas; o café como o único calor.
 - **Proporções:** sprite de exploração compacto (cabeça grande, quase chibi); retrato com proporções
   completas.
 
-## Situação de cada elemento (0.17)
+## Situação de cada elemento (0.18)
 | Elemento | Como está | Situação |
 |---|---|---|
 | Kamila — sprite e retrato do jogo | arte nova | no estilo |
 | Kamila — card do menu | imagem atual | mantida por decisão |
-| Homem Ferido — sprite | pixel art 56 × 64 a 1 px por px de mundo, sem contorno forte | destoa: pixels ~2,5× maiores que os da Kamila |
-| Homem Ferido — retrato | pixel art de baixa resolução | destoa |
+| Homem Ferido — sprite | por código, 3,2 px de arte por px de mundo, contorno por grupo, sombreamento chapado (0.18) | no estilo — aguardando aprovação |
+| Homem Ferido — retrato | por código, busto 190 × 244 em três quartos (0.18) | no estilo — aguardando aprovação |
 | Rua sem nome | procedural, 2 px de arte por px de mundo | densidade ok; faltam contorno e sombreamento chapado |
 | Café Entreluz | procedural, 1 px de arte por px de mundo | densidade antiga (metade da rua) e sem contorno |
 | Cidade do menu | pixel art 640 × 400 ampliada | a decidir |
@@ -41,3 +41,12 @@ e luzes pálidas; o café como o único calor.
    (café, postes), sangue e personagens. A névoa e a camada de luz continuam por cima de tudo.
 5. **Exceção:** a criatura não segue estas regras.
 6. **Retratos:** busto, proporção ~0,78 (largura/altura), fundo transparente.
+
+## Técnica usada nos desenhos por código (0.18)
+Usada no Homem Ferido; serve de base para os próximos NPCs e objetos.
+- Cada parte é uma forma pintada com `mCel`: base, faixa de sombra do lado oposto à luz (deslocamento
+  de ~5 px de arte) e filete de luz do lado da luz (~2 px). A luz vem de cima/esquerda.
+- Partes se juntam em grupos com `mGroup`; cada grupo recebe contorno de ~1,7 px de arte na cor
+  `#17181c`. Grupos separados criam as linhas internas (braço sobre o casaco, cabeça sobre a gola).
+- `mCrisp` endurece as bordas (pixel inteiro ou transparente).
+- A imagem é feita em alta densidade e desenhada no mundo com `drawDense`.
