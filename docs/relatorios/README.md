@@ -7,6 +7,7 @@ registradas nos comentários do código.
 
 | Versão | Data | Resumo |
 |---|---|---|
+| [0.27](0.27.md) | 2026-11-07 | Cena de devorar revista com a criatura nova: boca sobre o homem, corpo pendurado e engolido de verdade, peças caindo onde ela morde. |
 | [0.26](0.26.md) | 2026-11-07 | Crooked Legs animada pelos 49 quadros do criador (toda pálida, traço próprio). |
 | [0.25](0.25.md) | 2026-11-07 | Cidade do menu repintada no estilo novo (prédios contornados, céu em faixas, floresta em tufos, paleta fria sem pontilhado). |
 | [0.24](0.24.md) | 2026-11-07 | Interior do EntreLuz no estilo novo, com a densidade da rua. |
