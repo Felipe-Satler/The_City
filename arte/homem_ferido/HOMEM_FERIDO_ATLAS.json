@@ -1,0 +1,263 @@
+{
+  "frames": {
+    "idle_left": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "sourceSize": {
+        "w": 209,
+        "h": 209
+      }
+    },
+    "limp_left_01": {
+      "frame": {
+        "x": 209,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "sourceSize": {
+        "w": 209,
+        "h": 209
+      }
+    },
+    "limp_left_02": {
+      "frame": {
+        "x": 418,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "sourceSize": {
+        "w": 209,
+        "h": 209
+      }
+    },
+    "limp_left_03": {
+      "frame": {
+        "x": 627,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "sourceSize": {
+        "w": 209,
+        "h": 209
+      }
+    },
+    "limp_left_04": {
+      "frame": {
+        "x": 836,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "sourceSize": {
+        "w": 209,
+        "h": 209
+      }
+    },
+    "tremble_left": {
+      "frame": {
+        "x": 1045,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "sourceSize": {
+        "w": 209,
+        "h": 209
+      }
+    },
+    "aim_left": {
+      "frame": {
+        "x": 0,
+        "y": 209,
+        "w": 209,
+        "h": 209
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "sourceSize": {
+        "w": 209,
+        "h": 209
+      }
+    },
+    "recoil_left": {
+      "frame": {
+        "x": 209,
+        "y": 209,
+        "w": 209,
+        "h": 209
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "sourceSize": {
+        "w": 209,
+        "h": 209
+      }
+    },
+    "fallen_back": {
+      "frame": {
+        "x": 418,
+        "y": 209,
+        "w": 209,
+        "h": 209
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 209,
+        "h": 209
+      },
+      "sourceSize": {
+        "w": 209,
+        "h": 209
+      }
+    }
+  },
+  "animations": {
+    "idle": {
+      "frames": [
+        "idle_left"
+      ],
+      "fps": 1,
+      "loop": true
+    },
+    "limp": {
+      "frames": [
+        "limp_left_01",
+        "limp_left_02",
+        "limp_left_03",
+        "limp_left_04"
+      ],
+      "fps": 6,
+      "loop": true
+    },
+    "tremble": {
+      "frames": [
+        "idle_left",
+        "tremble_left"
+      ],
+      "fps": 5,
+      "loop": true
+    },
+    "aim": {
+      "frames": [
+        "aim_left"
+      ],
+      "fps": 1,
+      "loop": false
+    },
+    "recoil": {
+      "frames": [
+        "recoil_left"
+      ],
+      "fps": 1,
+      "loop": false
+    },
+    "fallen": {
+      "frames": [
+        "fallen_back"
+      ],
+      "fps": 1,
+      "loop": false
+    }
+  },
+  "meta": {
+    "image": "HOMEM_FERIDO_SPRITES.png",
+    "size": {
+      "w": 1254,
+      "h": 418
+    },
+    "grid": {
+      "columns": 6,
+      "rows": 2,
+      "cellWidth": 209,
+      "cellHeight": 209,
+      "margin": 0,
+      "spacing": 0
+    },
+    "emptyCells": [
+      {
+        "row": 1,
+        "column": 3
+      },
+      {
+        "row": 1,
+        "column": 4
+      },
+      {
+        "row": 1,
+        "column": 5
+      }
+    ],
+    "indexing": "zero-based",
+    "notes": "Redesenho de estilo em 2026-11-07. Quadros normalizados para células 209x209, sem margem externa ou espaçamento. A pose caída foi encaixada integralmente em sua célula. FPS são sugestões; animações ainda não testadas no motor."
+  }
+}

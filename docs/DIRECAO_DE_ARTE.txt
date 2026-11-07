@@ -1,0 +1,238 @@
+THE CITY — DIREÇÃO DE ARTE E REDESENHO DO HOMEM FERIDO
+Versão 1.0 — 7 de novembro de 2026
+Documento de referência para artistas e agentes de IA.
+
+1. DEFINIÇÃO CONCEITUAL
+
+A direção visual é anime em pixel art de alta resolução, com formas estilizadas,
+contornos escuros coloridos e sombreamento em planos definidos. O mundo é urbano,
+noturno, silencioso e ameaçador. A estilização deve tornar as formas legíveis sem
+transformar o drama em uma estética infantil ou cômica.
+
+Kamila é a referência principal de linguagem gráfica. O cenário revisado do
+EntreLuz orienta a atmosfera e a relação entre luz quente e sombras frias.
+O homem ferido conserva sua identidade própria: adulto, cansado, vulnerável,
+desnorteado e fisicamente debilitado. Aproximar o traço não significa copiar
+o rosto, o cabelo, a roupa ou a idade de Kamila.
+
+O terror vem da expressão, da postura, do vazio urbano, da luz e dos sinais de
+violência. Não depende de texturas fotográficas, sujeira distribuída por toda
+a imagem ou anatomia excessivamente detalhada.
+
+2. DIAGNÓSTICO DA VERSÃO ANTERIOR
+
+O homem já apresentava características de anime. A distância em relação a
+Kamila estava principalmente no acabamento: muitas linhas pequenas no rosto,
+no cabelo e no tecido; aparência mais gravada/áspera; e sombras muito
+fragmentadas em alguns pontos.
+
+O cenário anterior também concentrava muitos detalhes naturalistas de
+asfalto, tijolos, folhas e reflexos. A revisão da rua estabeleceu uma base
+mais gráfica, que agora orienta o personagem e os objetos.
+
+A diferença não se resolve apenas reduzindo a resolução ou aplicando um
+filtro de pixelização. É necessário escolher quais formas e informações
+merecem aparecer.
+
+3. MUDANÇAS FEITAS NO HOMEM E SEUS MOTIVOS
+
+CONTORNOS
+Antes: linhas internas e pequenos detalhes competiam com a silhueta.
+Agora: contorno mais definido e leitura mais clara de rosto, gola, braços,
+casaco e arma; sombras com tendência a carvão e violeta escuro.
+Motivo: aproximar o acabamento de Kamila e facilitar a leitura no mapa.
+
+CABELO
+Antes: maior fragmentação em fios e marcas pequenas.
+Agora: mechas castanhas agrupadas em volumes angulares, com faixas de luz
+mais organizadas.
+Motivo: obter uma silhueta reconhecível mesmo no quadro pequeno.
+
+ROSTO E OLHAR
+Antes: rugas, hachuras e detalhes de desgaste mais naturalistas.
+Agora: planos mais limpos nas bochechas, nariz e pescoço, olhos e sobrancelhas
+mais legíveis e construção facial mais próxima do anime.
+Motivo: comunicar medo e desorientação com poucos sinais visuais.
+Foram mantidos a barba por fazer, a mandíbula adulta, as olheiras e a tensão.
+A redução de linhas não deve rejuvenescer o personagem para adolescente.
+
+CASACO E ROUPA
+Antes: dobras e desgaste dividiam os tecidos em muitos fragmentos.
+Agora: dobras principais mais amplas e sombras agrupadas; casaco continua
+longo, cinza-esverdeado e de gola levantada; camisa permanece clara.
+Motivo: separar materiais pela forma e pelo valor, sem depender de ruído.
+
+PALETA E ILUMINAÇÃO
+Agora: verdes acinzentados e tons escuros contidos na roupa, sombras frias
+com presença de violeta, pele clara controlada e sangue vermelho escuro.
+Motivo: integrar o homem à rua noturna e manter contraste suficiente no rosto.
+Não foi incorporada uma névoa, um fundo escuro ou um grande halo ao sprite.
+
+SANGUE E FERIMENTOS
+Agora: manchas e escorrimento com formas gráficas mais claras.
+Motivo: preservar a gravidade da cena sem introduzir textura realista que
+rompa a linguagem visual.
+Permanecem o corte na testa, o sangue pelo rosto e a manga/mão esquerda feridas.
+
+PROPORÇÕES E GESTUAL
+Agora: rosto e cabeça com presença gráfica mais marcada, mantendo corpo
+masculino adulto, ombros caídos e postura encurvada.
+Motivo: aproximar o sprite do grau de estilização de Kamila.
+O andar permanece manco; a mão esquerda continua contra o abdômen;
+a mão direita continua segurando a pistola.
+
+RETRATO
+O busto recebeu o mesmo tratamento: cabelo em mechas maiores, sombras faciais
+organizadas e roupa com planos mais claros. O enquadramento em três quartos,
+o olhar para a esquerda, a expressão assustada e os ferimentos foram mantidos.
+O retrato pode ter mais detalhe que o sprite, mas deve repetir suas formas
+principais e relações de cor.
+
+4. REGRAS VISUAIS PARA AS PRÓXIMAS ARTES
+
+4.1 Contorno
+- Usar contornos escuros com matiz, próximos de carvão, vinho ou violeta.
+- Reforçar a silhueta e as separações importantes; não contornar cada textura
+  com a mesma força.
+- Dar menos peso às linhas internas do que ao limite externo da forma.
+- Evitar halos claros/coloridos ao redor de recortes transparentes.
+
+4.2 Sombra e material
+- Trabalhar com aproximadamente três a cinco grandes valores perceptivos
+  por material: sombra profunda, sombra, base e um ou dois níveis de luz.
+- Essa é uma diretriz de organização visual, não uma afirmação de que os
+  arquivos atuais tenham somente três a cinco cores RGB por material.
+- Usar grupos de pixels e limites intencionais nas transições.
+- Preferir dobras maiores no tecido, reflexos em faixas no metal/vidro e
+  volumes de folhas agrupados nas árvores.
+- Reservar o detalhe para rosto, mãos, ferimentos e elementos narrativos.
+
+4.3 Paleta e atmosfera
+- Usar azuis, cinzas, verdes pouco saturados e violetas nas sombras do mundo.
+- Reservar âmbar e dourado para fontes quentes, principalmente o EntreLuz.
+- Sangue: vinho e vermelho escuro, com poucos acentos mais vivos.
+- Evitar um preto uniforme que apague toda a roupa e as extremidades.
+- A paleta é orientada por relações entre cores; não foi criada uma paleta
+  indexada única obrigatória nesta revisão.
+- Mudanças de luz do ambiente devem ser aplicadas de forma coerente à cena.
+  Os sprites transparentes não devem trazer uma iluminação volumétrica fixa.
+
+4.4 Pixel e escala
+- Alta resolução não significa aparência fotográfica.
+- Preservar grupos de pixels legíveis e coerência na espessura dos contornos.
+- Uma redução por nearest-neighbor preserva bordas, mas não substitui revisão
+  manual de pixel art nem assegura, sozinha, uma grade artística uniforme.
+- Comparar personagens e objetos no tamanho real em que aparecem no jogo.
+- Usar Kamila como unidade visual; o homem deve parecer um pouco mais alto,
+  considerando que sua postura curvada reduz a altura aparente.
+- Ajustar carros, motos, árvores e postes ao mapa por sua escala física, sem
+  supor que todas as folhas de referência já compartilham pixels por metro.
+
+4.5 Coesão sem uniformização
+- Personagens podem se destacar do cenário para permanecerem legíveis.
+- O cenário pode ter mais informação total, distribuída em áreas maiores.
+- Preservar a mesma lógica de contorno, planos de sombra e seleção de detalhe.
+- Não transformar um adulto assustado em personagem infantil para aproximá-lo
+  do anime; preservar idade, anatomia e função narrativa.
+
+5. CONDIÇÕES DO HOMEM FERIDO QUE DEVEM PERMANECER
+
+- Homem adulto de aproximadamente 30 a 40 anos.
+- Cabelo castanho-escuro bagunçado e barba por fazer.
+- Casaco longo cinza-escuro esverdeado com gola levantada.
+- Camisa clara; calça e sapatos escuros.
+- Corte na testa e sangue escorrendo pelo rosto.
+- Braço ESQUERDO ferido, pressionado contra a barriga, com sangue na manga
+  e na mão.
+- Pistola grande na mão DIREITA, inspirada visualmente na Beretta M9.
+- Expressão assustada, desnorteada e desesperada; olhos arregalados.
+- Postura encurvada e caminhada assimétrica, mancando.
+- Poses em pé viradas para a ESQUERDA.
+- Exatamente dois braços e duas mãos; não acrescentar manchas junto ao quadril
+  com silhueta parecida com uma terceira mão.
+- Sem mudanças de roupa, idade, ferimento ou lado dos membros entre quadros.
+
+6. ENTREGA TÉCNICA E ORGANIZAÇÃO DAS POSES
+
+HOMEM_FERIDO_SPRITES.png
+PNG RGBA transparente, 1254 x 418 px.
+Grade: 6 colunas x 2 linhas.
+Células: 209 x 209 px.
+Margem externa e espaçamento entre células: zero.
+As pequenas áreas transparentes dentro das células são espaço de segurança.
+
+Posições a seguir contadas a partir de 1:
+Linha 1, coluna 1: parado.
+Linha 1, colunas 2 a 5: quatro fases do andar mancando.
+Linha 1, coluna 6: variante de repouso tenso/tremendo.
+Linha 2, coluna 1: mirando a pistola para a esquerda.
+Linha 2, coluna 2: recuo, com o cano um pouco levantado.
+Linha 2, coluna 3: caído de costas, horizontal, cabeça à esquerda.
+Linha 2, colunas 4 a 6: completamente vazias, alpha zero.
+
+HOMEM_FERIDO_RETRATO.png
+Busto separado, 1312 x 1199 px, com fundo transparente.
+Três quartos, voltado para a esquerda, expressão assustada.
+
+HOMEM_FERIDO_ATLAS.json
+Retângulos de recorte e nomes de quadros preservados para facilitar a troca.
+O campo animations é auxiliar; as velocidades são sugestões iniciais.
+
+A geração da folha veio em 2172 x 724 px. A entrega foi normalizada para a
+grade exigida usando nearest-neighbor. A pose deitada ultrapassava um limite
+de célula no resultado bruto: foi reenquadrada integralmente dentro de sua
+célula, e sua pequena invasão no quadro vizinho foi excluída. Não foram
+redesenhados membros nessa etapa técnica. Resíduos quase transparentes
+(alpha até 16 em uma escala de 0 a 255) foram zerados na exportação dos PNGs,
+para reduzir pontos soltos ao redor dos recortes. A arte visível foi preservada.
+
+7. VERIFICAÇÃO E LIMITES
+
+Foram verificadas as dimensões, os nove quadros ocupados, as três células
+vazias, o enquadramento da pose deitada e a presença de transparência.
+A revisão visual conferiu direção, roupa, arma, ferimentos e separação das
+mãos. A animação ainda precisa ser avaliada dentro do motor do jogo: não foi
+validado o ciclo em movimento, o contato dos pés, a velocidade da marcha ou
+a correspondência exata de altura com Kamila na cena.
+
+Antes da integração final:
+- Testar o ciclo manco e a alternância de tremor em tamanho real.
+- Observar deslocamentos da cabeça, pés, mãos e arma entre quadros.
+- Conferir a ligação visual de ombro, antebraço e mão; poses sobrepostas
+  não devem sugerir membros extras.
+- Testar recortes sobre fundo claro e escuro para detectar franjas.
+- Avaliar contraste à distância do jogador, principalmente fora da luz do café.
+
+8. DIRETRIZ REUTILIZÁVEL PARA ARTISTAS E IA
+
+"Desenhar em anime pixel art de alta resolução coerente com Kamila: contornos
+escuros coloridos, mechas e volumes agrupados, sombras em planos definidos,
+textura seletiva e silhuetas claras. Preservar idade, identidade, anatomia,
+roupa e gestual da referência. Manter horror urbano noturno, cores contidas,
+sombras frias e luz quente apenas onde houver fonte coerente. Ferimentos
+estilizados e sangue escuro. Sem textura fotográfica, excesso de hachuras,
+ruído aleatório, membros duplicados ou halo no fundo transparente. Avaliar o
+resultado na escala final do jogo."
+
+Para personagens, acrescentar os lados corretos dos membros, poses, grade,
+enquadramento e expressões. Para cenários, acrescentar câmera, composição e
+fontes de luz. Não usar apenas a expressão genérica "anime pixel art".
+
+9. REFERÊNCIAS E RASTREABILIDADE
+
+Estas são decisões de direção de arte deste projeto, baseadas na comparação
+visual dos arquivos, e não regras universais de todo anime ou toda pixel art.
+
+Kamila — folha fornecida pelo usuário:
+https://chatgpt.com/library?file_id=libfile_2f76e662fa608191839234896d62a23a&account_id=personal
+
+Kamila — retrato fornecido pelo usuário:
+https://chatgpt.com/library?file_id=libfile_fe5125b0e45c81918db1d935a4573ff3&account_id=personal
+
+Rua EntreLuz — versão estilizada:
+https://chatgpt.com/library?file_id=libfile_9a472391b69081919e04d0f49bac6caf&account_id=personal
+
+Método desta revisão: geração/edição integrada de imagens, seguida de ajuste
+técnico da grade e empacotamento. Os prompts completos usados nesta revisão
+acompanham o pacote em PROMPTS_REDESENHO.txt.
+

@@ -1,6 +1,7 @@
 # Guia de estilo visual
 
-Estado: **rascunho (0.18)**. Os itens "PROPOSTA" ainda dependem da aprovação do criador.
+Estado: **0.19**. A direção de arte oficial é `docs/DIRECAO_DE_ARTE.txt` (do criador); este guia resume e
+registra a situação de cada elemento. Em conflito, vale a direção de arte.
 
 ## Alvo
 A arte do sprite e do retrato da Kamila (`arte/kamila/`) é o estilo-alvo do jogo inteiro
@@ -19,14 +20,15 @@ e luzes pálidas; o café como o único calor.
 - **Proporções:** sprite de exploração compacto (cabeça grande, quase chibi); retrato com proporções
   completas.
 
-## Situação de cada elemento (0.18)
+## Situação de cada elemento (0.19)
 | Elemento | Como está | Situação |
 |---|---|---|
 | Kamila — sprite e retrato do jogo | arte nova | no estilo |
 | Kamila — card do menu | imagem atual | mantida por decisão |
-| Homem Ferido — sprite | por código, 3,2 px de arte por px de mundo, contorno por grupo, sombreamento chapado (0.18) | no estilo — aguardando aprovação |
-| Homem Ferido — retrato | por código, busto 190 × 244 em três quartos (0.18) | no estilo — aguardando aprovação |
-| Rua sem nome | procedural, 2 px de arte por px de mundo | densidade ok; faltam contorno e sombreamento chapado |
+| Homem Ferido — sprite e retrato | arte do criador, folha 6 × 2 (0.19) | no estilo |
+| Pedaços do homem e pistola caída | por código (0.18) | provisório; falta arte |
+| Rua sem nome | procedural, 2 px de arte por px de mundo | prova do estilo novo feita no trecho do EntreLuz (`docs/provas/`), aguardando aprovação |
+| Carros, motos, postes | imagens do criador em `arte/cenario/` | usadas só na prova por enquanto |
 | Café Entreluz | procedural, 1 px de arte por px de mundo | densidade antiga (metade da rua) e sem contorno |
 | Cidade do menu | pixel art 640 × 400 ampliada | a decidir |
 | Criatura | traço liso, sem grade, movimento em saltos | **diferente de propósito** (decisão do criador) |
@@ -50,3 +52,8 @@ Usada no Homem Ferido; serve de base para os próximos NPCs e objetos.
   `#17181c`. Grupos separados criam as linhas internas (braço sobre o casaco, cabeça sobre a gola).
 - `mCrisp` endurece as bordas (pixel inteiro ou transparente).
 - A imagem é feita em alta densidade e desenhada no mundo com `drawDense`.
+
+## Escala física (0.19)
+Kamila (1,65 m) = 57 px de mundo, ou seja ≈ 34,5 px por metro. Carros na prova: 62 × 95 px; motos 30 × 64;
+postes 104 px de altura (comprimidos, como é comum no estilo RPG Maker). O Homem Ferido é desenhado 5% maior
+que a escala da Kamila.

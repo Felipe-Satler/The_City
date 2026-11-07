@@ -1,0 +1,21 @@
+HOMEM FERIDO — VERSÃO HARMONIZADA COM KAMILA
+
+HOMEM_FERIDO_SPRITES.png — 1254 x 418 px, PNG RGBA transparente.
+HOMEM_FERIDO_RETRATO.png — 1312 x 1199 px, PNG RGBA transparente.
+HOMEM_FERIDO_ATLAS.json — recortes e sequências sugeridas.
+DIRECAO_DE_ARTE_THE_CITY.txt — decisões visuais, mudanças e motivos.
+PROMPTS_REDESENHO.txt — instruções completas usadas na geração.
+
+GRADE: 6 colunas x 2 linhas; células de 209 x 209 px; margem e espaçamento zero.
+Linha 1: parado; quatro quadros de caminhada mancando; parado tremendo.
+Linha 2: mira; recuo; caído horizontal com cabeça à esquerda; três células vazias.
+Em pé, o homem olha para a esquerda. Braço esquerdo ferido no abdômen,
+pistola na mão direita. Não há clarão de disparo ou projétil incorporado.
+
+Importe com filtragem nearest-neighbor e ajuste a escala na cena.
+O atlas preserva os nomes anteriores; animations é um campo auxiliar próprio.
+Dimensões, recortes e células vazias foram conferidos. O ciclo em movimento
+e a integração no motor ainda precisam ser avaliados.
+
+As imagens originais não foram apagadas do ambiente de trabalho.
+

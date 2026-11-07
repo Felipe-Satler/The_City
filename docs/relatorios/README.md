@@ -7,5 +7,6 @@ registradas nos comentários do código.
 
 | Versão | Data | Resumo |
 |---|---|---|
+| [0.19](0.19.md) | 2026-11-07 | Homem Ferido com a arte do criador (folha e retrato); prova do trecho do EntreLuz no estilo novo (cópia de teste, em `docs/provas/`). |
 | [0.18](0.18.md) | 2026-11-07 | Homem Ferido redesenhado no estilo da Kamila (sprite, retrato, corpo caído, pedaços, pistola); retratos sem dessaturação. |
 | [0.17](0.17.md) | 2026-11-07 | Retrato novo da Kamila nas falas (cores cheias), caminhada a 8 q/s, arte-fonte e documentação no repositório. |
