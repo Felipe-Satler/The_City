@@ -15,7 +15,7 @@
       <button type="button" class="city-menuitem cursor-interaction" data-action="exit"><span class="city-number">03</span><span>SAIR</span><span class="city-arrow">↗</span></button>
     </nav>
   </main>
-  <footer class="city-footer"><span>PRÉVIA CONCEITUAL / 0.22</span><button type="button" class="city-sound-toggle cursor-interaction" aria-pressed="false">ATIVAR SOM</button><span>A CIDADE PERMANECE.</span></footer>
+  <footer class="city-footer"><span>PRÉVIA CONCEITUAL / 0.23</span><button type="button" class="city-sound-toggle cursor-interaction" aria-pressed="false">ATIVAR SOM</button><span>A CIDADE PERMANECE.</span></footer>
   <section class="city-rpg" hidden aria-label="Exploração de Kamila">
     <canvas class="rpg-canvas" tabindex="0" aria-label="Mapa explorável. Use WASD ou as setas para caminhar. E ou Enter para interagir. No celular, use os controles na tela."></canvas>
     <header class="rpg-header"><div><span class="rpg-kicker">THE CITY / KAMILA CZARNY</span><h2 class="rpg-location">A rua sem nome</h2></div><div class="rpg-topbuttons"><button type="button" class="rpg-sound">ATIVAR SOM</button><button type="button" data-rpg="menu">MENU ↗</button></div></header>
@@ -810,17 +810,6 @@ const rpg=(()=>{
  // ---------- Elementos altos (ordenados com os personagens) ----------
  function propCanvas(w,h){const a=document.createElement('canvas');a.width=w*ST_D;a.height=h*ST_D;a.lw=w;a.lh=h;const t=a.getContext('2d');t.setTransform(ST_D,0,0,ST_D,0,0);return [a,t]}
  function flatCanvas(w,h){const a=document.createElement('canvas');a.width=w;a.height=h;return [a,a.getContext('2d')]}
- function stSign(){const X=Math.round(27.7*T*SX),Y=14*T+42;
-  const [a,t]=propCanvas(52,52),ax=42,ay=48;
-  hrect(t,ax-1,ay-44,2,44,'#57635c');hrect(t,ax-1,ay-44,.5,44,'#9b9da6');hrect(t,ax+.5,ay-44,.5,44,'#39423c');oval(t,ax+1,ay,5,2,'rgba(5,10,12,.5)');
-  hrect(t,ax-37,ay-48,42,15,'#3c4b42');hrect(t,ax-36,ay-47,40,13,'#526157');hrect(t,ax-36,ay-47,40,.5,'#9d9fa8');hrect(t,ax-36,ay-46.5,40,.5,'#898b94');hrect(t,ax-36,ay-34.5,40,.5,'#38443c');
-  for(const [qx,qy] of [[-35.5,-46],[3,-46],[-35.5,-35.5],[3,-35.5]])hrect(t,ax+qx,ay+qy,.5,.5,'#bdbfc8');
-  // Letras apagadas: restos de tinta em traços finos.
-  for(let k=0;k<9;k++)for(let q=0;q<3;q++)if(sr()>.35)hrect(t,ax-34+k*4+sr()*2,ay-43+sr()*5,.5,sp(1,3),'rgba(190,200,186,.32)');
-  for(let k=0;k<10;k++)hrect(t,ax-36+sr()*38,ay-47+sr()*11,sp(1.5,6),sp(1,3),'#37413b');
-  for(let k=0;k<30;k++)hrect(t,ax-36+sr()*39.5,ay-47+sr()*12.5,.5,.5,sr()>.5?'rgba(120,80,50,.4)':'rgba(200,210,196,.2)');
-  stProps.push({img:a,x:X-ax,y:Y-ay,base:Y,cx:X,kind:'sign'});
- }
 
  // ===== Cenário no estilo novo (0.20; aprovado a partir da prova do EntreLuz da 0.19) =====
  // Chão inteiro, café EntreLuz, carros, motos, postes, árvores e lixeiras na linguagem da direção de arte
@@ -987,12 +976,71 @@ const rpg=(()=>{
   orect(g,X-1,Y+3,18,7,'#3d5a49');hrect(g,X-1,Y+3,18,1,'#5a7b66');hrect(g,X-1,Y+9,18,1,'#263a30');orect(g,X+5,Y+5,6,2,'#1c2a23');
   hrect(g,X+1,Y+24,3,1.5,PVC.line);hrect(g,X+12,Y+24,3,1.5,PVC.line)}
 
+ // ---------- Personalidade de cada fachada (0.23, a partir da imagem da rua do criador) ----------
+ // Desenhado por cima do que stBuilding pintou, com a mesma geometria. Nada de escrever a categoria da loja.
+ function fGeo(x,y,w,h,kind){const X=Math.round(x*T*SX),Y=y*T,W=Math.round(w*T*SX),H=h*T,wallH=kind==='flats'?Math.min(H-56,168):kind==='home'?Math.min(H-64,120):132,FY=Y+H-wallH,B=Y+H;
+  return {X,Y,W,H,FY,B,dc:X+Math.round(W*.52),sy:FY+52,top:FY+74,bot:B-8}}
+ // Cano de descida com braçadeiras.
+ function fPipe(x,y0,y1){const g=sg;orect(g,x,y0,3,y1-y0,'#4b5058');hrect(g,x,y0,1,y1-y0,'#656a73');for(let y=y0+8;y<y1-4;y+=22)orect(g,x-1,y,5,2,'#363a42');orect(g,x-2,y1-3,7,3,'#3e424a')}
+ // Aparelho de ar-condicionado na parede, com grade e mancha de água embaixo.
+ function fAC(x,y){const g=sg;hrect(g,x+2,y+12,22,3,'rgba(6,8,12,.4)');orect(g,x,y,22,12,'#6a6f78');hrect(g,x,y,22,1,'#868b94');for(let k=x+2;k<x+20;k+=2.5)hrect(g,k,y+3,1,7,'#4a4e56');orect(g,x+18,y+3,2,7,'#3a3e46');hrect(g,x+9,y+13,1.5,sp(10,18),'rgba(10,12,18,.2)')}
+ // Lanterna de parede apagada.
+ function fLantern(x,y){const g=sg;orect(g,x,y,1.5,4,'#2a2d34');orect(g,x-2.5,y+3,6.5,8,'#2c3038');hrect(g,x-1.5,y+4.5,4.5,5,'#3f4650');hrect(g,x-1.5,y+4.5,1,5,'#5a6370')}
+ // Cartaz rasgado colado na parede.
+ function fPoster(x,y,w,h,col){const g=sg;g.save();g.translate(x,y);g.rotate(sp(-.06,.06));orect(g,0,0,w,h,col);hrect(g,2,2,w-4,h*.35,shade(col,-18));for(let k=0;k<3;k++)hrect(g,2,h*.5+k*3,w*sp(.4,.8),1,shade(col,-26));
+  g.fillStyle=shade(col,-40);g.beginPath();g.moveTo(w*.55,h);g.lineTo(w*.7,h*.7);g.lineTo(w*.82,h*.86);g.lineTo(w,h*.62);g.lineTo(w,h);g.closePath();g.fill();g.restore()}
+ // Livraria (vitrine empoeirada): faixa verde com ladrilhos, estantes de livros coloridos, abajur, objetos e o retângulo limpo na poeira.
+ function fLivraria(x,y,w,h){const g=sg,{X,W,dc,sy,top,bot,B}=fGeo(x,y,w,h,'shop');
+  orect(g,X+10,sy,W-20,17,'#22362c');hrect(g,X+10,sy,W-20,1,'#3a5446');hrect(g,X+10,sy+16,W-20,1,'#17241d');for(let k=X+18;k<X+W-22;k+=13)orect(g,k,sy+5,6,6,'#3d5a4a','#18261e');
+  const books=['#6b3b34','#3f5a6e','#7a6a3e','#4d6a4a','#5f4a6e','#8a7a62','#2f4a5a','#7a4a3a'];
+  [[X+12,dc-24],[dc+24,X+W-12]].forEach(([a,b],pi)=>{const wx=Math.round(a),ww=Math.round(b-a),wy=top+6,wh=bot-wy;
+   orect(g,wx-3,wy-3,ww+6,wh+5,'#2c3a33');hrect(g,wx,wy,ww,wh,'#141a20');
+   for(let sh=0;sh<2;sh++){const ly=wy+Math.round(wh*(.42+sh*.42));orect(g,wx+2,ly,ww-4,2,'#4a3a2c','#22180f');
+    for(let bx=wx+4;bx<wx+ww-5;){const bw=Math.round(sp(2.5,4)),bh=Math.round(sp(8,14)),col=books[Math.floor(sr()*books.length)];if(sr()>.88){g.save();g.translate(bx,ly);g.rotate(-.35);orect(g,0,-bh,bw,bh,col,'#17191e');g.restore();bx+=bw+3;continue}
+     orect(g,bx,ly-bh,bw,bh,col,'#17191e');hrect(g,bx,ly-bh+2,bw,.5,shade(col,20));bx+=bw+.5}}
+   if(pi===0){const lx=wx+ww*.78,ly=wy+wh*.42-1;orect(g,lx-3,ly-2,6,2,'#3a3530');orect(g,lx-.5,ly-11,1,9,'#4a4540');g.fillStyle=PVC.line;g.beginPath();g.moveTo(lx-6,ly-10);g.lineTo(lx+6,ly-10);g.lineTo(lx+3.5,ly-17);g.lineTo(lx-3.5,ly-17);g.fill();g.fillStyle='#8a7a5a';g.beginPath();g.moveTo(lx-5,ly-10.5);g.lineTo(lx+5,ly-10.5);g.lineTo(lx+3,ly-16.5);g.lineTo(lx-3,ly-16.5);g.fill()}
+   else{orect(g,wx+ww*.2,wy+wh-8,8,6,'#5a5048');oval(g,wx+ww*.62,wy+wh-6,4,3,'#6a5a4a')}
+   g.fillStyle='rgba(150,156,166,.17)';g.fillRect(wx,wy,ww,wh);
+   if(pi===0){hrect(g,wx+ww*.32,wy+wh-9,14,7,'#141a20');g.strokeStyle='rgba(170,176,186,.35)';g.lineWidth=.5;g.strokeRect(wx+ww*.32,wy+wh-9,14,7)}
+   g.fillStyle='rgba(130,150,175,.14)';g.beginPath();g.moveTo(wx+ww*.1,wy+wh);g.lineTo(wx+ww*.32,wy);g.lineTo(wx+ww*.42,wy);g.lineTo(wx+ww*.2,wy+wh);g.fill();
+   orect(g,wx-4,bot,ww+8,3,'#6b7078')});
+  // Porta verde-escura com vidro empoeirado e puxador de latão.
+  const dw=28,dh=bot-top+2,dx=dc-dw/2,dy=B-dh;orect(g,dx-3,dy-3,dw+6,dh+3,'#2c3a33');orect(g,dx,dy,dw,dh,'#23362c','#111813');hrect(g,dx,dy,1,dh,'#33493c');
+  orect(g,dx+4,dy+4,dw-8,dh*.5,'#1b2228');g.fillStyle='rgba(150,156,166,.2)';g.fillRect(dx+4,dy+4,dw-8,dh*.5);orect(g,dx+4,dy+dh*.62,dw-8,dh*.28,'#1d2e25','#111813');orect(g,dx+dw-6,dy+dh*.5,2,6,'#b39a62');
+  orect(g,dx-7,B,dw+14,3,'#6b7078')}
+ // Loja de porta de aço: faixa pintada de vinho descascando e cadeados nas portas de enrolar.
+ function fAco(x,y,w,h){const g=sg,{X,W,dc,sy,bot}=fGeo(x,y,w,h,'shop');
+  orect(g,X+10,sy,W-20,17,'#432a2b');hrect(g,X+10,sy,W-20,1,'#5a3a3a');for(let i=0;i<7;i++){pvBlob(g,X+sp(24,W-24),sy+sp(4,13),sp(4,10),sp(2,4),i+7);g.fillStyle='#5d5d64';g.fill()}
+  for(const px of [(X+12+dc-24)/2,(dc+24+X+W-12)/2])orect(g,Math.round(px)-2,bot-9,4,5,'#7a6a48','#1b1d22');
+  fPoster(X+W-38,sy-36,16,22,'#7d7a70');fPoster(X+22,sy-34,14,19,'#6e6a64')}
+ // Loja caiada (fechada): cartazes rasgados entre as janelas.
+ function fCaiada(x,y,w,h){const {X,W,sy}=fGeo(x,y,w,h,'shop');fPoster(X+W*.5-8,sy-33,16,21,'#827d70');fPoster(X+W*.5+12,sy-30,12,16,'#6a6f78')}
+ // Prédio de apartamentos: cano de descida e ar-condicionado.
+ function fApartamentos(x,y,w,h){const {X,W,FY,B}=fGeo(x,y,w,h,'flats');fPipe(X+W-11,FY-2,B-2);fAC(X+8,FY+30)}
+ // Casa: lanterna apagada ao lado da porta e plaquinha sem número legível.
+ function fCasa(x,y,w,h){const g=sg,{dc,B}=fGeo(x,y,w,h,'home');fLantern(dc-20,B-50);orect(g,dc+20,B-50,8,5,'#5e6068');hrect(g,dc+21.5,B-48.5,5,1,'#3c3f46')}
+ // Parquímetro vermelho-escuro na beira da calçada (elemento alto).
+ function stParq(x,y){const X=Math.round(x),Y=Math.round(y);streetMap.solid.push({x:X-3,y:Y-3,w:6,h:6});oval(sg,X+2,Y+1,5,2,'rgba(5,8,12,.5)');
+  const [a,t]=propCanvas(16,30),ax=8,ay=28;orect(t,ax-1,ay-18,2,18,'#3a3e46');orect(t,ax-4,ay-27,8,10,'#6a2a2a');hrect(t,ax-4,ay-27,8,1,'#8a3a36');orect(t,ax-2.5,ay-25,5,3,'#1d242c');hrect(t,ax-2,ay-24.5,2,1,'#5a6a7a');orect(t,ax-1,ay-20,2,1.5,'#8a8f98');orect(t,ax-3,ay-1,6,1.5,'#2a2d34');
+  stProps.push({img:a,x:X-ax,y:Y-ay,base:Y,cx:X,kind:'meter'})}
+ // Placa da rua: poste contornado e placa verde com a tinta descascada (o nome não se lê).
+ function stSign(){const X=Math.round(27.7*T*SX),Y=14*T+42;
+  const [a,t]=propCanvas(52,52),ax=42,ay=48;oval(t,ax+1,ay,5,2,'rgba(5,8,12,.5)');
+  orect(t,ax-1,ay-44,2.5,44,'#4a5058');hrect(t,ax-1,ay-44,.5,44,'#6a7078');
+  orect(t,ax-37,ay-48,42,15,'#2d4a3c',PVC.line,1);hrect(t,ax-36,ay-47,40,1,'#4a6a58');hrect(t,ax-36,ay-34,40,1,'#1f3529');
+  for(let k=0;k<6;k++){pvBlob(t,ax-34+sr()*36,ay-44+sr()*8,sp(2,5),sp(1.2,2.5),k+3);t.fillStyle=sr()>.5?'#5f6168':'#4c4e55';t.fill()}
+  for(let k=0;k<9;k++)if(sr()>.3)hrect(t,ax-33+k*4,ay-44+sr()*3,1,sp(2,5),'rgba(200,206,190,.35)');
+  for(const [qx,qy] of [[-35.5,-46],[3,-46],[-35.5,-35.5],[3,-35.5]])hrect(t,ax+qx,ay+qy,1,1,'#8a8f98');
+  stProps.push({img:a,x:X-ax,y:Y-ay,base:Y,cx:X,kind:'sign'})}
+ function stPersonalidade(){
+  fCaiada(1,1,10,7);fApartamentos(13,1,14,7);fCasa(29,1,10,7);fAco(1,17,10,8);fApartamentos(29,17,10,8);fLivraria(1,28,10,10);fCasa(2,41,9,6);fCasa(29,41,10,6);
+  for(const [x,y] of [[ROAD.l-12,22*T],[ROAD.l-12,37*T]])stParq(x,y)}
  // ---------- Montagem da rua ----------
  paintGround();groundDetails();stChao();
  stBuilding(1,1,10,7,{kind:'shop',front:'whitewash',variant:1});stBuilding(13,1,14,7,{kind:'flats',variant:1});stBuilding(29,1,10,7,{kind:'home',variant:2});
  stBuilding(1,17,10,8,{kind:'shop',front:'shutters',variant:0});stBuilding(29,17,10,8,{kind:'flats',variant:0,porch:true});
  stBuilding(1,28,10,10,{kind:'shop',front:'books',variant:3});stCafe(29,28,10,10);
- stBuilding(2,41,9,6,{kind:'home',variant:0});stBuilding(29,41,10,6,{kind:'home',variant:1});
+ stBuilding(2,41,9,6,{kind:'home',variant:0});stBuilding(29,41,10,6,{kind:'home',variant:1});stPersonalidade();
  stVeiculos();
 
  for(const [x,y] of [[10,26],[29,26],[10,40]])stBin(x,y);

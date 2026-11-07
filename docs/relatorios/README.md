@@ -7,6 +7,7 @@ registradas nos comentários do código.
 
 | Versão | Data | Resumo |
 |---|---|---|
+| [0.23](0.23.md) | 2026-11-07 | Personalidade por prédio (livraria, loja de aço, loja caiada, apartamentos, casas), placa da rua nova e parquímetros. |
 | [0.22](0.22.md) | 2026-11-07 | Fachadas e telhados de todos os prédios no estilo novo (primeira passada, pelas peças compartilhadas). |
 | [0.21](0.21.md) | 2026-11-07 | Cena do homem devorado com a folha do criador (corpo na boca, braço, perna, pistola, poça, respingo, rastro, retalho). |
 | [0.20](0.20.md) | 2026-11-07 | Cenário no estilo novo no jogo (chão, café com letreiro e porta corrigidos, carros, motos, postes, árvores, lixeiras); pedido de arte do homem devorado. |
