@@ -1,0 +1,21 @@
+VALIDAÇÃO — 10/11/2026
+
+CL_SURGIR.png: 2048 × 512, 4 quadros, RGBA, aprovado.
+CL_PARADA.png: 2048 × 512, 4 quadros, RGBA, aprovado.
+CL_ANDAR.png: 3072 × 512, 6 quadros, RGBA, aprovado.
+CL_TIRO.png: 1024 × 512, 2 quadros, RGBA, aprovado.
+CL_ATAQUE.png: 3072 × 512, 6 quadros, RGBA, aprovado.
+CL_ENGOLIR.png: 3072 × 512, 6 quadros, RGBA, aprovado.
+CL_MASTIGAR.png: 1536 × 512, 3 quadros, RGBA, aprovado.
+CL_CATAR.png: 2048 × 512, 4 quadros, RGBA, aprovado.
+CL_CORRER.png: 3072 × 512, 6 quadros, RGBA, aprovado.
+CL_PEGAR.png: 2048 × 512, 4 quadros, RGBA, aprovado.
+CL_CORRER_FRENTE.png: 2048 × 512, 4 quadros, RGBA, aprovado.
+
+49 quadros não vazios, transparência presente, dimensões corretas.
+Sem recorte nas bordas; apoio inferior dentro da linha y=492.
+Uma região principal conectada por quadro (alfa >64, componentes >30 pixels).
+Referências às 12 peças e coordenadas da boca verificadas.
+Sintaxe JavaScript do runtime e scripts embutidos do HTML aprovada.
+Prévia geral inspecionada visualmente; renderização dos 49 quadros concluída.
+Teste interativo de navegador e integração na engine: não realizados.

@@ -1,8 +1,8 @@
 {
   "meta": {
     "name": "Crooked Legs",
-    "version": 2,
-    "date": "2026-11-07",
+    "version": 3,
+    "date": "2026-11-09",
     "format": "custom-multi-strip-v1",
     "cellSize": {
       "w": 512,
@@ -13,17 +13,17 @@
     "margin": 0,
     "spacing": 0,
     "alpha": true,
-    "defaultFacing": "right",
+    "defaultFacing": "right-three-quarter",
     "groundY": 492,
     "suggestedPivot": {
       "x": 256,
       "y": 492
     },
     "standingHeightApprox": 400,
-    "mouthCoordinates": "local cell pixels, origin top-left",
-    "mouthPrecision": "visually estimated; calibrate in engine",
+    "mouthCoordinates": "local cell pixels; top-left origin",
+    "mouthPrecision": "transformed head anchor; source landmark visually estimated",
     "engineTested": false,
-    "revision": "Elongated lower jaw, black empty mouth, no nose, numerous long pointed teeth, eerily happy expression"
+    "rigIncluded": true
   },
   "textures": {
     "CL_SURGIR.png": {
@@ -98,21 +98,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 89,
-        "y": 286,
-        "w": 339,
-        "h": 207
+        "x": 117,
+        "y": 216,
+        "w": 318,
+        "h": 277
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 385,
-        "y": 325
+        "x": 277.4,
+        "y": 279.3
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "surgir_02": {
       "image": "CL_SURGIR.png",
@@ -129,21 +129,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 73,
-        "y": 260,
-        "w": 380,
-        "h": 233
+        "x": 113,
+        "y": 205,
+        "w": 322,
+        "h": 288
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 337,
-        "y": 288
+        "x": 266.9,
+        "y": 229.6
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "surgir_03": {
       "image": "CL_SURGIR.png",
@@ -160,21 +160,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 78,
-        "y": 158,
-        "w": 347,
-        "h": 335
+        "x": 88,
+        "y": 136,
+        "w": 348,
+        "h": 357
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 320,
-        "y": 212
+        "x": 267.12,
+        "y": 176.52
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "surgir_04": {
       "image": "CL_SURGIR.png",
@@ -191,21 +191,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 64,
-        "y": 93,
-        "w": 362,
-        "h": 400
+        "x": 70,
+        "y": 98,
+        "w": 366,
+        "h": 395
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 336,
-        "y": 156
+        "x": 260.6,
+        "y": 140.1
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "parada_01": {
       "image": "CL_PARADA.png",
@@ -222,21 +222,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 69,
-        "y": 100,
-        "w": 348,
-        "h": 393
+        "x": 70,
+        "y": 99,
+        "w": 366,
+        "h": 394
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 293,
-        "y": 139
+        "x": 263.4,
+        "y": 134.86
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "parada_02": {
       "image": "CL_PARADA.png",
@@ -253,21 +253,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 64,
-        "y": 98,
-        "w": 360,
-        "h": 395
+        "x": 70,
+        "y": 96,
+        "w": 366,
+        "h": 397
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 325,
-        "y": 130
+        "x": 256.97,
+        "y": 133.81
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "parada_03": {
       "image": "CL_PARADA.png",
@@ -284,21 +284,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 66,
-        "y": 81,
-        "w": 357,
-        "h": 412
+        "x": 70,
+        "y": 100,
+        "w": 366,
+        "h": 393
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 318,
-        "y": 143
+        "x": 261.41,
+        "y": 141.17
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "parada_04": {
       "image": "CL_PARADA.png",
@@ -315,21 +315,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 62,
-        "y": 110,
-        "w": 380,
-        "h": 383
+        "x": 69,
+        "y": 96,
+        "w": 363,
+        "h": 397
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 321,
-        "y": 174
+        "x": 260.26,
+        "y": 130.14
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "andar_01": {
       "image": "CL_ANDAR.png",
@@ -346,21 +346,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 55,
-        "y": 93,
-        "w": 374,
-        "h": 400
+        "x": 82,
+        "y": 103,
+        "w": 336,
+        "h": 390
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 300,
-        "y": 149
+        "x": 277.62,
+        "y": 144.22
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "andar_02": {
       "image": "CL_ANDAR.png",
@@ -377,21 +377,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 57,
-        "y": 93,
-        "w": 350,
-        "h": 400
+        "x": 69,
+        "y": 104,
+        "w": 357,
+        "h": 389
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 300,
-        "y": 150
+        "x": 275.01,
+        "y": 141.07
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "andar_03": {
       "image": "CL_ANDAR.png",
@@ -408,21 +408,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 58,
-        "y": 93,
-        "w": 407,
-        "h": 400
+        "x": 57,
+        "y": 105,
+        "w": 391,
+        "h": 388
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 299,
-        "y": 149
+        "x": 274.82,
+        "y": 146.47
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "andar_04": {
       "image": "CL_ANDAR.png",
@@ -439,21 +439,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 56,
-        "y": 93,
-        "w": 374,
-        "h": 400
+        "x": 57,
+        "y": 102,
+        "w": 404,
+        "h": 391
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 300,
-        "y": 149
+        "x": 277.15,
+        "y": 137.84
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "andar_05": {
       "image": "CL_ANDAR.png",
@@ -470,21 +470,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 81,
-        "y": 93,
-        "w": 350,
-        "h": 400
+        "x": 64,
+        "y": 106,
+        "w": 384,
+        "h": 387
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 302,
-        "y": 149
+        "x": 280.43,
+        "y": 145.63
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "andar_06": {
       "image": "CL_ANDAR.png",
@@ -501,21 +501,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 58,
-        "y": 92,
-        "w": 373,
-        "h": 401
+        "x": 76,
+        "y": 105,
+        "w": 356,
+        "h": 388
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 299,
-        "y": 149
+        "x": 279.31,
+        "y": 140.35
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "tiro_01": {
       "image": "CL_TIRO.png",
@@ -532,21 +532,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 123,
-        "y": 140,
-        "w": 229,
-        "h": 353
+        "x": 118,
+        "y": 193,
+        "w": 317,
+        "h": 300
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 203,
-        "y": 195
+        "x": 210.29,
+        "y": 224.55
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "tiro_02": {
       "image": "CL_TIRO.png",
@@ -563,21 +563,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 72,
-        "y": 93,
-        "w": 364,
-        "h": 400
+        "x": 70,
+        "y": 104,
+        "w": 366,
+        "h": 389
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 336,
-        "y": 151
+        "x": 265.61,
+        "y": 141.19
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "ataque_01": {
       "image": "CL_ATAQUE.png",
@@ -595,20 +595,20 @@
       },
       "contentBounds": {
         "x": 66,
-        "y": 64,
-        "w": 354,
-        "h": 429
+        "y": 74,
+        "w": 344,
+        "h": 419
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 222,
-        "y": 111
+        "x": 233.06,
+        "y": 114.92
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "ataque_02": {
       "image": "CL_ATAQUE.png",
@@ -625,21 +625,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 65,
-        "y": 53,
-        "w": 360,
-        "h": 440
+        "x": 66,
+        "y": 68,
+        "w": 340,
+        "h": 425
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 254,
-        "y": 112
+        "x": 270.46,
+        "y": 108.09
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "ataque_03": {
       "image": "CL_ATAQUE.png",
@@ -656,21 +656,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 46,
-        "y": 155,
-        "w": 424,
-        "h": 338
+        "x": 85,
+        "y": 201,
+        "w": 336,
+        "h": 292
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 391,
-        "y": 216
+        "x": 382.66,
+        "y": 304.93
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "ataque_04": {
       "image": "CL_ATAQUE.png",
@@ -687,21 +687,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 64,
-        "y": 270,
-        "w": 372,
-        "h": 223
+        "x": 70,
+        "y": 203,
+        "w": 367,
+        "h": 290
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 412,
-        "y": 457
+        "x": 429.65,
+        "y": 462.53
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "ataque_05": {
       "image": "CL_ATAQUE.png",
@@ -718,21 +718,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 66,
-        "y": 268,
-        "w": 371,
-        "h": 225
+        "x": 70,
+        "y": 203,
+        "w": 365,
+        "h": 290
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 410,
-        "y": 439
+        "x": 404.98,
+        "y": 452.61
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "ataque_06": {
       "image": "CL_ATAQUE.png",
@@ -749,21 +749,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 68,
-        "y": 267,
-        "w": 381,
-        "h": 226
+        "x": 70,
+        "y": 204,
+        "w": 371,
+        "h": 289
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 423,
-        "y": 459
+        "x": 433.9,
+        "y": 455.86
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "engolir_01": {
       "image": "CL_ENGOLIR.png",
@@ -780,21 +780,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 77,
-        "y": 174,
-        "w": 335,
-        "h": 319
+        "x": 70,
+        "y": 187,
+        "w": 366,
+        "h": 306
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 376,
-        "y": 232
+        "x": 374.47,
+        "y": 329.21
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "engolir_02": {
       "image": "CL_ENGOLIR.png",
@@ -811,21 +811,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 73,
-        "y": 100,
-        "w": 342,
-        "h": 393
+        "x": 70,
+        "y": 159,
+        "w": 366,
+        "h": 334
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 318,
-        "y": 162
+        "x": 327.85,
+        "y": 201.1
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "engolir_03": {
       "image": "CL_ENGOLIR.png",
@@ -842,21 +842,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 73,
-        "y": 84,
-        "w": 342,
-        "h": 409
+        "x": 70,
+        "y": 72,
+        "w": 366,
+        "h": 421
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 263,
-        "y": 128
+        "x": 271.34,
+        "y": 96.07
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "engolir_04": {
       "image": "CL_ENGOLIR.png",
@@ -873,9 +873,9 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 77,
+        "x": 70,
         "y": 86,
-        "w": 346,
+        "w": 366,
         "h": 407
       },
       "pivot": {
@@ -883,11 +883,11 @@
         "y": 492
       },
       "mouth": {
-        "x": 283,
-        "y": 113
+        "x": 267.45,
+        "y": 107.91
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "engolir_05": {
       "image": "CL_ENGOLIR.png",
@@ -904,21 +904,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 73,
-        "y": 83,
-        "w": 342,
-        "h": 410
+        "x": 70,
+        "y": 105,
+        "w": 366,
+        "h": 388
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 290,
-        "y": 117
+        "x": 268.17,
+        "y": 139.08
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "engolir_06": {
       "image": "CL_ENGOLIR.png",
@@ -935,21 +935,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 74,
-        "y": 92,
-        "w": 341,
-        "h": 401
+        "x": 70,
+        "y": 106,
+        "w": 366,
+        "h": 387
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 291,
-        "y": 129
+        "x": 270.35,
+        "y": 139.91
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "mastigar_01": {
       "image": "CL_MASTIGAR.png",
@@ -966,21 +966,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 69,
-        "y": 86,
-        "w": 359,
-        "h": 407
+        "x": 70,
+        "y": 107,
+        "w": 366,
+        "h": 386
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 321,
-        "y": 135
+        "x": 270.8,
+        "y": 148.64
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "mastigar_02": {
       "image": "CL_MASTIGAR.png",
@@ -997,21 +997,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 69,
-        "y": 95,
-        "w": 359,
-        "h": 398
+        "x": 70,
+        "y": 105,
+        "w": 366,
+        "h": 388
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 327,
-        "y": 130
+        "x": 273.95,
+        "y": 138.26
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "mastigar_03": {
       "image": "CL_MASTIGAR.png",
@@ -1029,20 +1029,20 @@
       },
       "contentBounds": {
         "x": 70,
-        "y": 98,
-        "w": 359,
-        "h": 395
+        "y": 106,
+        "w": 366,
+        "h": 387
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 327,
-        "y": 146
+        "x": 270.56,
+        "y": 143.01
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "catar_01": {
       "image": "CL_CATAR.png",
@@ -1059,21 +1059,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 45,
-        "y": 200,
-        "w": 409,
-        "h": 293
+        "x": 70,
+        "y": 196,
+        "w": 365,
+        "h": 297
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 378,
-        "y": 429
+        "x": 424.41,
+        "y": 461.31
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "catar_02": {
       "image": "CL_CATAR.png",
@@ -1090,21 +1090,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 45,
-        "y": 199,
-        "w": 408,
-        "h": 294
+        "x": 70,
+        "y": 197,
+        "w": 365,
+        "h": 296
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 379,
-        "y": 454
+        "x": 422.15,
+        "y": 461.24
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "catar_03": {
       "image": "CL_CATAR.png",
@@ -1121,21 +1121,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 45,
-        "y": 134,
-        "w": 409,
-        "h": 359
+        "x": 70,
+        "y": 184,
+        "w": 366,
+        "h": 309
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 366,
-        "y": 188
+        "x": 351.8,
+        "y": 283.45
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "catar_04": {
       "image": "CL_CATAR.png",
@@ -1152,21 +1152,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 45,
-        "y": 83,
-        "w": 409,
-        "h": 410
+        "x": 70,
+        "y": 91,
+        "w": 366,
+        "h": 402
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 295,
-        "y": 106
+        "x": 271.7,
+        "y": 111.99
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "correr_01": {
       "image": "CL_CORRER.png",
@@ -1183,21 +1183,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 45,
-        "y": 214,
-        "w": 429,
-        "h": 279
+        "x": 101,
+        "y": 208,
+        "w": 298,
+        "h": 285
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 432,
-        "y": 281
+        "x": 378.46,
+        "y": 326.09
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "correr_02": {
       "image": "CL_CORRER.png",
@@ -1214,21 +1214,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 108,
-        "y": 232,
-        "w": 307,
-        "h": 261
+        "x": 83,
+        "y": 210,
+        "w": 333,
+        "h": 283
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 396,
-        "y": 272
+        "x": 375.82,
+        "y": 319.75
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "correr_03": {
       "image": "CL_CORRER.png",
@@ -1245,21 +1245,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 28,
-        "y": 230,
-        "w": 445,
-        "h": 263
+        "x": 66,
+        "y": 210,
+        "w": 387,
+        "h": 283
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 430,
-        "y": 297
+        "x": 378.46,
+        "y": 329.42
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "correr_04": {
       "image": "CL_CORRER.png",
@@ -1276,21 +1276,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 44,
-        "y": 235,
-        "w": 436,
-        "h": 258
+        "x": 67,
+        "y": 208,
+        "w": 405,
+        "h": 285
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 425,
-        "y": 276
+        "x": 375.82,
+        "y": 315.42
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "correr_05": {
       "image": "CL_CORRER.png",
@@ -1307,21 +1307,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 105,
-        "y": 215,
-        "w": 318,
-        "h": 278
+        "x": 76,
+        "y": 186,
+        "w": 377,
+        "h": 307
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 400,
-        "y": 275
+        "x": 378.46,
+        "y": 323.76
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "correr_06": {
       "image": "CL_CORRER.png",
@@ -1338,21 +1338,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 30,
-        "y": 217,
-        "w": 435,
-        "h": 276
+        "x": 93,
+        "y": 185,
+        "w": 326,
+        "h": 308
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 442,
-        "y": 259
+        "x": 375.82,
+        "y": 313.09
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "pegar_01": {
       "image": "CL_PEGAR.png",
@@ -1369,21 +1369,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 42,
-        "y": 138,
-        "w": 419,
-        "h": 355
+        "x": 80,
+        "y": 205,
+        "w": 338,
+        "h": 288
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 442,
-        "y": 199
+        "x": 410.46,
+        "y": 344.09
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "pegar_02": {
       "image": "CL_PEGAR.png",
@@ -1400,21 +1400,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 42,
-        "y": 238,
-        "w": 420,
-        "h": 255
+        "x": 70,
+        "y": 200,
+        "w": 366,
+        "h": 293
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 439,
-        "y": 454
+        "x": 428.3,
+        "y": 458.01
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "pegar_03": {
       "image": "CL_PEGAR.png",
@@ -1431,21 +1431,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 43,
-        "y": 109,
-        "w": 390,
-        "h": 384
+        "x": 70,
+        "y": 200,
+        "w": 365,
+        "h": 293
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 348,
-        "y": 149
+        "x": 402.6,
+        "y": 453.7
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "pegar_04": {
       "image": "CL_PEGAR.png",
@@ -1462,21 +1462,21 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 42,
-        "y": 174,
-        "w": 391,
-        "h": 319
+        "x": 70,
+        "y": 201,
+        "w": 375,
+        "h": 292
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 392,
-        "y": 276
+        "x": 437.34,
+        "y": 457.28
       },
       "mouthEstimated": true,
-      "facing": "right"
+      "facing": "right-three-quarter"
     },
     "correr_frente_01": {
       "image": "CL_CORRER_FRENTE.png",
@@ -1493,18 +1493,18 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 102,
-        "y": 87,
-        "w": 296,
-        "h": 406
+        "x": 95,
+        "y": 203,
+        "w": 312,
+        "h": 290
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 273,
-        "y": 156
+        "x": 263.45,
+        "y": 351.5
       },
       "mouthEstimated": true,
       "facing": "camera"
@@ -1524,18 +1524,18 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 101,
-        "y": 90,
-        "w": 270,
-        "h": 403
+        "x": 74,
+        "y": 203,
+        "w": 361,
+        "h": 290
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 253,
-        "y": 134
+        "x": 267.85,
+        "y": 335.24
       },
       "mouthEstimated": true,
       "facing": "camera"
@@ -1555,18 +1555,18 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 110,
-        "y": 94,
-        "w": 286,
-        "h": 399
+        "x": 69,
+        "y": 203,
+        "w": 394,
+        "h": 290
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 284,
-        "y": 166
+        "x": 263.45,
+        "y": 335.5
       },
       "mouthEstimated": true,
       "facing": "camera"
@@ -1586,18 +1586,18 @@
         "h": 512
       },
       "contentBounds": {
-        "x": 92,
-        "y": 101,
-        "w": 285,
-        "h": 392
+        "x": 82,
+        "y": 186,
+        "w": 352,
+        "h": 307
       },
       "pivot": {
         "x": 256,
         "y": 492
       },
       "mouth": {
-        "x": 258,
-        "y": 147
+        "x": 257.86,
+        "y": 337.28
       },
       "mouthEstimated": true,
       "facing": "camera"
@@ -1612,7 +1612,8 @@
         "surgir_04"
       ],
       "loop": false,
-      "timing": "use existing game scene timings"
+      "previewFPS": 7,
+      "timing": "keep game scene timings"
     },
     "parada": {
       "frames": [
@@ -1622,7 +1623,8 @@
         "parada_04"
       ],
       "loop": true,
-      "timing": "use existing game scene timings"
+      "previewFPS": 3,
+      "timing": "keep game scene timings"
     },
     "andar": {
       "frames": [
@@ -1634,7 +1636,8 @@
         "andar_06"
       ],
       "loop": true,
-      "timing": "use existing game scene timings"
+      "previewFPS": 7,
+      "timing": "keep game scene timings"
     },
     "tiro": {
       "frames": [
@@ -1642,7 +1645,8 @@
         "tiro_02"
       ],
       "loop": false,
-      "timing": "use existing game scene timings"
+      "previewFPS": 6,
+      "timing": "keep game scene timings"
     },
     "ataque": {
       "frames": [
@@ -1654,7 +1658,8 @@
         "ataque_06"
       ],
       "loop": false,
-      "timing": "use existing game scene timings"
+      "previewFPS": 8,
+      "timing": "keep game scene timings"
     },
     "engolir": {
       "frames": [
@@ -1666,7 +1671,8 @@
         "engolir_06"
       ],
       "loop": false,
-      "timing": "use existing game scene timings"
+      "previewFPS": 5,
+      "timing": "keep game scene timings"
     },
     "mastigar": {
       "frames": [
@@ -1675,7 +1681,8 @@
         "mastigar_03"
       ],
       "loop": true,
-      "timing": "use existing game scene timings"
+      "previewFPS": 3,
+      "timing": "keep game scene timings"
     },
     "catar": {
       "frames": [
@@ -1685,7 +1692,8 @@
         "catar_04"
       ],
       "loop": false,
-      "timing": "use existing game scene timings"
+      "previewFPS": 5,
+      "timing": "keep game scene timings"
     },
     "correr": {
       "frames": [
@@ -1697,7 +1705,8 @@
         "correr_06"
       ],
       "loop": true,
-      "timing": "use existing game scene timings"
+      "previewFPS": 11,
+      "timing": "keep game scene timings"
     },
     "pegar": {
       "frames": [
@@ -1707,7 +1716,8 @@
         "pegar_04"
       ],
       "loop": false,
-      "timing": "use existing game scene timings"
+      "previewFPS": 9,
+      "timing": "keep game scene timings"
     },
     "correr_frente": {
       "frames": [
@@ -1717,7 +1727,8 @@
         "correr_frente_04"
       ],
       "loop": true,
-      "timing": "use existing game scene timings"
+      "previewFPS": 10,
+      "timing": "keep game scene timings"
     }
   }
 }
