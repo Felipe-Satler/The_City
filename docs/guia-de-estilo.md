@@ -1,6 +1,6 @@
 # Guia de estilo visual
 
-Estado: **0.29**. A direção de arte oficial é `docs/DIRECAO_DE_ARTE.txt` (do criador); este guia resume e
+Estado: **0.30**. A direção de arte oficial é `docs/DIRECAO_DE_ARTE.txt` (do criador); este guia resume e
 registra a situação de cada elemento. Em conflito, vale a direção de arte.
 
 ## Alvo
@@ -20,7 +20,7 @@ e luzes pálidas; o café como o único calor.
 - **Proporções:** sprite de exploração compacto (cabeça grande, quase chibi); retrato com proporções
   completas.
 
-## Situação de cada elemento (0.29)
+## Situação de cada elemento (0.30)
 | Elemento | Como está | Situação |
 |---|---|---|
 | Kamila — sprite e retrato do jogo | arte nova | no estilo |
@@ -36,7 +36,7 @@ e luzes pálidas; o café como o único calor.
 | Carros, motos, postes | imagens do criador (0.20) | no estilo |
 | Interior do café | estilo novo por código, 2 px de arte por px de mundo (0.24) | no estilo |
 | Cidade do menu | estilo novo, 800 × 500, paleta fria de 32 cores sem pontilhado (0.25) | no estilo |
-| Criatura (Crooked Legs) | 49 quadros do criador, toda pálida, traço liso próprio (0.26) | **diferente de propósito** (decisão do criador) |
+| Criatura (Crooked Legs) | modelo articulado do criador, revisão 3: 6 peças de corpo + 6 cabeças, toda pálida, traço liso próprio (0.30) | **diferente de propósito** (decisão do criador) |
 
 ## Regras para converter o resto — PROPOSTA
 1. **Densidade:** cenários com pelo menos 2 px de arte por px de mundo (como a rua); personagens na
@@ -64,8 +64,23 @@ automático com matiz (`selout`). Os objetos da rua ficam em `arte/pxl/rua.px.js
   ordenado com os personagens. `(ax, ay)` é o ponto de apoio em pixels de arte dentro do sprite.
 - Personagens, criaturas e retratos continuam vindo da ferramenta do criador; o pxl é para objetos e cenário.
 
+## Crooked Legs: modelo articulado (0.30)
+A criatura não usa quadros prontos. O jogo monta a pose a cada instante com as peças de `arte/crooked_legs/parts/`
+(dois braços longos, duas pernas finas, tronco, pescoço e seis cabeças: de lado e de frente, boca fechada, entreaberta
+e aberta).
+- **Espaço da pose:** célula de 512 × 512, virada para a direita, chão na linha 492, apoio em (256, 492). Em pé ela
+  mede ~395 px na célula e ~212 px no mundo. Para a esquerda, a figura é espelhada.
+- **Pés:** cada pé fica cravado no ponto do mundo onde pisou e só sai dali com um passo (`clPassos`). Nunca mova a
+  criatura fazendo os pés acompanharem o corpo: é isso que dá o deslize.
+- **Pernas:** ossos de tamanho fixo, dobrando nas juntas (`clCorpo`). **Pescoço:** curva do tronco até a nuca, que
+  estica (`clPescoco`). **Cabeça:** posição do olho, ângulo e abertura da boca.
+- **Poses de cada fase:** `clPose` diz o que a cena pede (tronco, cabeça, passos, pés comandados) e o resultado
+  chega lá com passagem suave. Para pôr a boca num ponto do mundo (morder, carregar), use `boca(...)` dentro dela.
+- **Dados:** `python3 tools/embutir_crooked.py` embute peças, malhas e a pose de repouso (`parada_01`).
+- As tiras `CL_*.png` do pacote ficam guardadas em `arte/crooked_legs/`, mas o jogo não as usa.
+
 ## Técnica usada nos desenhos por código (0.18)
-Usada no Homem Ferido; serve de base para os próximos NPCs e objetos.
+Foi usada no Homem Ferido da 0.18, depois trocado pela arte do criador; o código (`mCel`, `mGroup`, `mCrisp`) não está mais no jogo. Fica aqui como registro.
 - Cada parte é uma forma pintada com `mCel`: base, faixa de sombra do lado oposto à luz (deslocamento
   de ~5 px de arte) e filete de luz do lado da luz (~2 px). A luz vem de cima/esquerda.
 - Partes se juntam em grupos com `mGroup`; cada grupo recebe contorno de ~1,7 px de arte na cor

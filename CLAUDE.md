@@ -31,5 +31,8 @@ Propostas são apresentadas como propostas; decisões do criador são registrada
 - Objetos da rua (0.29) são feitos com o pxl (`tools/pxl/`, MIT): fonte em `arte/pxl/rua.px.js`;
   gerar com `node tools/pxl/bin/pxl.js build arte/pxl/rua.px.js --out arte/pxl/out` e embutir com
   `python3 tools/embutir_pxl.py`. Não edite o base64 dos sprites à mão.
+- A Crooked Legs (0.30) é desenhada pelo modelo articulado de `arte/crooked_legs/` (peças + juntas), não por
+  quadros. Dados embutidos por `python3 tools/embutir_crooked.py` (precisa do Pillow). Os pés ficam cravados no
+  mundo (`clPassos`); a velocidade da perseguição (`CL_RUN`) é exata e não depende da taxa de quadros.
 - Teste no Chromium do ambiente com Playwright (`require('playwright')`, sem instalar nada).
   Fluxo mínimo: menu → Iniciar → Kamila → ACORDAR → falas → cruzamento → "FUGIR PARA O CAFÉ".

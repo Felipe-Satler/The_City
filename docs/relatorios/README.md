@@ -7,6 +7,7 @@ registradas nos comentários do código.
 
 | Versão | Data | Resumo |
 |---|---|---|
+| [0.30](0.30.md) | 2026-11-11 | Crooked Legs pelo modelo articulado do criador (revisão 3): pés cravados no chão, entrada, ataque e devorar refeitos; perseguição com velocidade exata (248 px/s). |
 | [0.29](0.29.md) | 2026-11-07 | pxl adotado (tools/pxl, MIT); lixeira, parquímetro, placa, ar-condicionado, bueiro, grelha e floreiras refeitos com ele. |
 | [0.28](0.28.md) | 2026-11-07 | Entrada da criatura em dois tempos (cabeça espiando), passos sem deslizar, devorar mais longo, fuga rebalanceada (265 px/s, raio 38, 3,4 s de vantagem). |
 | [0.27](0.27.md) | 2026-11-07 | Cena de devorar revista com a criatura nova: boca sobre o homem, corpo pendurado e engolido de verdade, peças caindo onde ela morde. |
