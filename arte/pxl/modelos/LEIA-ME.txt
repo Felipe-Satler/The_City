@@ -1,0 +1,36 @@
+MODELOS DE CENÁRIO — PROVA (11/11/2026)
+
+Estes modelos NÃO estão no jogo. Foram feitos para o criador avaliar o traço antes de qualquer mudança
+no cenário. Se forem aprovados, entram no the-city.html numa versão própria, com relatório. Se não,
+o criador faz os objetos na outra ferramenta e esta pasta pode ser apagada.
+
+O QUE TEM
+- 14 modelos em anime pixel art de alta resolução, 4 px de arte por px de mundo (o dobro do cenário
+  atual; perto da densidade dos carros, motos e postes do criador):
+    árvores:   arvore_copa, arvore_seca
+    vasos:     vaso_arbusto, vaso_folhas, vaso_flores
+    lixeiras:  lixeira_rodas, lixeira_metal, sacos_lixo
+    placas:    placa_rua, placa_pendurada, placa_transito
+    vitrines:  vitrine_livros, vitrine_fechada, vitrine_cafe
+- modelos.px.js   fonte dos modelos (pxl)
+- atelie.px.js    ferramentas de pintura usadas pelos modelos: tela de "material + tom", rampas de cor
+                  com sombra puxando para o violeta, folhagem em volumes agrupados, contorno colorido
+- out/sprites/    PNGs gerados; out/_preview/ ampliações do pxl
+- folha.py        monta a folha de modelos (docs/provas/modelos_cenario_folha.png)
+- prova_jogo.py   monta uma CÓPIA DE TESTE do jogo com os modelos na rua (não altera o jogo)
+- foto_rua.js     fotografa a rua da cópia de teste (Playwright)
+
+COMO REFAZER (a partir da raiz do repositório)
+  node tools/pxl/bin/pxl.js build arte/pxl/modelos/modelos.px.js --out arte/pxl/modelos/out
+  python3 arte/pxl/modelos/folha.py arte/pxl/modelos/out/sprites arte/kamila/heroina_sprites.png folha.png
+  python3 arte/pxl/modelos/prova_jogo.py the-city.html arte/pxl/modelos/out/sprites copia_de_teste.html
+
+PROVAS
+  docs/provas/modelos_cenario_folha.png      todos os modelos, ampliados 2x, com a Kamila na mesma escala
+  docs/provas/modelos_cenario_abertura.png   jogo atual (em cima) e cópia de teste com os modelos (embaixo)
+  docs/provas/modelos_cenario_rua.png        idem, mais acima na rua
+
+REGRAS SEGUIDAS (docs/DIRECAO_DE_ARTE.txt)
+Contorno escuro com matiz (2 px), 3 a 5 valores por material em planos definidos, luz de cima à
+esquerda, sombras frias puxando para o violeta, âmbar só na vitrine do café, textura só onde tem causa
+(veios, frisos, ferrugem escorrendo de parafuso, tinta descascada), nenhum texto legível.
