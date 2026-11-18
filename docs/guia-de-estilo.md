@@ -1,6 +1,6 @@
 # Guia de estilo visual
 
-Estado: **0.30**. A direção de arte oficial é `docs/DIRECAO_DE_ARTE.txt` (do criador); este guia resume e
+Estado: **0.31**. A direção de arte oficial é `docs/DIRECAO_DE_ARTE.txt` (do criador); este guia resume e
 registra a situação de cada elemento. Em conflito, vale a direção de arte.
 
 Para objetos de cenário, valem também `docs/DIRETRIZES_ARTSTYLE_THE_CITY.txt` (regras da revisão V2,
@@ -35,10 +35,10 @@ e luzes pálidas; o café como o único calor.
 | Homem devorado, pedaços, pistola e sangue | folha do criador (0.21) | no estilo |
 | Chão da rua (asfalto, calçada, meio-fio, poças) | estilo novo por código (0.20) | no estilo |
 | Café EntreLuz (fachada) | estilo novo por código (0.20) | no estilo |
-| Árvores | estilo novo por código, a partir da imagem da rua (0.20) | no estilo |
-| Lixeiras, ar-condicionado de parede, bueiros, grelhas, floreiras do café | pxl, `arte/pxl/rua.px.js` (0.29) | no estilo |
+| Árvores (de rua e seca), lixeiras de rodas e de metal, sacos, vasos, placa da rua, placa da livraria, placa de trânsito, vitrines da livraria, do café e da loja fechada | cenário V2 da ferramenta do criador, em 2 px por px de mundo (0.31) | no estilo |
+| Ar-condicionado de parede, bueiros, grelhas | pxl, `arte/pxl/rua.px.js` (0.29) | no estilo |
 | Outros prédios | estilo novo com personalidade por prédio (0.22–0.23) | no estilo |
-| Placa da rua, parquímetros | pxl, `arte/pxl/rua.px.js` (0.29) | no estilo |
+| Parquímetros | pxl, `arte/pxl/rua.px.js` (0.29) | no estilo |
 | Carros, motos, postes | imagens do criador (0.20) | no estilo |
 | Interior do café | estilo novo por código, 2 px de arte por px de mundo (0.24) | no estilo |
 | Cidade do menu | estilo novo, 800 × 500, paleta fria de 32 cores sem pontilhado (0.25) | no estilo |

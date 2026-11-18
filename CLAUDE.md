@@ -31,6 +31,9 @@ Propostas são apresentadas como propostas; decisões do criador são registrada
 - Objetos da rua (0.29) são feitos com o pxl (`tools/pxl/`, MIT): fonte em `arte/pxl/rua.px.js`;
   gerar com `node tools/pxl/bin/pxl.js build arte/pxl/rua.px.js --out arte/pxl/out` e embutir com
   `python3 tools/embutir_pxl.py`. Não edite o base64 dos sprites à mão.
+- Objetos de cenário V2 (0.31: árvores, lixeiras, vasos, placas, vitrines) vêm da ferramenta do criador
+  (`arte/cenario_v2/`) e entram na grade do chão da rua (2 px de arte por px de mundo): `tools/converter_mestres.py`
+  converte, `python3 tools/embutir_cenario_v2.py` embute. No código: `v2Chao`, `v2Alto`, `v2Depois`.
 - A Crooked Legs (0.30) é desenhada pelo modelo articulado de `arte/crooked_legs/` (peças + juntas), não por
   quadros. Dados embutidos por `python3 tools/embutir_crooked.py` (precisa do Pillow). Os pés ficam cravados no
   mundo (`clPassos`); a velocidade da perseguição (`CL_RUN`) é exata e não depende da taxa de quadros.
