@@ -1,0 +1,208 @@
+THE CITY — DIRETRIZES DE ARTE PARA CENÁRIOS
+Revisão Kamila V2 | entrega: 13/11/2026
+
+OBJETIVO
+Produzir objetos de cenário compatíveis com a linguagem visual da Kamila:
+anime estilizado em pixel art detalhada, contorno colorido delicado, volumes
+construídos por planos e atmosfera urbana sombria. A personagem é a referência
+de acabamento; os PNGs recebidos definem as categorias e a escala dos objetos.
+Estas são decisões de direção de arte deste projeto, não regras universais
+sobre anime ou pixel art.
+
+DIAGNÓSTICO DOS MODELOS ANTERIORES
+Os originais já eram pixelados. A diferença de estilo estava principalmente
+na geometria: galhos com espessuras parecidas, folhas triangulares repetidas,
+copas em bolas, flores como símbolos e linhas escuras de peso quase uniforme.
+Aumentar a resolução ou adicionar ruído não corrige essa diferença.
+O redesenho usa formas menos esquemáticas, hierarquia de detalhes e sombras
+que descrevem a superfície. O resultado deve ser estilizado e legível, sem
+se tornar uma fotografia reduzida nem uma ilustração vetorial de ícone.
+
+1. COMO TRANSFERIR O TRAÇO DA KAMILA PARA OBJETOS
+- Usar as mechas de cabelo como referência para AGRUPAMENTO: formas maiores
+  com recortes menores, áreas iluminadas coerentes e sombras em cunha.
+- Usar as dobras da roupa como referência para PLANOS: mudanças de valor
+  delimitadas, orientadas pelo volume; não contornar cada região de sombra.
+- Usar fivelas e bordas das botas como referência para DETALHE: pequenos
+  acentos claros indicam material, sem cercar tudo de uma linha brilhante.
+- Usar os tons escuros da roupa como referência para CONTORNO: ameixa,
+  violeta acinzentado e azul escuro, escolhidos conforme o material.
+- Não transportar olhos, proporções chibi, rostos ou ornamentos da heroína
+  para os objetos. A compatibilidade vem da linguagem de desenho e pintura.
+
+2. GRADE, RESOLUÇÃO E PIXELS
+O contrato de escala é 4 pixels de arte por pixel de mundo em cada eixo.
+Exemplo: um PNG de 96 × 128 corresponde a 24 × 32 unidades de mundo.
+Originais/ contém a grade de produção. Ampliados_4x/ repete cada pixel em um
+bloco 4 × 4; essa pasta serve para inspeção, não para aumentar o objeto no mapa.
+A folha geral mostra os PNGs de produção ampliados 2×, na mesma escala entre si.
+
+Priorizar grupos contíguos de pixels. Uma sequência clara de degraus na borda
+é melhor que vários pontos soltos tentando imitar uma curva fotográfica.
+Detalhes com 1 pixel são acentos, não a base de toda a textura.
+Nas ampliações, usar vizinho mais próximo, sem suavização ou desfoque.
+Não afirmar que uma imagem é pixel art apenas porque foi reduzida: primeiro
+resolver silhueta, massas de cor, contorno e seleção do detalhe.
+
+3. SILHUETA E PROPORÇÃO
+Cada objeto precisa ser reconhecível pela silhueta antes de receber textura.
+Preservar proporções urbanas plausíveis, com simplificação para leitura.
+Galhos afinam em direção às pontas; folhas têm comprimentos e inclinações
+variados; madeira tem espessura; tampas, rodas e suportes não devem parecer
+inflados. Evitar simetria perfeita nos elementos orgânicos.
+Arquitetura deve conservar verticais retas e planos coerentes.
+Detalhes internos não podem competir com a forma principal.
+
+4. CONTORNO
+Na grade de produção, usar em geral 1–2 pixels de contorno aparente, ajustando
+trechos conforme a escala. Essa é uma orientação visual, não espessura fixa
+aplicada a todo objeto. Reforçar oclusões e bases; aliviar bordas iluminadas.
+Não usar uma borda preta uniforme em volta de cada folha, livro ou parafuso.
+Contornos internos devem ser mais seletivos que o contorno da silhueta.
+Nas áreas de luz, preferir um tom escuro do próprio material a preto absoluto.
+Nas sombras profundas, aproximar as cores do violeta/azul escuro do conjunto.
+
+5. VALORES, LUZ E COR
+Luz externa predominante: superior esquerda. Sombras externas frias.
+Projetar 3–5 planos de valor dominantes por material: sombra de contato,
+sombra principal, meio-tom, luz e um pequeno acento, quando necessário.
+Isso NÃO significa que cada material terá exatamente cinco códigos RGB:
+há transições seletivas e cores de detalhes. Os PNGs de produção são indexados
+e contêm até 256 entradas por imagem, incluindo transparência; não há uma
+paleta global única imposta a todos os objetos.
+
+Rampas de referência para NOVOS desenhos (pontos de partida, não amostras
+exatas nem uma lista obrigatória de todos os pixels desta entrega):
+  escuros comuns:  #1D1927  #2B2538  #40364D
+  folhagem:        #152A32  #29464A  #48645E  #6F8575  #A2AE8A
+  madeira fria:    #302331  #4C3545  #70505C  #947074  #B6998C
+  metal:          #292738  #454656  #686F80  #929FAA  #C5CBD0
+  barro:          #382735  #603E4D  #865969  #AF7D7B
+  café:           #342630  #664335  #A36C42  #D59C59  #F2D49B
+
+Manter verdes, azuis e cinzas discretos. O âmbar como luz emitida fica no
+interior do café. Marrom de madeira ou bege de papel podem ser quentes sem
+parecer luminosos. Evitar neon, saturação intensa e branco puro espalhado.
+Não escurecer a textura inteira para criar noite: preservar a separação dos
+planos e aplicar a iluminação global do cenário durante a integração.
+
+6. REGRAS POR MATERIAL
+Folhagem: organizar primeiro massas grandes de luz e sombra. Recortar grupos
+menores em algumas bordas; mostrar galhos em poucos intervalos. Evitar copas
+feitas de esferas idênticas ou uma folha isolada em cada pixel.
+Madeira: veios seguem o eixo do tronco ou da tábua. Usar poucas marcas; não
+preencher toda a área com linhas. Galhos têm junções e afinamento gradual.
+Metal: volumes por faixas de valor, reflexos estreitos e seletivos nas bordas.
+Não transformar todo metal em cromado. Furos têm ritmo regular e escurecem
+o plano, sem virar ruído dominante.
+Cerâmica/barro: borda elíptica, parede com espessura, luz ampla e pequena lasca
+opcional. Evitar um degradê circular de plástico brilhante.
+Sacos: dobras convergem para os nós e mudam conforme o peso; volumes assimétricos.
+Papelão: planos grandes, abas dobradas e poucas vincas; sem textura fotográfica.
+Vidro: poucas faixas de reflexão duras e frias, com conteúdo atrás ainda legível.
+Não preencher o vidro de branco, névoa ou brilho difuso.
+
+7. O QUE MUDOU NOS 14 MODELOS
+arvore_copa: copa irregular em camadas, folhas em grupos angulares e ramificação
+  visível. Motivo: reduzir a aparência de bolas empilhadas.
+arvore_seca: galhos afilados, bifurcações assimétricas e tronco articulado.
+  Motivo: substituir a construção de palitos com contorno uniforme.
+vaso_arbusto: folhagem menos cônica, tábuas e aro com espessura.
+  Motivo: separar planta, madeira e metal sem sobrecarregar a silhueta.
+vaso_folhas: folhas curvas e variadas, com planos de luz próprios.
+  Motivo: substituir a estrela de triângulos repetidos.
+vaso_flores: pétalas em planos, botões e flores de perfil.
+  Motivo: evitar símbolos planos de margaridas.
+lixeira_rodas: tampa, alça, nervuras e rodas com volumes mais definidos.
+  Motivo: dar leitura de objeto construído, com desgaste seletivo.
+lixeira_metal: elipse, planos do cilindro e perfurações organizadas.
+  Motivo: representar o metal sem textura ruidosa nem brilho de brinquedo.
+sacos_lixo: dobras orientadas aos nós e caixa com abas articuladas.
+  Motivo: distinguir plástico tensionado de papelão rígido.
+placa_rua: suporte fino, moldura e fixações discretas, pintura desgastada.
+  Motivo: reduzir o aspecto de ícone; nenhuma palavra legível.
+placa_pendurada: ferragem e correntes refinadas, livro como pictograma.
+  Motivo: aproximar o acabamento dos pequenos metais da personagem.
+placa_transito: poste estreito, círculo em degraus e sinais de desgaste pontuais.
+  Motivo: manter reconhecimento e proporção sem contorno excessivo.
+vitrine_livros: livros e molduras com espessura, reflexos seletivos.
+  Motivo: acrescentar profundidade mantendo a composição organizada.
+vitrine_fechada: persiana, manequim e vidro com materiais separados.
+  Motivo: sustentar o abandono e a leitura do interior escuro.
+vitrine_cafe: móveis articulados, tecido e luz âmbar em planos.
+  Motivo: criar um foco acolhedor dentro da atmosfera fria da rua.
+
+8. PERSPECTIVA, ENQUADRAMENTO E APOIO
+Vista predominantemente frontal, levemente elevada. Mostrar o topo de vasos,
+lixeiras e abas quando necessário, sem converter os objetos em isométricos.
+Não acrescentar chão, fundo, sombra projetada, halo ou texto legível ao PNG.
+O jogo pode produzir sombras e iluminação como elementos separados.
+
+As telas mantêm as dimensões do pacote de referência. Os desenhos foram
+encaixados sem esticar, por isso o espaço transparente interno e a largura
+ocupada podem diferir dos modelos anteriores.
+Usar anchorPx/anchorWorld do MANIFESTO_MODELOS.json para posicionamento.
+O pé da placa de rua fica fora do centro horizontal; não presumir que todo
+apoio seja width/2. A placa pendurada tem âncora estimada na fixação à parede;
+as vitrines usam o centro da base do peitoril. Colisões precisam ser definidas
+na engine e não devem usar automaticamente o retângulo inteiro da copa.
+
+9. COMO ESTA ENTREGA FOI PRODUZIDA
+Os 14 mestres foram redesenhados pelo recurso integrado de geração de imagens,
+usando Kamila como referência de traço e a folha recebida como referência de
+conteúdo. Um pedido separado foi usado por objeto. Os prompts estão em
+documentacao/PROMPTS_USADOS.txt; os mestres permanecem em mestres_gerados/.
+
+Para exportação de jogo, os mestres foram recortados pela área visível,
+encaixados proporcionalmente na tela original e reduzidos com vizinho mais
+próximo. O alfa foi convertido em 0/255 com limiar 128 para evitar bordas
+semitransparentes; a paleta foi indexada sem dithering. As versões 4× repetem
+os pixels de produção. Esse processamento organiza a grade, mas não equivale
+a uma revisão manual de cada pixel. Para avaliação no jogo, usar originais/;
+os mestres servem como fonte visual para futuras mudanças.
+
+10. SEQUÊNCIA PARA A OUTRA IA
+1) Ler este TXT e observar a Kamila e a folha geral desta revisão.
+2) Definir dimensão de arte, tamanho no mundo e âncora antes de desenhar.
+3) Resolver silhueta e perspectiva em poucos tons.
+4) Separar os materiais em planos claros de luz e sombra.
+5) Refinar o contorno por trechos e adicionar apenas detalhes que sobrevivam
+   à escala de exibição. Testar ao lado da personagem desde essa etapa.
+6) Verificar o PNG a 100% e ampliado sem suavização; testar em fundo claro e
+   escuro. Corrigir halos, recortes, pontos soltos e ruído visual.
+7) Comparar a densidade de detalhe entre objetos da mesma família.
+8) Entregar PNG individual, dimensões, âncora e relatório curto de mudanças.
+9) Avaliar em uma cópia do jogo antes de substituir os recursos em uso.
+
+CRITÉRIOS DE ACEITAÇÃO
+[ ] A silhueta funciona sem textura e o material é reconhecível.
+[ ] O contorno não domina a leitura nem tem peso igual em todos os trechos.
+[ ] As sombras descrevem o volume e seguem a mesma direção de luz.
+[ ] A vegetação tem variação orgânica; a arquitetura mantém estrutura coerente.
+[ ] A imagem é legível junto da Kamila e no zoom real da câmera.
+[ ] Transparência limpa, dimensões corretas e apoio/âncora documentados.
+[ ] Sem palavras legíveis, sombra de chão embutida ou brilho externo.
+[ ] Os detalhes não parecem ruído nem chamam mais atenção que a personagem.
+
+PROMPT BASE PARA CONTINUIDADE
+"Redesenhe [OBJETO] para THE CITY em anime pixel art detalhada, seguindo a
+Kamila anexada como referência de contorno, agrupamento de pixels e sombras
+em planos. Use proporções urbanas plausíveis, silhueta legível, contorno fino
+colorido e seletivo, luz superior esquerda e sombras frias cinza-violeta.
+Mostre materiais por poucos valores dominantes e detalhes com função.
+Vista frontal levemente elevada. Fundo transparente, sem sombra no chão,
+sem halo, sem texto legível. Dimensão de arte [W × H], escala 4 px de arte
+por px de mundo, âncora [X,Y]. Preserve a identidade e a função do objeto.
+Evite formas infladas, contorno preto uniforme, padrões orgânicos repetidos,
+ruído fotográfico, desfoque, pintura aerografada e renderização 3D."
+
+REFERÊNCIAS E ESCOPO
+Entrada: MODELOS_CENARIO_THE_CITY.zip, fornecido pelo criador:
+https://chatgpt.com/library?file_id=libfile_35d17a2b5e588191a9291227af1d8918&account_id=personal
+Traço: Retrato_Kamila.png e sprites da personagem fornecidos nesta conversa.
+Comparação visual: COMPARATIVO_MODELOS.png e FOLHA_MODELOS_KAMILA_V2.png.
+O ZIP recebido contém imagens e LEIA-ME; os scripts pxl mencionados no texto
+do pedido não estavam dentro dele. Esta entrega redesenha os recursos em PNG;
+não reescreve modelos.px.js nem atelie.px.js. Nenhuma alteração foi instalada
+no the-city.html. A conferência de colisão e iluminação em jogo fica para a
+integração da versão aprovada pelo criador.

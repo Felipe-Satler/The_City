@@ -1,0 +1,26 @@
+THE CITY — VALIDAÇÃO DOS MODELOS
+Entrega: 13/11/2026
+
+arvore_copa: 424 × 488 px; 256 cores/entradas RGBA presentes; alfa 0/255; ampliação 4× exata nos pixels visíveis; aprovado.
+arvore_seca: 356 × 468 px; 256 cores/entradas RGBA presentes; alfa 0/255; ampliação 4× exata nos pixels visíveis; aprovado.
+vaso_arbusto: 96 × 120 px; 255 cores/entradas RGBA presentes; alfa 0/255; ampliação 4× exata nos pixels visíveis; aprovado.
+vaso_folhas: 104 × 144 px; 254 cores/entradas RGBA presentes; alfa 0/255; ampliação 4× exata nos pixels visíveis; aprovado.
+vaso_flores: 80 × 116 px; 253 cores/entradas RGBA presentes; alfa 0/255; ampliação 4× exata nos pixels visíveis; aprovado.
+lixeira_rodas: 96 × 128 px; 255 cores/entradas RGBA presentes; alfa 0/255; ampliação 4× exata nos pixels visíveis; aprovado.
+lixeira_metal: 76 × 116 px; 254 cores/entradas RGBA presentes; alfa 0/255; ampliação 4× exata nos pixels visíveis; aprovado.
+sacos_lixo: 124 × 92 px; 254 cores/entradas RGBA presentes; alfa 0/255; ampliação 4× exata nos pixels visíveis; aprovado.
+placa_rua: 224 × 232 px; 255 cores/entradas RGBA presentes; alfa 0/255; ampliação 4× exata nos pixels visíveis; aprovado.
+placa_pendurada: 140 × 148 px; 256 cores/entradas RGBA presentes; alfa 0/255; ampliação 4× exata nos pixels visíveis; aprovado.
+placa_transito: 80 × 248 px; 255 cores/entradas RGBA presentes; alfa 0/255; ampliação 4× exata nos pixels visíveis; aprovado.
+vitrine_livros: 304 × 204 px; 256 cores/entradas RGBA presentes; alfa 0/255; ampliação 4× exata nos pixels visíveis; aprovado.
+vitrine_fechada: 304 × 204 px; 256 cores/entradas RGBA presentes; alfa 0/255; ampliação 4× exata nos pixels visíveis; aprovado.
+vitrine_cafe: 304 × 204 px; 256 cores/entradas RGBA presentes; alfa 0/255; ampliação 4× exata nos pixels visíveis; aprovado.
+
+14 arquivos de produção e 14 ampliações conferidos.
+14 mestres gerados preservados.
+Margens transparentes, sem corte na borda da tela.
+Dimensões e âncoras conferidas com o manifesto.
+Folha geral e comparativo revisados visualmente.
+A comparação de cores nas ampliações ignora RGB de pixels totalmente transparentes.
+Não foi realizado teste de integração em the-city.html; colisões não estão definidas.
+A equivalência artística é uma proposta visual para avaliação do criador.

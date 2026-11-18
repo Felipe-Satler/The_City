@@ -1,0 +1,34 @@
+THE CITY — MODELOS DE CENÁRIO / REVISÃO KAMILA V2
+Entrega: 13/11/2026
+
+14 objetos redesenhados, com as mesmas dimensões de tela do pacote recebido.
+Os desenhos são uma nova prova de arte. Não foram instalados no jogo.
+
+COMECE AQUI
+1. Veja FOLHA_MODELOS_KAMILA_V2.png para avaliar o conjunto ao lado da Kamila.
+2. Veja COMPARATIVO_MODELOS.png para comparar os 14 originais e redesenhos.
+3. Envie DIRETRIZES_ARTSTYLE_THE_CITY.txt junto dos PNGs para a outra IA.
+
+PASTAS E ARQUIVOS
+originais/ — 14 PNGs de produção, fundo transparente, dimensões de encaixe.
+ampliados_4x/ — ampliações exatas por repetição de pixels, para inspeção.
+mestres_gerados/ — imagens maiores que deram origem aos PNGs de produção.
+documentacao/PROMPTS_USADOS.txt — pedidos de geração usados em cada objeto.
+MANIFESTO_MODELOS.json — dimensões, área visível e âncoras de posicionamento.
+DIRETRIZES_ARTSTYLE_THE_CITY.txt — regras, exemplos e motivos das mudanças.
+VALIDACAO_MODELOS.txt — conferência técnica dos arquivos entregues.
+
+ESCALA
+4 px de arte por px de mundo. Use width/4 e height/4 como tamanho da tela
+no mapa. As ampliações 4× não são objetos quatro vezes maiores no mundo.
+Use as âncoras do manifesto, especialmente para a placa de rua e a placa
+pendurada. As áreas de colisão ainda devem ser definidas na integração.
+
+TRANSPARÊNCIA E PALETA
+PNGs de produção com alfa 0/255, sem suavização semitransparente nas bordas.
+Paleta indexada de até 256 entradas por imagem, sem dithering.
+As folhas de apresentação têm fundo escuro e legendas; não são atlas de jogo.
+Mestres gerados são fontes visuais, não arquivos nativos de editor de pixel art.
+
+Os scripts pxl citados pelo pedido não vieram no ZIP de referência.
+Não há código do jogo modificado neste pacote.

@@ -1,0 +1,389 @@
+{
+  "project": "THE CITY",
+  "revision": "cenario-kamila-v2",
+  "date": "2026-11-13",
+  "worldPixelsPerArtPixel": 0.25,
+  "artPixelsPerWorldPixel": 4,
+  "installedInGame": false,
+  "format": "PNG indexed with binary alpha, up to 256 palette entries per sprite",
+  "assets": [
+    {
+      "id": "arvore_copa",
+      "label": "Árvore de rua",
+      "file": "originais/arvore_copa.png",
+      "preview4x": "ampliados_4x/arvore_copa.png",
+      "master": "mestres_gerados/arvore_copa.png",
+      "width": 424,
+      "height": 488,
+      "worldWidth": 106,
+      "worldHeight": 122,
+      "contentBounds": {
+        "left": 8,
+        "top": 2,
+        "width": 408,
+        "height": 484
+      },
+      "anchorPx": {
+        "x": 205,
+        "y": 485
+      },
+      "anchorType": "ground",
+      "anchorWorld": {
+        "x": 51.25,
+        "y": 121.25
+      },
+      "collisionDefined": false
+    },
+    {
+      "id": "arvore_seca",
+      "label": "Árvore seca",
+      "file": "originais/arvore_seca.png",
+      "preview4x": "ampliados_4x/arvore_seca.png",
+      "master": "mestres_gerados/arvore_seca.png",
+      "width": 356,
+      "height": 468,
+      "worldWidth": 89,
+      "worldHeight": 117,
+      "contentBounds": {
+        "left": 8,
+        "top": 2,
+        "width": 338,
+        "height": 464
+      },
+      "anchorPx": {
+        "x": 175,
+        "y": 465
+      },
+      "anchorType": "ground",
+      "anchorWorld": {
+        "x": 43.75,
+        "y": 116.25
+      },
+      "collisionDefined": false
+    },
+    {
+      "id": "vaso_arbusto",
+      "label": "Arbusto em floreira",
+      "file": "originais/vaso_arbusto.png",
+      "preview4x": "ampliados_4x/vaso_arbusto.png",
+      "master": "mestres_gerados/vaso_arbusto.png",
+      "width": 96,
+      "height": 120,
+      "worldWidth": 24,
+      "worldHeight": 30,
+      "contentBounds": {
+        "left": 2,
+        "top": 4,
+        "width": 92,
+        "height": 114
+      },
+      "anchorPx": {
+        "x": 47,
+        "y": 117
+      },
+      "anchorType": "ground",
+      "anchorWorld": {
+        "x": 11.75,
+        "y": 29.25
+      },
+      "collisionDefined": false
+    },
+    {
+      "id": "vaso_folhas",
+      "label": "Planta de folhas",
+      "file": "originais/vaso_folhas.png",
+      "preview4x": "ampliados_4x/vaso_folhas.png",
+      "master": "mestres_gerados/vaso_folhas.png",
+      "width": 104,
+      "height": 144,
+      "worldWidth": 26,
+      "worldHeight": 36,
+      "contentBounds": {
+        "left": 2,
+        "top": 4,
+        "width": 100,
+        "height": 138
+      },
+      "anchorPx": {
+        "x": 51,
+        "y": 141
+      },
+      "anchorType": "ground",
+      "anchorWorld": {
+        "x": 12.75,
+        "y": 35.25
+      },
+      "collisionDefined": false
+    },
+    {
+      "id": "vaso_flores",
+      "label": "Vaso de flores",
+      "file": "originais/vaso_flores.png",
+      "preview4x": "ampliados_4x/vaso_flores.png",
+      "master": "mestres_gerados/vaso_flores.png",
+      "width": 80,
+      "height": 116,
+      "worldWidth": 20,
+      "worldHeight": 29,
+      "contentBounds": {
+        "left": 9,
+        "top": 2,
+        "width": 61,
+        "height": 112
+      },
+      "anchorPx": {
+        "x": 40,
+        "y": 113
+      },
+      "anchorType": "ground",
+      "anchorWorld": {
+        "x": 10,
+        "y": 28.25
+      },
+      "collisionDefined": false
+    },
+    {
+      "id": "lixeira_rodas",
+      "label": "Lixeira com rodas",
+      "file": "originais/lixeira_rodas.png",
+      "preview4x": "ampliados_4x/lixeira_rodas.png",
+      "master": "mestres_gerados/lixeira_rodas.png",
+      "width": 96,
+      "height": 128,
+      "worldWidth": 24,
+      "worldHeight": 32,
+      "contentBounds": {
+        "left": 9,
+        "top": 2,
+        "width": 77,
+        "height": 124
+      },
+      "anchorPx": {
+        "x": 48,
+        "y": 125
+      },
+      "anchorType": "ground",
+      "anchorWorld": {
+        "x": 12,
+        "y": 31.25
+      },
+      "collisionDefined": false
+    },
+    {
+      "id": "lixeira_metal",
+      "label": "Lixeira metálica",
+      "file": "originais/lixeira_metal.png",
+      "preview4x": "ampliados_4x/lixeira_metal.png",
+      "master": "mestres_gerados/lixeira_metal.png",
+      "width": 76,
+      "height": 116,
+      "worldWidth": 19,
+      "worldHeight": 29,
+      "contentBounds": {
+        "left": 4,
+        "top": 2,
+        "width": 67,
+        "height": 112
+      },
+      "anchorPx": {
+        "x": 38,
+        "y": 113
+      },
+      "anchorType": "ground",
+      "anchorWorld": {
+        "x": 9.5,
+        "y": 28.25
+      },
+      "collisionDefined": false
+    },
+    {
+      "id": "sacos_lixo",
+      "label": "Sacos e caixa",
+      "file": "originais/sacos_lixo.png",
+      "preview4x": "ampliados_4x/sacos_lixo.png",
+      "master": "mestres_gerados/sacos_lixo.png",
+      "width": 124,
+      "height": 92,
+      "worldWidth": 31,
+      "worldHeight": 23,
+      "contentBounds": {
+        "left": 2,
+        "top": 10,
+        "width": 120,
+        "height": 80
+      },
+      "anchorPx": {
+        "x": 73,
+        "y": 89
+      },
+      "anchorType": "ground",
+      "anchorWorld": {
+        "x": 18.25,
+        "y": 22.25
+      },
+      "collisionDefined": false
+    },
+    {
+      "id": "placa_rua",
+      "label": "Placa de rua",
+      "file": "originais/placa_rua.png",
+      "preview4x": "ampliados_4x/placa_rua.png",
+      "master": "mestres_gerados/placa_rua.png",
+      "width": 224,
+      "height": 232,
+      "worldWidth": 56,
+      "worldHeight": 58,
+      "contentBounds": {
+        "left": 34,
+        "top": 2,
+        "width": 156,
+        "height": 228
+      },
+      "anchorPx": {
+        "x": 178,
+        "y": 229
+      },
+      "anchorType": "ground",
+      "anchorWorld": {
+        "x": 44.5,
+        "y": 57.25
+      },
+      "collisionDefined": false
+    },
+    {
+      "id": "placa_pendurada",
+      "label": "Placa de livraria",
+      "file": "originais/placa_pendurada.png",
+      "preview4x": "ampliados_4x/placa_pendurada.png",
+      "master": "mestres_gerados/placa_pendurada.png",
+      "width": 140,
+      "height": 148,
+      "worldWidth": 35,
+      "worldHeight": 37,
+      "contentBounds": {
+        "left": 2,
+        "top": 27,
+        "width": 136,
+        "height": 119
+      },
+      "anchorPx": {
+        "x": 2,
+        "y": 63
+      },
+      "anchorType": "wall-left-estimated",
+      "anchorWorld": {
+        "x": 0.5,
+        "y": 15.75
+      },
+      "collisionDefined": false
+    },
+    {
+      "id": "placa_transito",
+      "label": "Placa de trânsito",
+      "file": "originais/placa_transito.png",
+      "preview4x": "ampliados_4x/placa_transito.png",
+      "master": "mestres_gerados/placa_transito.png",
+      "width": 80,
+      "height": 248,
+      "worldWidth": 20,
+      "worldHeight": 62,
+      "contentBounds": {
+        "left": 13,
+        "top": 2,
+        "width": 54,
+        "height": 244
+      },
+      "anchorPx": {
+        "x": 40,
+        "y": 245
+      },
+      "anchorType": "ground",
+      "anchorWorld": {
+        "x": 10,
+        "y": 61.25
+      },
+      "collisionDefined": false
+    },
+    {
+      "id": "vitrine_livros",
+      "label": "Vitrine de livros",
+      "file": "originais/vitrine_livros.png",
+      "preview4x": "ampliados_4x/vitrine_livros.png",
+      "master": "mestres_gerados/vitrine_livros.png",
+      "width": 304,
+      "height": 204,
+      "worldWidth": 76,
+      "worldHeight": 51,
+      "contentBounds": {
+        "left": 2,
+        "top": 13,
+        "width": 300,
+        "height": 189
+      },
+      "anchorPx": {
+        "x": 152,
+        "y": 201
+      },
+      "anchorType": "sill-center",
+      "anchorWorld": {
+        "x": 38,
+        "y": 50.25
+      },
+      "collisionDefined": false
+    },
+    {
+      "id": "vitrine_fechada",
+      "label": "Loja fechada",
+      "file": "originais/vitrine_fechada.png",
+      "preview4x": "ampliados_4x/vitrine_fechada.png",
+      "master": "mestres_gerados/vitrine_fechada.png",
+      "width": 304,
+      "height": 204,
+      "worldWidth": 76,
+      "worldHeight": 51,
+      "contentBounds": {
+        "left": 2,
+        "top": 18,
+        "width": 300,
+        "height": 184
+      },
+      "anchorPx": {
+        "x": 152,
+        "y": 201
+      },
+      "anchorType": "sill-center",
+      "anchorWorld": {
+        "x": 38,
+        "y": 50.25
+      },
+      "collisionDefined": false
+    },
+    {
+      "id": "vitrine_cafe",
+      "label": "Vitrine do café",
+      "file": "originais/vitrine_cafe.png",
+      "preview4x": "ampliados_4x/vitrine_cafe.png",
+      "master": "mestres_gerados/vitrine_cafe.png",
+      "width": 304,
+      "height": 204,
+      "worldWidth": 76,
+      "worldHeight": 51,
+      "contentBounds": {
+        "left": 2,
+        "top": 5,
+        "width": 300,
+        "height": 197
+      },
+      "anchorPx": {
+        "x": 152,
+        "y": 201
+      },
+      "anchorType": "sill-center",
+      "anchorWorld": {
+        "x": 38,
+        "y": 50.25
+      },
+      "collisionDefined": false
+    }
+  ]
+}

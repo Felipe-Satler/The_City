@@ -1,0 +1,148 @@
+THE CITY — GUIA PARA PEDIR (OU FAZER) ARTE DE CENÁRIO
+Escrito em 18/11/2026, depois de analisar o pacote MODELOS_CENARIO_KAMILA_V2 (arte/cenario_v2/)
+e de comparar com os meus modelos feitos por código (arte/pxl/modelos/).
+As regras de estilo continuam em docs/DIRETRIZES_ARTSTYLE_THE_CITY.txt (da outra IA) e
+docs/DIRECAO_DE_ARTE.txt. Este guia diz O QUE FUNCIONOU, COM QUE NÚMEROS, e COMO PEDIR.
+
+
+1. O QUE O PACOTE V2 FEZ DIFERENTE (MEDIDO, NÃO NO OLHO)
+
+Comparando os 14 PNGs de produção (os meus x os da outra IA):
+
+                         meus (1ª tentativa)          V2 (outra IA)
+  contorno               quase preto (luz 1–5%),     ameixa escuro (luz 9–16%),
+                         2 px, igual em volta         1 px, mais leve na luz
+  matiz do contorno      azul (220–250°)              violeta/ameixa (260–310°)
+  saturação média        0,35–0,48 nas plantas        0,17–0,25 em tudo
+  tom mais escuro (5%)   quase preto (1–4%)           9–12%: nunca preto
+  cores por objeto       5 a 59                       ~255 (pintura reduzida)
+  forma                  geométrica, simétrica        orgânica, assimétrica
+
+O que mais pesa, em ordem:
+  a) UM ESCURO COMUM. Todas as rampas começam no mesmo escuro arroxeado (#1d1927–#2b2538).
+     A cor do material (verde, marrom, cinza) só aparece nos tons médios e claros.
+     Isso amarra todos os objetos na mesma noite. Ver docs/provas/rampas_v2.png.
+  b) MATIZ GIRANDO MUITO. Do claro para o escuro, a cor gira até ~100°: o verde da lixeira
+     vai de verde-amarelado (luz) a azul-petróleo (sombra) a violeta (fundo).
+     Minha rampa automática girava só ~40°.
+  c) POUCA SATURAÇÃO. O V2 fica perto de 0,2 em quase tudo; só a luz do café passa disso.
+  d) CONTORNO FINO E COLORIDO, mais leve onde a luz bate e mais forte embaixo/nas oclusões.
+  e) FORMA CRÍVEL antes de detalhe: galhos que afinam e bifurcam desigual, folhas em cachos
+     de tamanhos diferentes, pétalas em planos, sacos com dobras indo para o nó.
+  f) DESGASTE COM CAUSA: arranhões CLAROS curtos (onde mão e calçada pegam), fio de luz
+     nos chanfros, um reflexo diagonal largo nos planos grandes.
+
+
+2. O QUE APARECE DE VERDADE NA TELA
+
+Na rua, o zoom é ~1,6: 1 px de mundo = 1,6 px de tela. Como os modelos têm 4 px de arte por px
+de mundo, 1 px de arte vira 0,4 px de tela (na cena do encontro, 0,26).
+Consequências:
+  - Detalhe de 1 px de arte NÃO aparece como linha: só escurece ou clareia a borda.
+  - A menor marca que se lê tem uns 3 x 3 px de arte (≈ 1 px de tela).
+  - O "ruído" dos PNGs V2 (40% de pixels soltos) some na tela e vira textura macia.
+  - O que decide o resultado é: silhueta, massas de valor, saturação e o escuro comum.
+  Teste: docs/provas/modelos_v2_no_jogo.png (cópia de teste do jogo, nada foi instalado).
+
+
+3. CONSIGO FAZER EU MESMO?
+
+Testei refazer a lixeira com as regras acima (arte/pxl/modelos/teste_v3.px.js):
+docs/provas/aprendizado_lixeira.png. No tamanho da tela ela fica quase igual à do V2.
+Conclusão honesta:
+  - CONSIGO, com qualidade próxima do V2: objetos de superfície dura e arquitetura —
+    lixeiras, placas, postes, vitrines, portas, janelas, toldos, grades, caixas, bancos,
+    fachadas. Vantagem: tamanho, âncora e paleta exatos, e ajuste rápido.
+  - MELHOR PEDIR À OUTRA IA: tudo que é orgânico ou tem muitas formas irregulares —
+    árvores, plantas, flores, sacos de lixo, tecidos, personagens, criaturas, retratos.
+    Por código eu chego em formas "certas", mas esquemáticas (bolas, triângulos, palitos).
+  - Caminho misto que funciona: a outra IA faz o mestre; eu converto, ajusto paleta,
+    âncora e escala, e testo numa cópia do jogo antes de instalar.
+
+
+4. UM PROBLEMA TÉCNICO NO PACOTE V2 (E COMO PEDIR PARA EVITAR)
+
+Os mestres gerados têm "pixels falsos" (blocos que imitam pixel art). Medi o tamanho deles
+e quantos px do mestre viraram 1 px de produção:
+
+  objeto           pixel falso no mestre    mestre → produção
+  vaso_flores      ~7,7 px                  15,8 px por px
+  lixeira_metal    ~10,6 px                 14,9 px por px
+  lixeira_rodas    ~5 px                    12,5 px por px
+  vaso_arbusto     ~7,3 px                  10,9 px por px
+  vitrines         ~4–7 px                  ~5 px por px   (encaixou bem)
+  árvore de rua    ~4 px                    ~3 px por px   (encaixou bem)
+
+Nos objetos pequenos, o mestre foi desenhado com o DOBRO do detalhe que a produção comporta,
+e a redução por "vizinho mais próximo" sorteou 1 pixel a cada bloco: parte do desenho some e
+os degraus das bordas ficam irregulares. Na tela isso quase não aparece, mas desperdiça o
+trabalho do gerador e dificulta retoques. Como pedir:
+  - Dar o tamanho em PIXELS DE ARTE e pedir blocos de tamanho igual e inteiro:
+    "desenhe numa grade de 80 x 116 pixels; cada pixel é um bloco quadrado de 12 x 12;
+     imagem final 960 x 1392". Para objetos de até ~130 px de altura, blocos de 8 a 12.
+  - Se o gerador não obedecer o tamanho, ainda assim pedir "pixels do mesmo tamanho em toda
+    a imagem": aí dá para detectar a grade e amostrar no centro de cada bloco
+    (ferramentas livres: ver seção 7).
+
+
+5. MODELO DE PEDIDO (para a outra IA, um objeto por pedido)
+
+Anexar: o sprite da Kamila (arte/kamila/heroina_sprites.png), docs/provas/rampas_v2.png e
+um objeto V2 já aprovado da mesma família (ex.: originais/lixeira_rodas.png).
+
+  Redesenhe [OBJETO] para THE CITY, RPG de suspense urbano noturno em anime pixel art.
+  Referência de traço: a Kamila anexada (contorno fino colorido, cachos de pixels deliberados,
+  sombras em planos). Referência de família: [OBJETO V2 ANEXADO] — mesma paleta, mesma luz.
+  GRADE: [L] x [A] pixels de arte; cada pixel é um bloco quadrado de [B] x [B]; imagem final
+  [L·B] x [A·B]; o objeto ocupa a grade inteira com 2 px de margem.
+  ESCALA: 4 px de arte = 1 px do mundo; a Kamila mede 57 px de mundo (228 px de arte).
+  PALETA: todas as sombras mais fundas terminam no mesmo escuro arroxeado #1d1927;
+  a cor do material só aparece nos tons médios e claros; a matiz gira para azul/violeta na
+  sombra e para amarelo-esverdeado na luz; saturação baixa (cinzas coloridos).
+  [Rampa do material, das DIRETRIZES ou de rampas_v2.png.]
+  LUZ: de cima à esquerda; reflexos frios e estreitos; sem brilho de brinquedo.
+  CONTORNO: 1 px, ameixa escuro; mais leve no lado da luz, mais forte na base e nas oclusões.
+  FORMA: [descrição física do objeto, proporções reais, o que é assimétrico, o que é gasto].
+  DETALHE: só o que tem causa (uso, chuva, ferrugem sob parafuso); nada menor que 3 x 3 px
+  de arte importa na tela.
+  VISTA: frontal, levemente de cima (mostra o topo de tampas e bordas).
+  ENTREGA: fundo transparente, sem chão, sem sombra projetada, sem halo, sem texto legível.
+
+Dica de prompt (vale para qualquer gerador): o que mais melhorou o V2 foram as frases que
+dizem o que EVITAR com nome ("não bolas de brócolis", "não estrela de triângulos repetidos",
+"não margaridas de desenho"). Ao pedir revisão, nomeie o defeito visível.
+
+
+6. CHECKLIST AO RECEBER UMA ARTE
+
+  [ ] Dimensões e âncora batem com o pedido (manifesto).
+  [ ] Alfa só 0/255, sem halo claro em fundo escuro nem escuro em fundo claro.
+  [ ] O tom mais escuro é o escuro comum (não preto puro, não azul solto).
+  [ ] Saturação perto dos objetos vizinhos (o café é a exceção).
+  [ ] Contorno fino e colorido; não preto uniforme de 2–3 px.
+  [ ] Testado numa cópia do jogo, na rua e na cena do encontro, ao lado da Kamila.
+
+
+7. FERRAMENTAS (pesquisadas em 18/11/2026; conferir licença antes de usar)
+
+  Já no projeto
+  - pxl (tools/pxl, MIT): é o que eu uso para desenhar por código.
+  - arte/pxl/modelos/atelie.px.js: rampas de qualquer tamanho, folhagem, contorno seletivo.
+
+  Converter mestre gerado em pixel art de verdade (detectam a grade dos "pixels falsos")
+  - Sprite Fusion Pixel Snapper (Hugo Duprez) — MIT, linha de comando e versão web.
+  - spritegrid — MIT (segundo o README).
+  - proper-pixel-art (PyPI) — licença não confirmada.
+  Não instalei nenhuma: a instalação foi bloqueada pela permissão desta sessão.
+
+  Editores para retoque à mão
+  - Pixelorama — MIT, grátis (Windows, Linux, macOS, navegador).
+  - LibreSprite — GPLv2, grátis (fork do Aseprite antigo). O Aseprite atual é pago.
+
+  Plugins para o Claude
+  - SpriteCook — gera sprites, tilesets e animações por IA. É serviço pago por créditos
+    (tem plano grátis de ~40 créditos/mês). Diz permitir uso comercial em todos os planos,
+    mas os termos não deixam claro de quem é a imagem gerada. Nesta sessão ele aparece,
+    porém o servidor não conecta: a rede do ambiente bloqueou o endereço dele.
+  - image-generation — guia de como escrever pedidos para geradores de imagem
+    (GPT Image, Gemini, Flux, Midjourney...). Só texto, sem serviço pago.

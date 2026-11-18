@@ -39,7 +39,7 @@ class Tela {
   M(x, y) { return this.dentro(x, y) ? this.m[y * this.w + x] : 0 }
   T(x, y) { return this.dentro(x, y) ? this.t[y * this.w + x] : 0 }
   // Pinta um pixel. tom pode ser número ou função (x, y) => tom; so = filtro opcional (x, y, materialAtual) => boolean.
-  p(x, y, m, tom, so) { x |= 0; y |= 0; if (!this.dentro(x, y)) return; const i = y * this.w + x; if (so && !so(x, y, this.m[i])) return; const t = typeof tom === 'function' ? tom(x, y) : tom; if (t == null) return; this.m[i] = m; this.t[i] = Math.max(0, Math.min(5, t)) }
+  p(x, y, m, tom, so) { x |= 0; y |= 0; if (!this.dentro(x, y)) return; const i = y * this.w + x; if (so && !so(x, y, this.m[i])) return; const t = typeof tom === 'function' ? tom(x, y) : tom; if (t == null) return; this.m[i] = m; this.t[i] = Math.max(0, Math.min(this.mats[m].length - 1, t)) }
   ret(x, y, w, h, m, tom, so) { for (let j = Math.round(y); j < Math.round(y + h); j++)for (let i = Math.round(x); i < Math.round(x + w); i++)this.p(i, j, m, tom, so) }
   elipse(cx, cy, rx, ry, m, tom, so) { for (let j = Math.floor(cy - ry); j <= Math.ceil(cy + ry); j++)for (let i = Math.floor(cx - rx); i <= Math.ceil(cx + rx); i++) { const u = (i + .5 - cx) / rx, v = (j + .5 - cy) / ry; if (u * u + v * v <= 1) this.p(i, j, m, tom, so) } }
   // Retângulo de cantos arredondados (raio r; "cantos" escolhe quais: 1 = cima-esq, 2 = cima-dir, 4 = baixo-dir, 8 = baixo-esq).
@@ -106,7 +106,7 @@ class Tela {
     }
   }
   // Muda o tom do que já está pintado dentro de uma região (função (x, y) => boolean): passo > 0 clareia, < 0 escurece.
-  tonalizar(reg, passo, so) { for (let j = 0; j < this.h; j++)for (let i = 0; i < this.w; i++) { const k = j * this.w + i; if (this.m[k] && this.t[k] > 0 && reg(i, j) && (!so || so(i, j, this.m[k]))) this.t[k] = Math.max(1, Math.min(5, this.t[k] + passo)) } }
+  tonalizar(reg, passo, so) { for (let j = 0; j < this.h; j++)for (let i = 0; i < this.w; i++) { const k = j * this.w + i; if (this.m[k] && this.t[k] > 0 && reg(i, j) && (!so || so(i, j, this.m[k]))) this.t[k] = Math.max(1, Math.min(this.mats[this.m[k]].length - 1, this.t[k] + passo)) } }
   // Suaviza os degraus de tom: onde dois planos do mesmo material se encostam com 2 ou mais tons de diferença, entra 1 px do tom do meio.
   suavizar(so) {
     const alvo = []
@@ -128,6 +128,20 @@ class Tela {
       if (bm) add.push([j * this.w + i, bm])
     }
     for (const [k, m] of add) { this.m[k] = m; this.t[k] = 0 }
+  }
+  // Contorno seletivo, 1 px: onde a borda olha para a luz (cima, esquerda), usa o tom 1 do material vizinho (sombra funda, não preto);
+  // onde olha para a sombra ou apoia no chão, o tom 0 (escuro comum a todos os materiais). Peso menor na luz, maior nas oclusões.
+  contornoSeletivo() {
+    const add = []
+    for (let j = 0; j < this.h; j++)for (let i = 0; i < this.w; i++) {
+      if (this.m[j * this.w + i]) continue
+      let m = 0, luz = false
+      for (const [a, b, l] of [[1, 0, true], [0, 1, true], [-1, 0, false], [0, -1, false]]) { const q = this.M(i + a, j + b); if (q && !this.semTraco.has(q)) { if (!m) m = q; if (l) luz = true } }
+      if (!m) { for (const [a, b] of [[1, 1], [-1, 1], [1, -1], [-1, -1]]) { const q = this.M(i + a, j + b); if (q && !this.semTraco.has(q)) { m = q; break } } if (!m) continue }
+      // vizinho à direita/embaixo = esta borda fica à esquerda/acima da forma = lado da luz
+      add.push([j * this.w + i, m, luz && !this.M(i - 1, j) && !this.M(i, j - 1) ? 1 : luz ? 1 : 0])
+    }
+    for (const [k, m, t] of add) { this.m[k] = m; this.t[k] = t }
   }
   // Passa a tela para o pxl (dentro de um sprite: (c) => tela.pintar(c)).
   pintar(c, ox = 0, oy = 0) { for (let j = 0; j < this.h; j++)for (let i = 0; i < this.w; i++) { const m = this.m[j * this.w + i]; if (m) c.px(ox + i, oy + j, this.mats[m][this.t[j * this.w + i]]) } }

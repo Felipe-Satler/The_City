@@ -3,6 +3,12 @@
 Estado: **0.30**. A direção de arte oficial é `docs/DIRECAO_DE_ARTE.txt` (do criador); este guia resume e
 registra a situação de cada elemento. Em conflito, vale a direção de arte.
 
+Para objetos de cenário, valem também `docs/DIRETRIZES_ARTSTYLE_THE_CITY.txt` (regras da revisão V2,
+feita pela ferramenta do criador) e `docs/pedidos/GUIA_PEDIDOS_CENARIO.txt` (o que foi medido nos modelos V2,
+o que aparece de fato na tela e o modelo de pedido). Resumo das regras que mais pesam: um escuro comum
+(`#1d1927`) no fundo de todas as rampas e no contorno; matiz girando para azul/violeta na sombra; saturação
+baixa (~0,2); contorno de 1 px ameixa, mais leve na luz; detalhe menor que 3 × 3 px de arte não aparece na tela.
+
 ## Alvo
 A arte do sprite e do retrato da Kamila (`arte/kamila/`) é o estilo-alvo do jogo inteiro
 (decisão do criador, 07/11/2026). A atmosfera continua a do projeto: rua fria, cinzenta, com névoa
