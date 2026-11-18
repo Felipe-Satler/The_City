@@ -1,0 +1,160 @@
+{
+ "densidade": 2.0,
+ "origem": "arte/cenario_v2 (mestres), convertidos por converter_mestres.py",
+ "assets": [
+  {
+   "id": "arvore_copa",
+   "width": 212,
+   "height": 244,
+   "anchorPx": {
+    "x": 102.5,
+    "y": 242.5
+   },
+   "anchorType": "ground",
+   "fonte": "nativo"
+  },
+  {
+   "id": "arvore_seca",
+   "width": 178,
+   "height": 234,
+   "anchorPx": {
+    "x": 87.5,
+    "y": 232.5
+   },
+   "anchorType": "ground",
+   "fonte": "nativo"
+  },
+  {
+   "id": "vaso_arbusto",
+   "width": 48,
+   "height": 60,
+   "anchorPx": {
+    "x": 23.5,
+    "y": 58.5
+   },
+   "anchorType": "ground",
+   "fonte": "nativo"
+  },
+  {
+   "id": "vaso_folhas",
+   "width": 52,
+   "height": 72,
+   "anchorPx": {
+    "x": 25.5,
+    "y": 70.5
+   },
+   "anchorType": "ground",
+   "fonte": "nativo"
+  },
+  {
+   "id": "vaso_flores",
+   "width": 40,
+   "height": 58,
+   "anchorPx": {
+    "x": 20.0,
+    "y": 56.5
+   },
+   "anchorType": "ground",
+   "fonte": "nativo"
+  },
+  {
+   "id": "lixeira_rodas",
+   "width": 48,
+   "height": 64,
+   "anchorPx": {
+    "x": 24.0,
+    "y": 62.5
+   },
+   "anchorType": "ground",
+   "fonte": "nativo"
+  },
+  {
+   "id": "lixeira_metal",
+   "width": 38,
+   "height": 58,
+   "anchorPx": {
+    "x": 19.0,
+    "y": 56.5
+   },
+   "anchorType": "ground",
+   "fonte": "nativo"
+  },
+  {
+   "id": "sacos_lixo",
+   "width": 62,
+   "height": 46,
+   "anchorPx": {
+    "x": 36.5,
+    "y": 44.5
+   },
+   "anchorType": "ground",
+   "fonte": "nativo"
+  },
+  {
+   "id": "placa_rua",
+   "width": 112,
+   "height": 116,
+   "anchorPx": {
+    "x": 89.0,
+    "y": 114.5
+   },
+   "anchorType": "ground",
+   "fonte": "nativo"
+  },
+  {
+   "id": "placa_pendurada",
+   "width": 70,
+   "height": 74,
+   "anchorPx": {
+    "x": 1.0,
+    "y": 31.5
+   },
+   "anchorType": "wall-left-estimated",
+   "fonte": "nativo"
+  },
+  {
+   "id": "placa_transito",
+   "width": 40,
+   "height": 124,
+   "anchorPx": {
+    "x": 20.0,
+    "y": 122.5
+   },
+   "anchorType": "ground",
+   "fonte": "nativo"
+  },
+  {
+   "id": "vitrine_livros",
+   "width": 152,
+   "height": 102,
+   "anchorPx": {
+    "x": 76.0,
+    "y": 100.5
+   },
+   "anchorType": "sill-center",
+   "fonte": "mestre"
+  },
+  {
+   "id": "vitrine_fechada",
+   "width": 152,
+   "height": 102,
+   "anchorPx": {
+    "x": 76.0,
+    "y": 100.5
+   },
+   "anchorType": "sill-center",
+   "fonte": "nativo"
+  },
+  {
+   "id": "vitrine_cafe",
+   "width": 152,
+   "height": 102,
+   "anchorPx": {
+    "x": 76.0,
+    "y": 100.5
+   },
+   "anchorType": "sill-center",
+   "fonte": "mestre"
+  }
+ ]
+}

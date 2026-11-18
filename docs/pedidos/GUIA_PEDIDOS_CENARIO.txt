@@ -84,6 +84,37 @@ trabalho do gerador e dificulta retoques. Como pedir:
     a imagem": aí dá para detectar a grade e amostrar no centro de cada bloco
     (ferramentas livres: ver seção 7).
 
+4b. TAMANHO DO PIXEL NO JOGO (medido em 18/11/2026, com o Pixel Snapper)
+
+Cada mestre V2 tem a própria grade de pixels, e elas não combinam entre si:
+
+  objeto           pixels nativos por px de mundo
+  arvore_copa      2,0
+  vitrines         1,4 – 2,1
+  arvore_seca      2,5
+  placa_rua        2,7
+  placa_transito   3,2
+  lixeiras         3,8 – 4,5
+  sacos_lixo       4,8
+  placa_pendurada  5,1
+  vasos            5,7 – 8,0
+
+Ou seja: nos PNGs entregues, o pixel da árvore é 2 a 4 vezes maior que o dos vasos.
+O chão da rua é pintado com 2 px de arte por px de mundo, e tudo o que fica no chão
+(lixeiras, vasos, sacos, placas baixas, vitrines) acaba nessa camada de qualquer jeito.
+Por isso o tamanho que mais combina com o jogo é 2 px de arte por px de mundo
+(na tela, 0,8 px por pixel de arte com o zoom da rua):
+  - o grão fica igual ao do chão e igual entre os objetos;
+  - árvores e vitrines quase não mudam (já nasceram perto disso);
+  - nos vasos e lixeiras some só o detalhe que já não aparecia na tela.
+Teste: docs/provas/densidade_pixels_v2.png (4, 2 e 1 px por px de mundo numa cópia do jogo)
+e docs/provas/v2_grade_do_jogo.png (como veio x refeito em 2, peça a peça).
+1 px por px de mundo deixa os pixels grandes, mas na tela fica borrado e perde o traço.
+Ferramenta: tools/converter_mestres.py (mestre → grade nativa → 2 px por px de mundo,
+contorno de 1 px refeito). Resultado: arte/cenario_v2/densidade_2/.
+Ao pedir novos objetos: "grade de pixels de 2 px por px de mundo" (a lixeira de 24 x 32
+de mundo vira uma grade de 48 x 64 pixels).
+
 
 5. MODELO DE PEDIDO (para a outra IA, um objeto por pedido)
 
@@ -133,7 +164,9 @@ dizem o que EVITAR com nome ("não bolas de brócolis", "não estrela de triâng
   - Sprite Fusion Pixel Snapper (Hugo Duprez) — MIT, linha de comando e versão web.
   - spritegrid — MIT (segundo o README).
   - proper-pixel-art (PyPI) — licença não confirmada.
-  Não instalei nenhuma: a instalação foi bloqueada pela permissão desta sessão.
+  O Pixel Snapper está em uso (tools/converter_mestres.py explica como instalar). Funciona
+  muito bem nos mestres V2 (pixels falsos nítidos), mas NÃO na Kamila nem em sprites de borda
+  suave: lá ele acha uma grade que não existe e estraga o rosto.
 
   Editores para retoque à mão
   - Pixelorama — MIT, grátis (Windows, Linux, macOS, navegador).
@@ -142,7 +175,7 @@ dizem o que EVITAR com nome ("não bolas de brócolis", "não estrela de triâng
   Plugins para o Claude
   - SpriteCook — gera sprites, tilesets e animações por IA. É serviço pago por créditos
     (tem plano grátis de ~40 créditos/mês). Diz permitir uso comercial em todos os planos,
-    mas os termos não deixam claro de quem é a imagem gerada. Nesta sessão ele aparece,
-    porém o servidor não conecta: a rede do ambiente bloqueou o endereço dele.
+    mas os termos não deixam claro de quem é a imagem gerada. A rede do ambiente já foi
+    liberada (18/11/2026); falta o criador autorizar a conta do SpriteCook no Claude.
   - image-generation — guia de como escrever pedidos para geradores de imagem
     (GPT Image, Gemini, Flux, Midjourney...). Só texto, sem serviço pago.
